@@ -36,8 +36,8 @@ export default defineComponent({
 .schedule-section {
   padding: 60px 15px;  
   text-align: center;
-  background: url('@/assets/images/gallery3.jpg') no-repeat center center fixed;
-  background-size: cover;
+  // background: url('@/assets/images/gallery3.jpg') no-repeat center center fixed;
+  // background-size: cover;
 
   .schedule-title {
     font-size: 32px;
@@ -70,6 +70,7 @@ export default defineComponent({
       left: 50%;
       width: 3px;   
       background: #d6af2d;
+      box-shadow: 0 4px 10px rgba(255, 209, 3, 0.2);
       transform: translateX(-50%);
     }
   }
@@ -128,7 +129,7 @@ export default defineComponent({
       z-index: 2;
       width: 15px;
       height: 15px;
-      background: #d6af2d;
+      background: #d6af2d; 
       border-radius: 50%;
 
       // .circle {
@@ -140,11 +141,11 @@ export default defineComponent({
     }
 
     .schedule-icon {
-      width: 100px;
-      height: 100px;
+      width: 150px;
+      height: 150px;
       padding: 10px;
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(238, 198, 22, 0.1);
       transition: transform 0.3s ease;
 
       &:hover {
@@ -157,7 +158,7 @@ export default defineComponent({
       }
     }
   }
- 
+
   @keyframes fadeInDown {
     from {
       opacity: 0;

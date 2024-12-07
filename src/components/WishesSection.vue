@@ -88,7 +88,6 @@ export default defineComponent({
       <textarea v-model="newWish" placeholder="ដោយក្តីស្រលាញ់..." class="wish-input textarea" rows="3"></textarea>
       <button type="submit" class="submit-btn">ជូនពរ</button>
     </form>
- 
     <div class="wishes-list" :class="{ scrollable: wishes.length > 10 }">
       <div v-for="(wish, index) in wishes" :key="index" class="wish-card">
         <p class="wish-message">💐 {{ wish.message }} 💐</p>
