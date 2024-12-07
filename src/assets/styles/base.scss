@@ -59,19 +59,6 @@ body {
   padding: 2rem;  
 }
 
-@media (max-width: 768px) {
-  body {
-    padding: 80px 20px;
-    text-align: center;  
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    text-align: center;  
-  }
-}
-
 button {
   border: 0;
 }

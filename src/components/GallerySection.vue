@@ -44,11 +44,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .gallery-section {
-  padding: 2rem 1rem; /* Adjusted padding for smaller screens */
+  text-align: center;
+  padding: 80px 20px;  
   background: #ffffff;
   text-align: center;
 
-  /* Title Animation */
   .gallery-title {
     font-weight: bold;
     color: #333;
@@ -67,7 +67,6 @@ export default defineComponent({
     }
   }
 
-  /* Grid Layout */
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -80,11 +79,10 @@ export default defineComponent({
 
     @media (max-width: 480px) {
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem; /* Smaller gaps for mobile */
+      gap: 0.5rem; 
     }
   }
 
-  /* Grid Items with Animations */
   .gallery-item {
     overflow: hidden;
     border-radius: 10px;
@@ -92,7 +90,7 @@ export default defineComponent({
     transform: scale(0.95);
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
-    animation-delay: calc(var(--delay, 0) * 0.2s); /* Default delay */
+    animation-delay: calc(var(--delay, 0) * 0.2s); 
 
     img {
       width: 100%;
@@ -109,9 +107,8 @@ export default defineComponent({
       }
     }
 
-    /* Customize grid spanning behavior */
     &.gallery-item-0 {
-      grid-column: span 2;
+      grid-column: span 1;
       grid-row: span 2;
     }
 
@@ -131,8 +128,8 @@ export default defineComponent({
     }
 
     &.gallery-item-4 {
-      grid-column: span 2;
-      grid-row: span 1;
+      grid-column: span 1;
+      grid-row: span 2;
     }
 
     &.gallery-item-5 {
@@ -141,7 +138,6 @@ export default defineComponent({
     }
   }
 
-  /* Keyframes for Animations */
   @keyframes fadeInDown {
     from {
       opacity: 0;
