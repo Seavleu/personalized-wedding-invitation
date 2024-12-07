@@ -13,8 +13,8 @@ export default defineComponent({
     return { icons, getIconPath };
   },
 });
-
 </script>
+
 <template>
   <section class="schedule-section">
     <!-- <img class="div" src="../assets/images/divider.png" alt=""> -->

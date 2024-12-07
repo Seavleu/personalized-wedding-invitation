@@ -10,24 +10,28 @@ export default defineComponent({
     const userName = ref("");
     const showPopup = ref(false);
     const lastSender = ref("");
+    showPopup.value = true;
+    setTimeout(() => (showPopup.value = false), 2000);
 
-    // Submit a new wish
     const submitWish = async () => {
       if (!newWish.value.trim()) return;
 
       try {
-        const response: Models.Document = await databases.createDocument(
+        console.log("Submitting wish...");
+
+        const response = await databases.createDocument(
           "67543c840032f8f28d75", // Database ID
           "67543c9b002b18cca0e0", // Collection ID
-          "unique()", // Unique document ID
+          "unique()", // Document ID
           {
             name: userName.value || "Anonymous",
             message: newWish.value.trim(),
-          },
-          ["role:all"] // Permissions: Make sure to allow read/write for all users
+          }
         );
 
-        // Add the new wish to the top of the list
+        console.log("Wish submitted successfully:", response);
+
+        // Add to the top of the local list
         wishes.value.unshift({
           name: response.name || "Anonymous",
           message: response.message || "",
@@ -37,23 +41,22 @@ export default defineComponent({
         newWish.value = "";
         userName.value = "";
 
-        // Show gratitude popup
+        // Show the popup
         showPopup.value = true;
+        console.log("Popup triggered");
         setTimeout(() => (showPopup.value = false), 2000);
+
       } catch (error: any) {
         console.error("Error saving wish:", error.message || error);
       }
     };
-
-    // Fetch wishes on mount
     const fetchWishes = async () => {
       try {
         const response = await databases.listDocuments(
-          "67543c840032f8f28d75", // Database ID
-          "67543c9b002b18cca0e0" // Collection ID
+          "67543c840032f8f28d75",
+          "67543c9b002b18cca0e0"
         );
 
-        // Map fetched documents to wishes array
         wishes.value = response.documents.map((doc: any) => ({
           name: doc.name || "Anonymous",
           message: doc.message || "",
@@ -63,7 +66,6 @@ export default defineComponent({
       }
     };
 
-    // Fetch wishes on component mount
     onMounted(fetchWishes);
 
     return {
@@ -174,7 +176,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto;
 
     .wish-card {
@@ -212,24 +214,43 @@ export default defineComponent({
 
   /* Popup */
   .popup {
-    position: fixed;
+    position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #ffefc1;
-    border-radius: 10px;
-    padding: 20px;
+    z-index: 1000;  
+    background: rgba(0, 0, 255, 0.1); 
+    border: 3px solid rgba(0, 0, 255, 0.3); 
+    border-radius: 15px;
+    backdrop-filter: blur(8px); 
+    padding: 1.5rem 2rem;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-out;
 
     .popup-card {
       font-size: 1.2rem;
       color: #333;
       font-weight: bold;
+
+      p {
+        margin: 0.5rem 0;
+      }
     }
   }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
 
   /* Animations */
   @keyframes fadeIn {

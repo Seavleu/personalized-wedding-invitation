@@ -50,13 +50,12 @@ export default defineComponent({
     animation: zoomIn 1.2s ease-in-out;
 
     .map-image {
-      width: 100%;
+      width: 450px;
       height: auto;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
 
-      /* Scale-Up Effect on Hover */
       &:hover {
         transform: scale(1.05) rotate(1deg);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
@@ -105,8 +104,8 @@ export default defineComponent({
       }
 
       @media (max-width: 768px) {
-        top: 25%;
-        left: 60%;
+        top: 28%;
+        left: 62%;
         width: 12px;
         height: 12px;
 
