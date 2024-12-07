@@ -1,3 +1,20 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "ScheduleSection",
+  setup() {
+    const icons = ["ico_1.png", "ico_2.png", "ico_3.png", "ico_4.png", "ico_5.png", "ico_6.png"];
+
+    const getIconPath = (icon: string) => {
+      return new URL(`../assets/images/${icon}`, import.meta.url).href;
+    };
+
+    return { icons, getIconPath };
+  },
+});
+
+</script>
 <template>
   <section class="schedule-section">
     <!-- <img class="div" src="../assets/images/divider.png" alt=""> -->
@@ -14,23 +31,6 @@
     </div>
   </section>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "ScheduleSection",
-  setup() {
-    const icons = ["ico_1.png", "ico_2.png", "ico_3.png", "ico_4.png", "ico_5.png", "ico_6.png"];
-
-    const getIconPath = (icon: string) => {
-      return new URL(`../assets/images/${icon}`, import.meta.url).href;
-    };
-
-    return { icons, getIconPath };
-  },
-});
-</script>
 
 <style lang="scss" scoped>
 .schedule-section {
@@ -83,19 +83,19 @@ export default defineComponent({
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out forwards;
-    animation-delay: calc(var(--delay) * 0.5s); // Add delay for staggered effect
+    animation-delay: calc(var(--delay) * 0.5s); 
 
     &.schedule-left {
       justify-content: flex-end;
 
       .schedule-marker {
         order: 2;
-        margin-left: 2px;
+        margin-left: -5px;
       }
 
       .schedule-icon {
         order: 1;
-        margin-right: 60px;
+        margin-right: 40px;
         animation: slideInLeft 1s ease-out forwards;
       }
     }
@@ -105,12 +105,12 @@ export default defineComponent({
 
       .schedule-marker {
         order: 2;
-        margin-right: 2px;
+        margin-left: -5px;
       }
 
       .schedule-icon {
         order: 1;
-        margin-left: 60px;
+        margin-left: 40px;
         animation: slideInRight 1s ease-out forwards;
       }
     }
@@ -122,7 +122,7 @@ export default defineComponent({
       z-index: 2;
       width: 20px;
       height: 20px;
-      background: #ebd489;
+      background: #d6af2d;
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -131,7 +131,7 @@ export default defineComponent({
       .circle {
         width: 10px;
         height: 10px;
-        background: #d6af2d;
+        background: #ebd489;
         border-radius: 50%;
       }
     }

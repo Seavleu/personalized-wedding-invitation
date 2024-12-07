@@ -82,6 +82,9 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: url('@/assets/images/intro1.jpg') no-repeat center center;
+  background-size: cover;
+  backdrop-filter: blur(5px);
 
   .hero-content {
     position: relative;
@@ -125,13 +128,13 @@ export default defineComponent({
           height: 100px;
         }
       }
-
+      
       .hero-invite {
         font-size: 1.2rem;
         animation: fadeIn 2s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 1rem;
+          font-size: 1.5rem;
         }
 
         @media (max-width: 480px) {

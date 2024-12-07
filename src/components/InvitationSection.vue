@@ -62,7 +62,7 @@ export default defineComponent({
         <p>
           លោក <span><strong>ហ៊ាង វ៉ាន់ឌី</strong></span>
           <br />
-          លោកស្រី <span>ហ៊ាន គឺមហួរ</span>
+          លោកស្រី <span>ហ៊ាន គឹមហួរ</span>
         </p>
 
         <div class="daught">
@@ -94,8 +94,7 @@ export default defineComponent({
           We warmly invite you to grace the auspicious occasion of our Wedding
           Reception with your presence.
         </dt>
-        <p><br><strong>05 January 2025 </strong><br></p>
-        <!-- <img src="../assets/images/ico_date.png" alt="" /> -->
+        <p><br><strong>05 January 2025 </strong><br></p> 
         <dt class="location">
           <br>
           At Borey Apea Pipea (Building A) Lok Ta Khieu Neuy Street,
@@ -121,8 +120,8 @@ export default defineComponent({
   }
 
   img {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     animation: fadeIn 1.5s ease-out;
   }
 
@@ -137,15 +136,14 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     flex-direction: row;
-    gap: 2rem;  
+    align-items: center;  
+    text-wrap: nowrap;
 
     .left-item,
-    .right-item {
-      margin-bottom: 20px;
+    .right-item { 
       animation: slideInLeft 1s ease-out;
 
       p {
-        margin-bottom: 20px;
         font-size: 14px;
         color: #555;
       }
