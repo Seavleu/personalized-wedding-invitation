@@ -100,14 +100,14 @@ export default defineComponent({
         transition: all 0.3s ease;
 
         &:hover {
-          color: #007bff;
-          background-color: rgba(0, 123, 255, 0.1);
+          color:#fac34c;
+          background-color: rgba(255, 238, 0, 0.1);
         }
 
         &.active {
           color: #fff;
-          background-color: #007bff;
-          box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+          background-color: #fac34c;
+          box-shadow: 0 4px 8px #FFF8E8;
         }
       }
     }

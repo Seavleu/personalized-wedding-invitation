@@ -108,7 +108,6 @@ h1,
 h2,
 h3,
 h4,
-input,
 button,
 span {
   font-family: "Geist", monospace; 
@@ -117,7 +116,9 @@ span {
 h5 {
   font-family: "GeistMono", monospace;
 }
-.wishes-list {
+.wishes-list,
+input,
+textarea, {
   font-family: "KantumruyReg", monospace; 
 }
 

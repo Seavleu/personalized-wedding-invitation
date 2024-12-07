@@ -39,7 +39,8 @@ export default defineComponent({
 
 <template>
   <section class="wishes-section">
-    <h2 class="wishes-title">ចែករំលែកក្តីស្រលាញ់ទៅកាន់គូរស្នេហ៌</h2>
+    <h2 class="wishes-title">ចែករំលែកក្តីស្រលាញ់ទៅកាន់គូរស្នេហ៌ </h2>
+    <h2>May we ask for blessing</h2>
     <form @submit.prevent="submitWish" class="wishes-form">
       <input
         type="text"
@@ -79,7 +80,7 @@ export default defineComponent({
   background: #fdfdfd;
 
   .wishes-title {
-    font-size: 2.5rem;
+    font-size: 28px;
     font-weight: bold;
     color: #333;
     margin-bottom: 2rem;
@@ -93,28 +94,30 @@ export default defineComponent({
     margin-bottom: 2rem;
 
     .wish-input {
+      background-color: rgba(255, 238, 0, 0.1);
       width: 100%;
       max-width: 400px;
       padding: 0.8rem;
-      border: 1px solid #ccc;
+      border: 1px solid #fffbfb;
       border-radius: 10px;
       font-size: 1rem;
       resize: none;
 
       &:focus {
-        border-color: #ff6363;
+        border-color: #fac34c;
         outline: none;
       }
     }
 
     .textarea {
       height: auto;
+      background-color: rgba(255, 238, 0, 0.1);
       min-height: 80px;
     }
 
     .submit-btn {
       padding: 0.8rem 2rem;
-      background: #ff6363;
+      background: #fac34c; 
       color: white;
       border: none;
       border-radius: 10px;
@@ -122,7 +125,8 @@ export default defineComponent({
       cursor: pointer;
 
       &:hover {
-        background: #ff4a4a;
+        background: #fac34c;
+
       }
     }
   }
@@ -131,11 +135,11 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
 
     .wish-card {
-      background: #fff;
+      background-color: rgba(255, 238, 0, 0.1);
       padding: 1rem;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -1,18 +1,18 @@
 <template>
   <div>
-    <!-- Audio Autoplay -->
     <audio ref="audioRef" autoplay loop>
       <source src="/audio.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>
 
-    <!-- Other Components -->
     <HeroSection id="hero" :guest-name="guestName" />
     <InvitationSection id="invitation" />
     <ScheduleSection id="schedule" />
     <LocationSection id="location" />
     <GallerySection id="gallery" />
     <WishesSection id="wishes" />
+    <ABASection id="aba" />
+    <ApologySection id="apology" />
     <MenuComponent />
   </div>
 </template>
@@ -22,10 +22,12 @@ import { defineComponent, computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import HeroSection from "@/components/HeroSection.vue";
 import InvitationSection from "@/components/InvitationSection.vue";
+import ApologySection from "@/components/ApologySection.vue";
 import ScheduleSection from "@/components/ScheduleSection.vue";
 import LocationSection from "@/components/LocationSection.vue";
 import GallerySection from "@/components/GallerySection.vue";
 import WishesSection from "@/components/WishesSection.vue";
+import ABASection from "@/components/ABASection.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
 
 export default defineComponent({
@@ -38,6 +40,8 @@ export default defineComponent({
     GallerySection,
     WishesSection,
     MenuComponent,
+    ApologySection,
+    ABASection,
   },
   setup() {
     const route = useRoute();
@@ -59,7 +63,6 @@ export default defineComponent({
         }
       };
 
-      // Attempt to play audio after user interaction
       document.addEventListener("click", playAudio, { once: true });
       document.addEventListener("scroll", playAudio, { once: true });
     });
