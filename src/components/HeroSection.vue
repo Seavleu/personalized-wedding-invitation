@@ -134,7 +134,7 @@ export default defineComponent({
         animation: fadeIn 2s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 1.5rem;
+          font-size: 34px;
         }
 
         @media (max-width: 480px) {
