@@ -90,7 +90,7 @@ export default defineComponent({
 
       .schedule-marker {
         order: 2;
-        margin-left: -5px;
+        margin-left: 38px;
       }
 
       .schedule-icon {
@@ -105,7 +105,7 @@ export default defineComponent({
 
       .schedule-marker {
         order: 2;
-        margin-left: -5px;
+        margin-left: 38px;
       }
 
       .schedule-icon {
