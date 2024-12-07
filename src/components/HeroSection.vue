@@ -91,13 +91,13 @@ export default defineComponent({
     z-index: 1;
 
     .hero-title {
-      font-size: 2.5rem;
+      font-size: 36px;
       font-weight: bold;
       margin-bottom: 1rem;
       animation: fadeInDown 2s ease-out;
 
       @media (max-width: 768px) {
-        font-size: 1.8rem;
+        font-size: 36px;
       }
 
       @media (max-width: 480px) {
@@ -114,8 +114,8 @@ export default defineComponent({
 
       .logo {
         margin-bottom: 10px;
-        width: 180px;
-        height: 180px;
+        width: 220px;
+        height: 220px;
         animation: scaleIn 1.5s ease-out;
 
         @media (max-width: 768px) {
@@ -130,7 +130,7 @@ export default defineComponent({
       }
       
       .hero-invite {
-        font-size: 1.2rem;
+        font-size: 36px;
         animation: fadeIn 2s ease-out;
 
         @media (max-width: 768px) {
@@ -143,18 +143,18 @@ export default defineComponent({
       }
 
       .guest-name {
-        font-size: 1.1rem;
+        font-size: 36px;
         margin-bottom: 1.5rem;
         width: 350px;
         font-family: "KantumruyReg", monospace;
         animation: fadeInUp 1.5s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 1rem;
+          font-size: 28px;
         }
 
         @media (max-width: 480px) {
-          font-size: 0.9rem;
+          font-size: 28px;
         }
       }
     }
