@@ -34,15 +34,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .schedule-section {
-  padding: 60px 15px; 
-  background: #f7f7f7;
+  padding: 60px 15px;  
   text-align: center;
+  background: url('@/assets/images/gallery3.jpg') no-repeat center center fixed;
+  background-size: cover;
 
   .schedule-title {
     font-size: 32px;
     font-weight: bold;
-    margin-bottom: 20px;
-    color: #111;
+    margin-bottom: 20px; 
     position: relative;
     z-index: 10;
     animation: fadeInDown 1s ease-out;

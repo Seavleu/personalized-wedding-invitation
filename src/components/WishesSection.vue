@@ -88,8 +88,8 @@ export default defineComponent({
       <textarea v-model="newWish" placeholder="ដោយក្តីស្រលាញ់..." class="wish-input textarea" rows="3"></textarea>
       <button type="submit" class="submit-btn">ជូនពរ</button>
     </form>
-
-    <div class="wishes-list">
+ 
+    <div class="wishes-list" :class="{ scrollable: wishes.length > 10 }">
       <div v-for="(wish, index) in wishes" :key="index" class="wish-card">
         <p class="wish-message">💐 {{ wish.message }} 💐</p>
         <p class="wish-sender">- {{ wish.name }} 🥰</p>
@@ -113,14 +113,10 @@ export default defineComponent({
 
   /* Title */
   .wishes-title {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
-
-    @media (max-width: 480px) {
-      font-size: 22px;
-    }
   }
 
   /* Form */
@@ -135,24 +131,17 @@ export default defineComponent({
     .textarea {
       background-color: rgba(255, 238, 0, 0.1);
       width: 100%;
-      max-width: 400px;
+      max-width: 350px;
       padding: 12px;
       border: 1px solid #fffbfb;
       border-radius: 10px;
       font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
       &:focus {
         border-color: #fac34c;
         box-shadow: 0 0 5px rgba(250, 195, 76, 0.5);
         outline: none;
       }
-    }
-
-    .textarea {
-      height: auto;
-      min-height: 100px;
-      resize: vertical;
     }
 
     .submit-btn {
@@ -163,7 +152,6 @@ export default defineComponent({
       border-radius: 10px;
       font-size: 1rem;
       cursor: pointer;
-      transition: background-color 0.3s ease;
 
       &:hover {
         background-color: darken(#fac34c, 10%);
@@ -171,13 +159,38 @@ export default defineComponent({
     }
   }
 
-  /* Wishes List */
+  /* Scrollable Wishes List */
   .wishes-list {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width: 450px;
+    max-width:350px;
     margin: 0 auto;
+
+    /* Make it scrollable when more than 10 items */
+    &.scrollable {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 10px;
+
+      /* Add scrollbar styling */
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+      &::-webkit-scrollbar-track {
+        background: #f5f5f5;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #fac34c;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: darken(#fac34c, 10%);
+      }
+    }
 
     .wish-card {
       background-color: rgba(255, 238, 0, 0.1);
@@ -185,18 +198,6 @@ export default defineComponent({
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: left;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      opacity: 0;
-      animation: fadeInCard 0.8s ease-out forwards;
-
-      &:nth-child(odd) {
-        animation-delay: 0.2s;
-      }
-
-      &:nth-child(even) {
-        animation-delay: 0.4s;
-      }
 
       .wish-message {
         font-size: 1rem;
@@ -212,17 +213,17 @@ export default defineComponent({
     }
   }
 
-  /* Popup */
+  /* Popup Styling */
   .popup {
-    position: fixed; 
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;  
-    background: rgba(0, 0, 255, 0.1); 
-    border: 3px solid rgba(0, 0, 255, 0.3); 
+    z-index: 1000;
+    background: rgba(0, 0, 255, 0.1);
+    border: 3px solid rgba(0, 0, 255, 0.3);
     border-radius: 15px;
-    backdrop-filter: blur(8px); 
+    backdrop-filter: blur(8px);
     padding: 1.5rem 2rem;
     text-align: center;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -244,13 +245,11 @@ export default defineComponent({
       opacity: 0;
       transform: translate(-50%, -60%);
     }
-
     to {
       opacity: 1;
       transform: translate(-50%, -50%);
     }
   }
-
 
   /* Animations */
   @keyframes fadeIn {

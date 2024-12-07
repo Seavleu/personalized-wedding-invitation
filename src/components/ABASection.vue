@@ -41,7 +41,7 @@ export default defineComponent({
 <template>
   <section class="invitation-section" :class="{ 'section-visible': sectionVisible }">
     <div class="title">
-      <img src="../assets//images/aba.png" alt="" />
+      <img src="../assets//images/aba.jpg" alt="" />
     </div>
 
     <div class="detail">
@@ -55,9 +55,13 @@ export default defineComponent({
 .invitation-section {
   text-align: center;
   padding: 5rem 1rem;
-  background: url('@/assets/images/apo.jpg') no-repeat center center;
-  background-size: cover; 
+  background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
+  background-size: cover;
   backdrop-filter: blur(5px);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
 
   &.section-visible {
     opacity: 1;
@@ -67,12 +71,12 @@ export default defineComponent({
   img {
     width: 320px;
     height: 320px;
+    border-radius: 50px;
     animation: fadeIn 1.5s ease-out;
   }
 
   h4 {
-    font-size: 1.2rem;
-    color: #555;
+    font-size: 1.2rem; 
     margin-bottom: 1rem;
     animation: fadeInUp 1.5s ease-out;
   }
@@ -89,8 +93,7 @@ export default defineComponent({
       animation: slideInLeft 1s ease-out;
 
       p {
-        font-size: 14px;
-        color: #555;
+        font-size: 14px; 
       }
 
       span {
@@ -110,8 +113,7 @@ export default defineComponent({
     margin: 30px auto;
 
     p {
-      font-size: 34px;
-      color: #555;
+      font-size: 34px; 
       font-family: 'ItaliannoReg', monospace;
 
       span {
@@ -134,14 +136,12 @@ export default defineComponent({
 
     dl {
       dt {
-        font-size: 30px;
-        color: #555;
+        font-size: 30px; 
         font-family: "ItaliannoReg", monospace;
         animation: fadeInUp 1.5s ease-out;
       }
 
-      p {
-        color: #555;
+      p { 
         font-size: 50px;
         font-family: "ItaliannoReg", monospace;
         margin-bottom: 30px;

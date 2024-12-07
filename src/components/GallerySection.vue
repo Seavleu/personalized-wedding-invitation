@@ -15,7 +15,6 @@
   </section>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from "vue";
 
@@ -29,8 +28,8 @@ export default defineComponent({
       "gallery4.jpg",
       "gallery5.jpg",
       "gallery6.jpg",
-      "gallery7.jpg",
-      "gallery8.jpg",
+      "gallery7.jpg", 
+      "gallery9.jpg",
     ];
 
     const getImagePath = (image: string) => {
@@ -48,23 +47,14 @@ export default defineComponent({
   padding: 80px 20px;  
   background: #ffffff;
   text-align: center;
+  padding: 60px;
+  background: none; 
 
   .gallery-title {
-    font-weight: bold;
-    color: #333;
-    font-size: 2.5rem;
+    font-weight: bold; 
+    font-size: 28px;
     margin-bottom: 2rem;
     animation: fadeInDown 1s ease-out;
-
-    @media (max-width: 768px) {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
   }
 
   .gallery-grid {
@@ -108,7 +98,7 @@ export default defineComponent({
     }
 
     &.gallery-item-0 {
-      grid-column: span 1;
+      grid-column: span 2;
       grid-row: span 2;
     }
 
@@ -118,8 +108,8 @@ export default defineComponent({
     }
 
     &.gallery-item-2 {
-      grid-column: span 2;
-      grid-row: span 1;
+      grid-column: span 1;
+      grid-row: span 2;
     }
 
     &.gallery-item-3 {

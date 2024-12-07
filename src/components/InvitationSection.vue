@@ -162,7 +162,7 @@ export default defineComponent({
     margin-top: 20px;
     animation: fadeInUp 2s ease-out;
     width: 100%;
-    max-width: 350px; /* Restrict width on smaller screens */
+    max-width: 350px; 
     margin: 20px auto;
 
     p {
@@ -171,14 +171,14 @@ export default defineComponent({
 
       span {
         font-family: 'GeistMono', monospace;
-        color: #fac34c;
+        color: #d6af2d;
       }
     }
   }
 
   .eng-detail {
     width: 100%;
-    max-width: 350px; /* Restrict width on smaller screens */
+    max-width: 350px; 
     margin: 30px auto;
     animation: fadeIn 2s ease-out;
 
@@ -219,9 +219,9 @@ export default defineComponent({
     }
   }
 
-  /* Adjust padding for smaller devices */
+ 
   @media (max-width: 768px) {
-    padding: 50px 15px;
+    padding: 50px 10px;
 
     img {
       width: 100px;
