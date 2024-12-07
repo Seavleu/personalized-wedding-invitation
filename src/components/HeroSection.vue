@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
@@ -10,10 +10,10 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const videoSrc = ref("../assets/images/video.mp4");
-    const videoRef = ref<HTMLVideoElement | null>(null);
+    const youtubeUrl = ref("https://www.youtube.com/embed/kxpZEELOI-A?autoplay=1&rel=0");
     const isVideoPlaying = ref(false);
     const currentGuestName = ref(props.guestName);
+    const iframeRef = ref<HTMLIFrameElement | null>(null);
 
     watch(
       () => props.guestName,
@@ -22,40 +22,58 @@ export default defineComponent({
       }
     );
 
+    // Play video and request fullscreen
     const playVideo = () => {
       isVideoPlaying.value = true;
+
+      setTimeout(() => {
+        if (iframeRef.value) {
+          iframeRef.value.requestFullscreen?.();
+        }
+      }, 300);
     };
 
+    // Stop video and close iframe
     const stopVideo = () => {
-      const video = videoRef.value;
-      if (video) {
-        video.pause();
-        video.currentTime = 0;
-      }
       isVideoPlaying.value = false;
+
+      // Exit fullscreen if active
+      if (document.fullscreenElement) {
+        document.exitFullscreen?.();
+      }
     };
 
-    const onBackgroundClick = () => {
-      if (isVideoPlaying.value) {
-        stopVideo();
+    // Listen for fullscreen exit
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        stopVideo(); // Exit video if fullscreen is exited
       }
     };
+
+    onMounted(() => {
+      document.addEventListener("fullscreenchange", handleFullscreenChange);
+    });
+
+    onBeforeUnmount(() => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    });
 
     return {
-      videoSrc,
-      videoRef,
+      youtubeUrl,
       isVideoPlaying,
       playVideo,
       stopVideo,
-      onBackgroundClick,
       currentGuestName,
+      iframeRef,
     };
   },
 });
 </script>
 
+
 <template>
-  <section class="hero-section" @click="onBackgroundClick">
+  <section class="hero-section">
+    <!-- Main Content -->
     <div v-if="!isVideoPlaying" class="hero-content" @click.stop>
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
@@ -63,12 +81,28 @@ export default defineComponent({
         <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
         <p class="guest-name">{{ currentGuestName }}</p>
       </div>
-      <img class="wlc" src="../assets/images/ico_wlc.png" alt="Watch Invitation" @click="playVideo" />
+      <img
+        class="wlc"
+        src="../assets/images/ico_wlc.png"
+        alt="Watch Invitation"
+        @click="playVideo"
+      />
     </div>
-    <video v-else ref="videoRef" class="video" :src="videoSrc" @ended="stopVideo" autoplay controls></video>
+
+    <!-- YouTube Video -->
+    <div v-if="isVideoPlaying" class="video-container">
+      <iframe
+        ref="iframeRef"
+        class="youtube-video"
+        :src="youtubeUrl"
+        title="YouTube video player"
+        frameborder="0"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
   </section>
 </template>
-
 
 <style lang="scss" scoped>
 .hero-section {
