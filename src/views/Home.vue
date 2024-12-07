@@ -1,5 +1,24 @@
+<template>
+  <div>
+    <!-- Audio Autoplay -->
+    <audio ref="audioRef" autoplay loop>
+      <source src="/audio.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Other Components -->
+    <HeroSection id="hero" :guest-name="guestName" />
+    <InvitationSection id="invitation" />
+    <ScheduleSection id="schedule" />
+    <LocationSection id="location" />
+    <GallerySection id="gallery" />
+    <WishesSection id="wishes" />
+    <MenuComponent />
+  </div>
+</template>
+
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import HeroSection from "@/components/HeroSection.vue";
 import InvitationSection from "@/components/InvitationSection.vue";
@@ -22,34 +41,36 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute();
+    const audioRef = ref<HTMLAudioElement | null>(null);
 
     const guestName = computed(() => {
       if (route && route.params) {
         return Array.isArray(route.params.guestName)
           ? route.params.guestName[0]
-          : route.params.guestName || "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញាឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
+          : route.params.guestName || "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
       }
-      return "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";  
+      return "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
+    });
+
+    onMounted(() => {
+      const playAudio = () => {
+        if (audioRef.value) {
+          audioRef.value.play();
+        }
+      };
+
+      // Attempt to play audio after user interaction
+      document.addEventListener("click", playAudio, { once: true });
+      document.addEventListener("scroll", playAudio, { once: true });
     });
 
     return {
       guestName,
+      audioRef,
     };
   },
 });
 </script>
-
-<template>
-  <div>
-    <HeroSection id="hero" :guest-name="guestName" />
-    <InvitationSection id="invitation" />
-    <ScheduleSection id="schedule" />
-    <LocationSection id="location" />
-    <GallerySection id="gallery" />
-    <WishesSection id="wishes" />
-    <MenuComponent />
-  </div>
-</template>
 
 <style lang="scss">
 @import "@/assets/styles/main.scss";
