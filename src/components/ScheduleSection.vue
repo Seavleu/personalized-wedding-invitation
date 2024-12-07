@@ -100,7 +100,7 @@ export default defineComponent({
 
         .schedule-marker {
           position: relative;
-          margin: 0 auto 10px auto;
+          margin: 0 auto 0 0;
         }
       }
 
@@ -115,7 +115,7 @@ export default defineComponent({
 
         .schedule-marker {
           position: relative;
-          margin: 0 auto 10px auto;
+          margin: 0 auto 0 0;
         }
       }
     }
@@ -126,17 +126,17 @@ export default defineComponent({
       left: 50%;
       transform: translateX(-50%);
       z-index: 2;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       background: #d6af2d;
       border-radius: 50%;
 
-      .circle {
-        width: 10px;
-        height: 10px;
-        background: #ebd489;
-        border-radius: 50%;
-      }
+      // .circle {
+      //   width: 10px;
+      //   height: 10px;
+      //   background: #ebd489;
+      //   border-radius: 50%;
+      // }
     }
 
     .schedule-icon {
