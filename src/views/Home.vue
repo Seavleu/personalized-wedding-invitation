@@ -1,15 +1,3 @@
-<template>
-  <div>
-    <HeroSection id="hero" :guest-name="guestName" />
-    <InvitationSection id="invitation" />
-    <ScheduleSection id="schedule" />
-    <LocationSection id="location" />
-    <GallerySection id="gallery" />
-    <WishesSection id="wishes" />
-    <MenuComponent />
-  </div>
-</template>
-
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import { useRoute } from "vue-router";
@@ -35,14 +23,13 @@ export default defineComponent({
   setup() {
     const route = useRoute();
 
-    // Ensure route and params are defined
     const guestName = computed(() => {
       if (route && route.params) {
         return Array.isArray(route.params.guestName)
           ? route.params.guestName[0]
-          : route.params.guestName || "Guest";
+          : route.params.guestName || "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញាឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
       }
-      return "Guest"; // Default value if route or params is undefined
+      return "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";  
     });
 
     return {
@@ -51,6 +38,18 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <div>
+    <HeroSection id="hero" :guest-name="guestName" />
+    <InvitationSection id="invitation" />
+    <ScheduleSection id="schedule" />
+    <LocationSection id="location" />
+    <GallerySection id="gallery" />
+    <WishesSection id="wishes" />
+    <MenuComponent />
+  </div>
+</template>
 
 <style lang="scss">
 @import "@/assets/styles/main.scss";

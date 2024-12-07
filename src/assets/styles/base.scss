@@ -21,6 +21,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "KantumruyBold";
+  src: url("@/assets/fonts/Kantumruy-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "KantumruyReg";
+  src: url("@/assets/fonts/Kantumruy-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ItaliannoReg";
+  src: url("@/assets/fonts/Italianno-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: "Geist", sans-serif;
   color: #fff;
@@ -54,9 +75,6 @@ video {
   *zoom: 1;
 }
 
-h1,
-h2,
-h3,
 p,
 dl,
 dt,
@@ -64,16 +82,28 @@ dd,
 ul,
 ol,
 li {
-  font-family: "Geist", monospace;
+  font-family: "KantumruyReg", monospace 'ItaliannoReg'; 
   list-style: none;
   padding: 0;
   margin: 0;
   color: #fff;
 }
 
+h1,
+h2,
+h3,
 h4,
+input,
+button,
 span {
-  font-family: "GeistMono", monospace; 
+  font-family: "Geist", monospace; 
+}
+
+h5 {
+  font-family: "GeistMono", monospace;
+}
+.wishes-list {
+  font-family: "KantumruyReg", monospace; 
 }
 
 img,

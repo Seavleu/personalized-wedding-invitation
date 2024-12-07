@@ -13,9 +13,8 @@ export default defineComponent({
     const videoSrc = ref("../assets/images/video.mp4");
     const videoRef = ref<HTMLVideoElement | null>(null);
     const isVideoPlaying = ref(false);
-    const currentGuestName = ref(props.guestName); // Local reactive variable for guestName
+    const currentGuestName = ref(props.guestName);
 
-    // Watch for changes in the prop
     watch(
       () => props.guestName,
       (newGuestName) => {
@@ -59,34 +58,18 @@ export default defineComponent({
   <section class="hero-section" @click="onBackgroundClick">
     <div v-if="!isVideoPlaying" class="hero-content" @click.stop>
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
-      <dt>
-        <img src="../assets/images/logo.png" alt="" />
-        <h1 class="hero-title">សូមគោរពអញ្ជើញ {{ currentGuestName }}</h1>
-        <img
-          src="../assets/images/ico_wlc.png"
-          alt="Watch Invitation"
-          @click="playVideo"
-        />
-        <!-- <dd>
-          ថ្ងៃសៅរ៍ ទី ២៤ ខែ កុម្ភៈ ឆ្នាំ ២០២៤
-          ភោជនីយដ្ឋាន សមភាពថ្មី អាគារ A ក្រុងសៀមរាប
-          វេលាម៉ោង ០៥:០០ ល្ងាច
-        </dd> -->
-      </dt>
+      <div class="hero-details">
+        <img class="logo" src="../assets/images/logo.jpg" alt="Logo" />
+        <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
+        <p class="guest-name">{{ currentGuestName }}</p>
+      </div>
+      <img class="wlc" src="../assets/images/ico_wlc.png" alt="Watch Invitation" @click="playVideo" />
     </div>
-
-    <video
-      v-else
-      ref="videoRef"
-      class="video"
-      :src="videoSrc"
-      @ended="stopVideo"
-      autoplay
-      controls
-    ></video>
+    <video v-else ref="videoRef" class="video" :src="videoSrc" @ended="stopVideo" autoplay controls></video>
   </section>
 </template>
- 
+
+
 <style lang="scss" scoped>
 .hero-section {
   position: relative;
@@ -95,44 +78,119 @@ export default defineComponent({
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .hero-content {
     position: relative;
     z-index: 1;
 
     .hero-title {
-      font-size: 2.5rem; 
+      font-size: 2.5rem;
       font-weight: bold;
       margin-bottom: 1rem;
-      animation: fadeInDown 1s ease-out;
+      animation: fadeInDown 2s ease-out;
 
       @media (max-width: 768px) {
-        font-size: 1.8rem;  
+        font-size: 1.8rem;
       }
 
       @media (max-width: 480px) {
-        font-size: 1.5rem;  
+        font-size: 1.5rem;
       }
     }
 
-    img {
+    .hero-details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      animation: fadeInUp 1.5s ease-out;
+
+      .logo {
+        margin-bottom: 10px;
+        width: 180px;
+        height: 180px;
+        animation: scaleIn 1.5s ease-out;
+
+        @media (max-width: 768px) {
+          width: 120px;
+          height: 120px;
+        }
+
+        @media (max-width: 480px) {
+          width: 100px;
+          height: 100px;
+        }
+      }
+
+      .hero-invite {
+        font-size: 1.2rem;
+        animation: fadeIn 2s ease-out;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 0.9rem;
+        }
+      }
+
+      .guest-name {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        width: 350px;
+        font-family: "KantumruyReg", monospace;
+        animation: fadeInUp 1.5s ease-out;
+
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .wlc {
       cursor: pointer;
-      width: 50%;
+      width: 200px;
+      max-width: 200px;
       height: auto;
       transition: transform 0.3s ease;
+      margin-top: 20px;
+      animation: fadeIn 1.5s ease-out, pulse 2s infinite;  
 
       &:hover {
         transform: scale(1.1);
       }
 
       @media (max-width: 768px) {
-        width: 70%; // Adjust image size for mobile view
+        width: 70%;
       }
 
       @media (max-width: 480px) {
-        width: 80%; // Further adjustment for very small screens
+        width: 80%;
       }
     }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05); 
+      }
+
+      100% {
+        transform: scale(1); 
+      }
+    }
+
   }
 
   .video {
@@ -142,9 +200,55 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background: black;
     z-index: 999;
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  /* Keyframes for Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 </style>
-

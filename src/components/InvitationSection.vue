@@ -1,26 +1,66 @@
-<template>
-  <section class="invitation-section">
-    <!-- <img src="../assets/images/invitation.png" alt="" /> -->
+<script lang="ts">
+import { defineComponent, onMounted, onUnmounted, ref } from 'vue'
 
+export default defineComponent({
+  name: 'InvitationSection',
+  setup() {
+    const sectionVisible = ref(false); 
+    let observer: IntersectionObserver;
+
+    const observeSection = () => {
+      const section = document.querySelector('.invitation-section');
+      if (section) {
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                sectionVisible.value = true; 
+                observer.disconnect(); 
+              }
+            });
+          },
+          { threshold: 0.3 }  
+        );
+        observer.observe(section);
+      }
+    };
+
+    onMounted(() => {
+      observeSection();
+    });
+
+    onUnmounted(() => {
+      if (observer) observer.disconnect();
+    });
+
+    return { sectionVisible };
+  },
+});
+</script>
+
+<template>
+  <section class="invitation-section"
+  :class="{ 'section-visible': sectionVisible }"
+  >
     <div class="title">
       <div class="left-item">
         <p>
-          លោក <span>ហ៊ិន ហេង</span>
+          លោក <span><strong>ហ៊ិន ហេង</strong></span>
           <br />
-          លោកស្រី <span>ហ៊ិន សុផានី</span>
+          លោកស្រី <span><strong>ហ៊ិន សុផានី</strong></span>
         </p>
 
         <div class="son">
           <p>
             កូនប្រុសនាម <br />
-            <span>ហ៊ិន សិលា</span>
+            <span><strong>ហ៊ិន សិលា</strong></span>
           </p>
         </div>
       </div>
-      <img src="../assets//images/logo.png" alt="" />
+      <img src="../assets//images/logo.jpg" alt="" />
       <div class="right-item">
         <p>
-          លោក <span>ហ៊ាង វ៉ាន់ឌី</span>
+          លោក <span><strong>ហ៊ាង វ៉ាន់ឌី</strong></span>
           <br />
           លោកស្រី <span>ហ៊ាន គឺមហួរ</span>
         </p>
@@ -33,64 +73,200 @@
 
     <div class="detail">
       <h4>យើងខ្ញុំមានកិត្តិយសសូមគោរពអញ្ជើញ</h4>
+      <br />
       <p>
         ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា
         និងប្រិយមិត្តអញ្ជើញចូលរួមជាអធិបតី និងជាភ្ញៀវកិត្តិយស
         ដើម្បីប្រសិទ្ធិពរជ័យ សិរីសួស្តីមង្គលក្នុងពិធីអាពាហ៍ពិពាហ៍
-        របស់យើងខ្ញុំទាំងពីរ ដែលនឹងប្រព្រឹត្តទៅនៅ <span>ថ្ងៃអាទិត្យ ទី ៧កើត ខែបុស្ស
-          ឆ្នាំរោង ឆស័ក ព.ស ២៥៦៨ ត្រូវនឹងថ្ងៃទី ៥ ខែមករា ឆ្នាំ២០២៥</span> វេលាម៉ោង <span>៥:០០
-            នាទីល្ងាច</span> ស្ថិតនៅ <span>បុរីអាពាហ៍ពិពាហ៍ (អគារ A)</span> ផ្លូវលោកតាខៀវណឺយ
-        ដោយមេត្រីភាព សូមអរគុណ។
+        របស់យើងខ្ញុំទាំងពីរ ដែលនឹងប្រព្រឹត្តទៅនៅ <br /><span>ថ្ងៃអាទិត្យ ទី ៧កើត ខែបុស្ស ឆ្នាំរោង ឆស័ក ព.ស ២៥៦៨
+          ត្រូវនឹងថ្ងៃទី ៥
+          ខែមករា ឆ្នាំ២០២៥</span>
+        <br />វេលាម៉ោង <span>៥:០០ នាទីល្ងាច</span> ស្ថិតនៅ
+        <span>បុរីអាពាហ៍ពិពាហ៍ (អគារ A)</span> ផ្លូវលោកតាខៀវណឺយ ដោយមេត្រីភាព
+        សូមអរគុណ។
       </p>
+    </div>
+
+    <div class="eng-detail">
+      <img src="../assets/images/ico_divider02.png" alt="" />
+      <dl>
+        <dt>
+          We warmly invite you to grace the auspicious occasion of our Wedding
+          Reception with your presence.
+        </dt>
+        <p><br><strong>05 January 2025 </strong><br></p>
+        <!-- <img src="../assets/images/ico_date.png" alt="" /> -->
+        <dt class="location">
+          <br>
+          At Borey Apea Pipea (Building A) Lok Ta Khieu Neuy Street,
+          <br />
+          Thank you!
+        </dt>
+      </dl>
+      <img src="../assets/images/ico_divider2.png" alt="" />
     </div>
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  name: 'InvitationSection'
-})
-</script>
-
 <style lang="scss" scoped>
 .invitation-section {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 5rem 1rem;
+  background: url('@/assets/images/bg_invit.png') no-repeat center center;
+  background-size: cover;  
+
+  &.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   img {
-    width: 30%;
-    height: 40%;
+    width: 150px;
+    height: 150px;
+    animation: fadeIn 1.5s ease-out;
   }
-  h2 {
-    font-size: 1rem;
+
+  h4 {
+    font-size: 1.2rem;
+    color: #555;
     margin-bottom: 1rem;
+    animation: fadeInUp 1.5s ease-out;
   }
 
   .title {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    gap: 2rem;  
 
     .left-item,
     .right-item {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      animation: slideInLeft 1s ease-out;
+
       p {
         margin-bottom: 20px;
         font-size: 14px;
+        color: #555;
       }
+
+      span {
+        font-family: 'GeistMono', monospace;
+      }
+    }
+
+    img {
+      animation: scaleIn 1.5s ease-out;
     }
   }
 
   .detail {
+    margin-top: 30px;
+    animation: fadeInUp 2s ease-out;
+
     p {
-      font-size: 14px; 
+      font-size: 14px;
+      color: #555;
 
       span {
-        font-family: "GeistMono", monospace; 
-        color: rgb(245, 241, 33);
+        font-family: 'GeistMono', monospace;
+        color: #fac34c;
       }
+    }
+  }
+
+  .eng-detail {
+    margin-top: 60px;
+    animation: fadeIn 2s ease-out;
+
+    dl {
+      dt {
+        font-size: 30px;
+        color: #555;
+        font-family: "ItaliannoReg", monospace;
+        animation: fadeInUp 1.5s ease-out;
+      }
+
+      p {
+        color: #555;
+        font-size: 50px;
+        font-family: "ItaliannoReg", monospace;
+        margin-bottom: 30px;
+        animation: scaleIn 1.5s ease-out;
+      }
+
+      .location {
+        color: #555;
+        font-size: 20px;
+        font-family: "ItaliannoReg", monospace;
+        animation: fadeInDown 1.5s ease-out;
+      }
+
+      img {
+        width: 300px;
+        height: auto;
+        animation: fadeIn 1.5s ease-out;
+      }
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      animation: fadeInUp 1.5s ease-out;
+    }
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
     }
   }
 }
