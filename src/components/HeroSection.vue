@@ -74,7 +74,7 @@ export default defineComponent({
 .hero-section {
   position: relative;
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 80px 20px;
   width: 100%;
   height: 100vh;
   overflow: hidden;

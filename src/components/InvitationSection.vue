@@ -110,9 +110,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .invitation-section {
   text-align: center;
-  padding: 5rem 1rem;
+  padding: 80px 20px;  
   background: url('@/assets/images/bg_invit.png') no-repeat center center;
-  background-size: cover;  
+  background-size: cover;
 
   &.section-visible {
     opacity: 1;
@@ -126,9 +126,9 @@ export default defineComponent({
   }
 
   h4 {
-    font-size: 1.2rem;
+    font-size: 16px;
     color: #555;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
     animation: fadeInUp 1.5s ease-out;
   }
 
@@ -136,16 +136,16 @@ export default defineComponent({
     display: flex;
     justify-content: center;
     flex-direction: row;
-    align-items: center;  
-    text-wrap: nowrap;
+    align-items: center;
 
     .left-item,
-    .right-item { 
+    .right-item {
       animation: slideInLeft 1s ease-out;
 
       p {
-        font-size: 14px;
+        font-size: 12px;
         color: #555;
+        margin-bottom: 5px;
       }
 
       span {
@@ -158,11 +158,12 @@ export default defineComponent({
     }
   }
 
-  .detail { 
-    margin-top: 30px;
+  .detail {
+    margin-top: 20px;
     animation: fadeInUp 2s ease-out;
-    width: 500px;
-    margin: 30px auto;
+    width: 100%;
+    max-width: 350px; /* Restrict width on smaller screens */
+    margin: 20px auto;
 
     p {
       font-size: 12px;
@@ -175,15 +176,15 @@ export default defineComponent({
     }
   }
 
-  .eng-detail {   
-    width: 500px;
+  .eng-detail {
+    width: 100%;
+    max-width: 350px; /* Restrict width on smaller screens */
     margin: 30px auto;
-    margin-top: 60px;
     animation: fadeIn 2s ease-out;
 
     dl {
       dt {
-        font-size: 30px;
+        font-size: 24px;
         color: #555;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInUp 1.5s ease-out;
@@ -191,30 +192,75 @@ export default defineComponent({
 
       p {
         color: #555;
-        font-size: 50px;
+        font-size: 28px;
         font-family: "ItaliannoReg", monospace;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         animation: scaleIn 1.5s ease-out;
       }
 
       .location {
         color: #555;
-        font-size: 20px;
+        font-size: 16px;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInDown 1.5s ease-out;
       }
 
       img {
-        width: 300px;
+        width: 250px;
         height: auto;
         animation: fadeIn 1.5s ease-out;
       }
     }
 
     img {
-      width: 200px;
+      width: 150px;
       height: auto;
       animation: fadeInUp 1.5s ease-out;
+    }
+  }
+
+  /* Adjust padding for smaller devices */
+  @media (max-width: 768px) {
+    padding: 50px 15px;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+
+    h4 {
+      font-size: 14px;
+    }
+
+    .detail,
+    .eng-detail {
+      max-width: 300px;
+
+      p {
+        font-size: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 40px 10px;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
+
+    h4 {
+      font-size: 12px;
+    }
+
+    .detail,
+    .eng-detail {
+      max-width: 280px;
+
+      p {
+        font-size: 10px;
+      }
     }
   }
 
