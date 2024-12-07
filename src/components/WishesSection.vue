@@ -17,12 +17,11 @@ export default defineComponent({
         name: userName.value || "Anonymous",
         message: newWish.value.trim(),
       });
-      console.log("Updated Wishes List:", wishes.value); // Debugging log
+      console.log("Updated Wishes List:", wishes.value); 
       lastSender.value = userName.value || "Anonymous";
       newWish.value = "";
       userName.value = "";
 
-      // Show gratitude popup
       showPopup.value = true;
       setTimeout(() => (showPopup.value = false), 2000);
     };
@@ -55,13 +54,12 @@ export default defineComponent({
 });
 </script>
 
-
 <template>
   <section class="wishes-section">
-    <h2 class="wishes-title">សារជូនពរ</h2>
+    <h2 class="wishes-title">ចែករំលែកក្តីស្រលាញ់ទៅកាន់គូរស្នេហ៌</h2>
     <form @submit.prevent="submitWish" class="wishes-form">
-      <input type="text" v-model="userName" placeholder="Your Name" class="wish-input" />
-      <input type="text" v-model="newWish" placeholder="Write your wish here..." class="wish-input" />
+      <input type="text" v-model="userName" placeholder="ឈ្នោះភ្ញៀវកិត្តិយស" class="wish-input" />
+      <input type="text" v-model="newWish" placeholder="សារជូនពរ..." class="wish-input" />
       <button type="submit" class="submit-btn">ជូនពរ</button>
     </form>
 
@@ -78,8 +76,8 @@ export default defineComponent({
 
     <div v-if="showPopup" class="popup">
       <div class="popup-card">
-        <p>Thank you, {{ lastSender }}! 🎉</p>
-        <p>Your message has been sent successfully.</p>
+        <p>សូមថ្លែងអំណរគុណចំពោះ, {{ lastSender }}🥰</p>
+        <p>យើងខ្ញុំព្រមទាំងគ្រួសារទទួលបានពរសារទោយ៉ាងជ្រាលជ្រៅនេះហើយ😊🙏🏻</p>
       </div>
     </div>
   </section>
@@ -163,8 +161,8 @@ export default defineComponent({
   .wishes-list {
     display: flex;
     gap: 1rem;
-    overflow-x: auto; /* Horizontal scrolling */
-    white-space: nowrap; /* Prevent wrapping */
+    overflow-x: auto; 
+    white-space: nowrap;  
     padding: 1rem;
     background: #f9f9f9;
     border-radius: 10px;
@@ -178,7 +176,7 @@ export default defineComponent({
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: left;
-    min-width: 250px; /* Ensure cards are visible */
+    min-width: 250px;  
     word-wrap: break-word;
 
     .wish-message {

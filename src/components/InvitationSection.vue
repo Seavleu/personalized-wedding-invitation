@@ -158,12 +158,14 @@ export default defineComponent({
     }
   }
 
-  .detail {
+  .detail { 
     margin-top: 30px;
     animation: fadeInUp 2s ease-out;
+    width: 500px;
+    margin: 30px auto;
 
     p {
-      font-size: 14px;
+      font-size: 12px;
       color: #555;
 
       span {
@@ -173,7 +175,9 @@ export default defineComponent({
     }
   }
 
-  .eng-detail {
+  .eng-detail {   
+    width: 500px;
+    margin: 30px auto;
     margin-top: 60px;
     animation: fadeIn 2s ease-out;
 
