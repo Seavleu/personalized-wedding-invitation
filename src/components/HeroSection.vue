@@ -119,8 +119,8 @@ export default defineComponent({
         animation: scaleIn 1.5s ease-out;
 
         @media (max-width: 768px) {
-          width: 120px;
-          height: 120px;
+          width: 220px;
+          height: 220px;
         }
 
         @media (max-width: 480px) {
