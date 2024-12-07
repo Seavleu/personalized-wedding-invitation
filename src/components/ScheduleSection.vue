@@ -34,25 +34,25 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .schedule-section {
-  padding: 4rem 1rem;
+  padding: 60px 15px; 
   background: #f7f7f7;
   text-align: center;
 
   .schedule-title {
-    font-size: 2rem;
+    font-size: 32px;
     font-weight: bold;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
     color: #111;
     position: relative;
     z-index: 10;
     animation: fadeInDown 1s ease-out;
 
     @media (max-width: 768px) {
-      font-size: 1.8rem;
+      font-size: 24px;
     }
 
     @media (max-width: 480px) {
-      font-size: 1.5rem;
+      font-size: 20px;
     }
   }
 
@@ -68,7 +68,7 @@ export default defineComponent({
       top: 0;
       bottom: 0;
       left: 50%;
-      width: 2px;
+      width: 3px;   
       background: #d6af2d;
       transform: translateX(-50%);
     }
@@ -76,57 +76,45 @@ export default defineComponent({
 
   .schedule-item {
     position: relative;
-    margin-bottom: 2rem;
+    margin-bottom: 40px; 
     display: flex;
     align-items: center;
     width: 100%;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out forwards;
-    animation-delay: calc(var(--delay) * 0.5s); 
+    animation-delay: calc(var(--delay, 1) * 0.5s);
 
-    &.schedule-left {
-      justify-content: flex-end;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
 
-      .schedule-marker {
-        order: 2;
-        margin-left: 38px;
-      }
+      &.schedule-left,
+      &.schedule-right {
+        justify-content: center;
 
-      .schedule-icon {
-        order: 1;
-        margin-right: 40px;
-        animation: slideInLeft 1s ease-out forwards;
-      }
-    }
+        .schedule-icon {
+          margin: 0 0 15px 0;
+          animation: none;  
+        }
 
-    &.schedule-right {
-      justify-content: flex-start;
-
-      .schedule-marker {
-        order: 2;
-        margin-left: 38px;
-      }
-
-      .schedule-icon {
-        order: 1;
-        margin-left: 40px;
-        animation: slideInRight 1s ease-out forwards;
+        .schedule-marker {
+          position: relative;
+          margin: 0 auto 10px auto;
+        }
       }
     }
 
     .schedule-marker {
       position: absolute;
       top: 0;
-      left: 215px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 2;
       width: 20px;
       height: 20px;
       background: #d6af2d;
       border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
 
       .circle {
         width: 10px;
@@ -137,9 +125,9 @@ export default defineComponent({
     }
 
     .schedule-icon {
-      width: 120px;
-      height: 120px;
-      padding: 15px;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
       object-fit: cover;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease;
@@ -147,16 +135,19 @@ export default defineComponent({
       &:hover {
         transform: scale(1.1);
       }
+
+      @media (max-width: 480px) {
+        width: 80px;
+        height: 80px;
+      }
     }
   }
-
-  /* Keyframe Animations */
+ 
   @keyframes fadeInDown {
     from {
       opacity: 0;
-      transform: translateY(-30px);
+      transform: translateY(-20px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
@@ -166,37 +157,13 @@ export default defineComponent({
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(50px);
+      transform: translateY(40px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-
-  @keyframes slideInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-50px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes slideInRight {
-    from {
-      opacity: 0;
-      transform: translateX(50px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
 }
+
 </style>

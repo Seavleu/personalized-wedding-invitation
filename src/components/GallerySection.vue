@@ -44,7 +44,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .gallery-section {
-  padding: 4rem 1rem;
+  padding: 2rem 1rem; /* Adjusted padding for smaller screens */
   background: #ffffff;
   text-align: center;
 
@@ -58,22 +58,29 @@ export default defineComponent({
 
     @media (max-width: 768px) {
       font-size: 1.8rem;
+      margin-bottom: 1.5rem;
     }
 
     @media (max-width: 480px) {
       font-size: 1.5rem;
+      margin-bottom: 1rem;
     }
   }
 
   /* Grid Layout */
   .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1rem;
-    padding: 0 1rem;
+    padding: 0 0.5rem;
 
     @media (max-width: 768px) {
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem; /* Smaller gaps for mobile */
     }
   }
 
@@ -81,27 +88,28 @@ export default defineComponent({
   .gallery-item {
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transform: scale(0.95);
     opacity: 0;
     animation: fadeInUp 1s ease-out forwards;
-    animation-delay: calc(var(--delay) * 0.2s); // Staggered Animation
+    animation-delay: calc(var(--delay, 0) * 0.2s); /* Default delay */
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     &:hover {
       img {
-        transform: scale(1.1) rotate(2deg);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transform: scale(1.08) rotate(2deg);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       }
     }
 
+    /* Customize grid spanning behavior */
     &.gallery-item-0 {
       grid-column: span 2;
       grid-row: span 2;
@@ -114,12 +122,12 @@ export default defineComponent({
 
     &.gallery-item-2 {
       grid-column: span 2;
-      grid-row: span 2;
+      grid-row: span 1;
     }
 
     &.gallery-item-3 {
       grid-column: span 1;
-      grid-row: span 2;
+      grid-row: span 1;
     }
 
     &.gallery-item-4 {
@@ -137,9 +145,8 @@ export default defineComponent({
   @keyframes fadeInDown {
     from {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(-30px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
@@ -151,7 +158,6 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(30px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);

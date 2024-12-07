@@ -75,81 +75,100 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .wishes-section {
-  padding: 4rem 1rem;
+  padding: 40px 15px; 
   text-align: center;
   background: #fdfdfd;
 
+  /* Title */
   .wishes-title {
     font-size: 28px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
+
+    @media (max-width: 480px) {
+      font-size: 22px; 
+    }
   }
 
+  /* Form */
   .wishes-form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: 10px;
+    margin-bottom: 20px;
 
-    .wish-input {
+    .wish-input,
+    .textarea {
       background-color: rgba(255, 238, 0, 0.1);
       width: 100%;
       max-width: 400px;
-      padding: 0.8rem;
+      padding: 12px;
       border: 1px solid #fffbfb;
       border-radius: 10px;
       font-size: 1rem;
-      resize: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
       &:focus {
         border-color: #fac34c;
+        box-shadow: 0 0 5px rgba(250, 195, 76, 0.5);
         outline: none;
       }
     }
 
     .textarea {
       height: auto;
-      background-color: rgba(255, 238, 0, 0.1);
-      min-height: 80px;
+      min-height: 100px;
+      resize: vertical;
     }
 
     .submit-btn {
-      padding: 0.8rem 2rem;
-      background: #fac34c; 
+      padding: 12px 24px;
+      background: #fac34c;
       color: white;
       border: none;
       border-radius: 10px;
       font-size: 1rem;
       cursor: pointer;
+      transition: background-color 0.3s ease;
 
       &:hover {
-        background: #fac34c;
-
+        background-color: darken(#fac34c, 10%);
       }
     }
   }
 
+  /* Wishes List */
   .wishes-list {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 12px;
     max-width: 500px;
     margin: 0 auto;
 
     .wish-card {
       background-color: rgba(255, 238, 0, 0.1);
-      padding: 1rem;
+      padding: 12px;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       text-align: left;
       word-wrap: break-word;
       overflow-wrap: break-word;
+      opacity: 0;
+      animation: fadeInCard 0.8s ease-out forwards;
+
+      &:nth-child(odd) {
+        animation-delay: 0.2s;
+      }
+
+      &:nth-child(even) {
+        animation-delay: 0.4s;
+      }
 
       .wish-message {
         font-size: 1rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 6px;
         color: #555;
       }
 
@@ -161,6 +180,7 @@ export default defineComponent({
     }
   }
 
+  /* Popup */
   .popup {
     position: fixed;
     top: 50%;
@@ -168,7 +188,7 @@ export default defineComponent({
     transform: translate(-50%, -50%);
     background: #ffefc1;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 20px;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -181,6 +201,7 @@ export default defineComponent({
     }
   }
 
+  /* Animations */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -189,6 +210,17 @@ export default defineComponent({
     to {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @keyframes fadeInCard {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

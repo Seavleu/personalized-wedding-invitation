@@ -80,7 +80,7 @@ export default defineComponent({
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: 10px 15px;
 
   ul {
     display: flex;
@@ -95,32 +95,43 @@ export default defineComponent({
         color: #333;
         font-weight: bold;
         font-size: 1rem;
-        padding: 0.5rem 1rem;
+        padding: 0.7rem 1.2rem;  
         border-radius: 25px;
         transition: all 0.3s ease;
 
         &:hover {
-          color:#fac34c;
+          color: #fac34c;
           background-color: rgba(255, 238, 0, 0.1);
         }
 
         &.active {
           color: #fff;
           background-color: #fac34c;
-          box-shadow: 0 4px 8px #FFF8E8;
+          box-shadow: 0 4px 8px rgba(250, 195, 76, 0.5);
         }
       }
     }
   }
 
-  /* Responsive Design */
+ 
   @media (max-width: 768px) {
     ul {
       gap: 1rem;
 
       li a {
         font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
+        padding: 0.6rem 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    ul {
+      gap: 0.5rem;
+
+      li a {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.9rem;  
       }
     }
   }

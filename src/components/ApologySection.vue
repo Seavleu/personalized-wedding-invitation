@@ -89,7 +89,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .invitation-section {
   text-align: center;
-  padding: 5rem 1rem;
+  padding: 50px 20px; /* Reduced padding for smaller screens */
   background: url('@/assets/images/bg_invit.png') no-repeat center center;
   background-size: cover;
 
@@ -99,24 +99,33 @@ export default defineComponent({
   }
 
   img {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     animation: fadeIn 1.5s ease-out;
+
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+    }
   }
 
   h4 {
-    font-size: 1.2rem;
+    font-size: 18px;
     color: #555;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
     animation: fadeInUp 1.5s ease-out;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   .title {
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column; /* Stack on smaller screens */
     align-items: center;
-    text-wrap: nowrap;
+    gap: 20px;
 
     .left-item,
     .right-item {
@@ -125,6 +134,10 @@ export default defineComponent({
       p {
         font-size: 14px;
         color: #555;
+
+        @media (max-width: 768px) {
+          font-size: 12px;
+        }
       }
 
       span {
@@ -134,71 +147,103 @@ export default defineComponent({
 
     img {
       animation: scaleIn 1.5s ease-out;
+      margin: 10px 0;
     }
   }
 
   .detail {
-    margin-top: 30px;
+    margin-top: 20px;
     animation: fadeInUp 2s ease-out;
-    width: 500px;
-    margin: 30px auto;
+    width: 90%; /* Make responsive width */
+    max-width: 500px;
+    margin: 20px auto;
 
     p {
-      font-size: 12px;
+      font-size: 14px;
       color: #555;
+      line-height: 1.6;
+
+      @media (max-width: 768px) {
+        font-size: 12px;
+        line-height: 1.4;
+      }
 
       span {
         font-family: 'GeistMono', monospace;
         color: #fac34c;
       }
-
     }
+
     .eng {
       font-family: "ItaliannoReg", monospace;
-      font-size: 26px;
+      font-size: 24px;
+
+      @media (max-width: 768px) {
+        font-size: 20px;
+      }
     }
   }
 
   .eng-detail {
-    width: 500px;
-    margin: 30px auto;
-    margin-top: 60px;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
     animation: fadeIn 2s ease-out;
 
     dl {
       dt {
-        font-size: 30px;
+        font-size: 24px;
         color: #555;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInUp 1.5s ease-out;
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
       }
 
       p {
         color: #555;
-        font-size: 50px;
+        font-size: 36px;
         font-family: "ItaliannoReg", monospace;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         animation: scaleIn 1.5s ease-out;
+
+        @media (max-width: 768px) {
+          font-size: 28px;
+        }
       }
 
       .location {
         color: #555;
-        font-size: 20px;
+        font-size: 18px;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInDown 1.5s ease-out;
+
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
       }
 
       img {
-        width: 300px;
+        width: 250px;
         height: auto;
         animation: fadeIn 1.5s ease-out;
+
+        @media (max-width: 768px) {
+          width: 200px;
+        }
       }
     }
 
     img {
-      width: 200px;
+      width: 150px;
       height: auto;
       animation: fadeInUp 1.5s ease-out;
+
+      @media (max-width: 768px) {
+        width: 120px;
+      }
     }
   }
 
@@ -207,7 +252,6 @@ export default defineComponent({
     from {
       opacity: 0;
     }
-
     to {
       opacity: 1;
     }
@@ -218,19 +262,6 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(20px);
     }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-
     to {
       opacity: 1;
       transform: translateY(0);
@@ -240,9 +271,8 @@ export default defineComponent({
   @keyframes slideInLeft {
     from {
       opacity: 0;
-      transform: translateX(-50px);
+      transform: translateX(-30px);
     }
-
     to {
       opacity: 1;
       transform: translateX(0);
@@ -251,10 +281,9 @@ export default defineComponent({
 
   @keyframes scaleIn {
     from {
-      transform: scale(0.8);
+      transform: scale(0.9);
       opacity: 0;
     }
-
     to {
       transform: scale(1);
       opacity: 1;
