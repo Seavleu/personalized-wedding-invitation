@@ -56,7 +56,8 @@ export default defineComponent({
   text-align: center;
   padding: 5rem 1rem;
   background: url('@/assets/images/apo.jpg') no-repeat center center;
-  background-size: cover;
+  background-size: cover; 
+  backdrop-filter: blur(5px);
 
   &.section-visible {
     opacity: 1;

@@ -89,12 +89,27 @@ export default defineComponent({
       flex-direction: column;
       align-items: center;
 
-      &.schedule-left,
+      &.schedule-left {
+        justify-content: center;
+
+        .schedule-icon {
+          order: 1;
+          margin: 0 -200px 15px 0;
+          animation: none;  
+        }
+
+        .schedule-marker {
+          position: relative;
+          margin: 0 auto 10px auto;
+        }
+      }
+
       &.schedule-right {
         justify-content: center;
 
         .schedule-icon {
-          margin: 0 0 15px 0;
+          order: 2;
+          margin: 0 200px 15px 0;
           animation: none;  
         }
 

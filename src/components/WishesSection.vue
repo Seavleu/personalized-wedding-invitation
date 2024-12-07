@@ -1,5 +1,6 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { databases, Models } from "@/lib/appwrite";
+import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   name: "WishesSection",
@@ -10,20 +11,60 @@ export default defineComponent({
     const showPopup = ref(false);
     const lastSender = ref("");
 
-    const submitWish = () => {
+    // Submit a new wish
+    const submitWish = async () => {
       if (!newWish.value.trim()) return;
-      wishes.value.push({
-        name: userName.value || "Anonymous",
-        message: newWish.value.trim(),
-      });
-      lastSender.value = userName.value || "Anonymous";
-      newWish.value = "";
-      userName.value = "";
 
-      // Show gratitude popup
-      showPopup.value = true;
-      setTimeout(() => (showPopup.value = false), 2000);
+      try {
+        const response: Models.Document = await databases.createDocument(
+          "67543c840032f8f28d75", // Database ID
+          "67543c9b002b18cca0e0", // Collection ID
+          "unique()", // Unique document ID
+          {
+            name: userName.value || "Anonymous",
+            message: newWish.value.trim(),
+          },
+          ["role:all"] // Permissions: Make sure to allow read/write for all users
+        );
+
+        // Add the new wish to the top of the list
+        wishes.value.unshift({
+          name: response.name || "Anonymous",
+          message: response.message || "",
+        });
+
+        lastSender.value = userName.value || "Anonymous";
+        newWish.value = "";
+        userName.value = "";
+
+        // Show gratitude popup
+        showPopup.value = true;
+        setTimeout(() => (showPopup.value = false), 2000);
+      } catch (error: any) {
+        console.error("Error saving wish:", error.message || error);
+      }
     };
+
+    // Fetch wishes on mount
+    const fetchWishes = async () => {
+      try {
+        const response = await databases.listDocuments(
+          "67543c840032f8f28d75", // Database ID
+          "67543c9b002b18cca0e0" // Collection ID
+        );
+
+        // Map fetched documents to wishes array
+        wishes.value = response.documents.map((doc: any) => ({
+          name: doc.name || "Anonymous",
+          message: doc.message || "",
+        }));
+      } catch (error: any) {
+        console.error("Error fetching wishes:", error.message || error);
+      }
+    };
+
+    // Fetch wishes on component mount
+    onMounted(fetchWishes);
 
     return {
       wishes,
@@ -39,34 +80,23 @@ export default defineComponent({
 
 <template>
   <section class="wishes-section">
-    <h2 class="wishes-title">ចែករំលែកក្តីស្រលាញ់ទៅកាន់គូរស្នេហ៌ </h2>
-    <h2>May we ask for blessing</h2>
+    <h2 class="wishes-title">ចែករំលែកក្តីស្រលាញ់ទៅកាន់គូរស្នេហ៌</h2>
     <form @submit.prevent="submitWish" class="wishes-form">
-      <input
-        type="text"
-        v-model="userName"
-        placeholder="ឈ្មោះភ្ញៀវកិត្តិយស"
-        class="wish-input"
-      />
-      <textarea
-        v-model="newWish"
-        placeholder="សារជូនពរ..."
-        class="wish-input textarea"
-        rows="3"
-      ></textarea>
+      <input type="text" v-model="userName" placeholder="ឈ្មោះភ្ញៀវកិត្តិយស" class="wish-input" />
+      <textarea v-model="newWish" placeholder="ដោយក្តីស្រលាញ់..." class="wish-input textarea" rows="3"></textarea>
       <button type="submit" class="submit-btn">ជូនពរ</button>
     </form>
 
-    <div class="wishes-list" v-if="wishes.length > 0">
+    <div class="wishes-list">
       <div v-for="(wish, index) in wishes" :key="index" class="wish-card">
         <p class="wish-message">💐 {{ wish.message }} 💐</p>
-        <p class="wish-sender">- {{ wish.name || "Anonymous" }} 🥰</p>
+        <p class="wish-sender">- {{ wish.name }} 🥰</p>
       </div>
     </div>
 
     <div v-if="showPopup" class="popup">
       <div class="popup-card">
-        <p>សូមថ្លែងអំណរគុណចំពោះ {{ lastSender }} 🥰</p>
+        <p>សូមថ្លែងអំណរគុណចំពោះ {{ lastSender }}! 🎉</p>
         <p>យើងខ្ញុំព្រមទាំងគ្រួសារទទួលបានពរសារជ្រាលជ្រៅនេះហើយ 😊🙏🏻</p>
       </div>
     </div>
@@ -75,7 +105,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .wishes-section {
-  padding: 40px 15px; 
+  padding: 40px 15px;
   text-align: center;
   background: #fdfdfd;
 
@@ -87,7 +117,7 @@ export default defineComponent({
     margin-bottom: 20px;
 
     @media (max-width: 480px) {
-      font-size: 22px; 
+      font-size: 22px;
     }
   }
 
@@ -207,6 +237,7 @@ export default defineComponent({
       opacity: 0;
       transform: scale(0.8);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -218,6 +249,7 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
