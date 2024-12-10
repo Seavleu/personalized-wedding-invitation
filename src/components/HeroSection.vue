@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
@@ -10,10 +10,36 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const videoSrc = ref("/public/video.mp4");  
-    const videoRef = ref<HTMLVideoElement | null>(null);
-    const isVideoPlaying = ref(false);
     const currentGuestName = ref(props.guestName);
+    const isScrollAllowed = ref(false);
+
+    // Check if user is visiting for the first time
+    const isFirstVisit = ref(!localStorage.getItem("visitedHeroPage"));
+
+    // Enable scrolling
+    const enableScroll = () => {
+      isScrollAllowed.value = true;
+      document.body.style.overflow = "auto";
+      localStorage.setItem("visitedHeroPage", "true"); // Save visit flag
+    };
+
+    const redirectToInvitation = () => {
+      enableScroll();
+      const invitationSection = document.getElementById("invitation");
+      if (invitationSection) {
+        invitationSection.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
+    onMounted(() => {
+      // Disable scroll only for first visit
+      if (isFirstVisit.value) {
+        document.body.style.overflow = "hidden";
+        setTimeout(enableScroll, 5000); // Allow scroll after 5s
+      } else {
+        enableScroll(); // Allow scroll immediately if already visited
+      }
+    });
 
     watch(
       () => props.guestName,
@@ -22,48 +48,17 @@ export default defineComponent({
       }
     );
 
-    const playVideo = () => {
-      isVideoPlaying.value = true;
-
- 
-      const video = videoRef.value;
-      if (video) {
-        video.muted = false;  
-        video.play();  
-      }
-    };
-
-    const stopVideo = () => {
-      const video = videoRef.value;
-      if (video) {
-        video.pause();
-        video.currentTime = 0;
-      }
-      isVideoPlaying.value = false;
-    };
-
-    const onBackgroundClick = () => {
-      if (isVideoPlaying.value) {
-        stopVideo();
-      }
-    };
-
     return {
-      videoSrc,
-      videoRef,
-      isVideoPlaying,
-      playVideo,
-      stopVideo,
-      onBackgroundClick,
       currentGuestName,
+      redirectToInvitation,
     };
   },
 });
 </script>
 
 <template>
-  <section class="hero-section" @click="onBackgroundClick">
-    <div v-if="!isVideoPlaying" class="hero-content" @click.stop>
+  <section class="hero-section">
+    <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
         <img class="logo" src="../assets/images/logo.jpg" alt="Logo" />
@@ -74,18 +69,9 @@ export default defineComponent({
         class="wlc"
         src="../assets/images/ico_wlc.png"
         alt="Watch Invitation"
-        @click="playVideo"
+        @click="redirectToInvitation"
       />
     </div>
-    <video
-      v-else
-      ref="videoRef"
-      class="video"
-      :src="videoSrc"
-      @ended="stopVideo"
-      autoplay
-      controls
-    ></video>
   </section>
 </template>
 
@@ -267,5 +253,4 @@ export default defineComponent({
     }
   }
 }
-
 </style>
