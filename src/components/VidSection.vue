@@ -2,7 +2,7 @@
   <section class="location-section">
     <h2 class="location-title">ទស្សនាដោយមេត្រីភាព</h2>
     <div class="map-container">
-      <img src="../assets/images/map.png" alt="Map Location" class="map-image" />
+      <img src="../assets/images/intro.gif" alt="Map Location" class="map-image" />
       <div class="location-marker"></div>
     </div>
     <!-- <p class="location-description"> </p> -->
