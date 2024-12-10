@@ -68,6 +68,10 @@ export default defineComponent({
   height: 100vh;
   overflow: hidden;
   display: flex;
+  background: url('@/assets/images/intro.gif') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed; 
+  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center; 

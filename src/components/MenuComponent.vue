@@ -53,7 +53,7 @@ export default defineComponent({
 
     onMounted(() => {
       window.addEventListener("scroll", handleScroll);
-      handleScroll(); // Initialize active section on load
+      handleScroll(); 
     });
 
     onUnmounted(() => {
@@ -67,7 +67,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .menu {
-  position: fixed;
+  position: fixed; 
   bottom: 0;
   left: 0;
   right: 0;
@@ -76,7 +76,7 @@ export default defineComponent({
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
-  padding: 10px 15px;
+  padding: 80px 20px;
 
   ul {
     display: flex;
