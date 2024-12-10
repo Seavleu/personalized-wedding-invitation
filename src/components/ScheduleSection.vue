@@ -33,13 +33,31 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .schedule-section {
-  padding: 60px 15px;  
+   position: relative;
   text-align: center;
-  background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
-  background-size: contain;
-  background-attachment: fixed; 
+  padding: 0; 
+  margin: 0;
+  width: 100%;
+  height: 100vh; 
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('@/assets/images/schedule.gif') no-repeat center center;
+  background-size: contain;  
+  background-attachment: scroll;  
   min-height: 100vh;
+ 
+  @media (max-width: 768px) {
+    background-size: cover;
+    background-attachment: scroll;
+  }
 
+  @media (max-width: 480px) {
+    background-size: cover; 
+    background-attachment: scroll;
+  }
   .schedule-title {
     font-size: 32px;
     font-weight: bold;

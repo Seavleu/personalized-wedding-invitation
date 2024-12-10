@@ -63,25 +63,31 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .aba-section {
+  position: relative;
   text-align: center;
-  padding: 5rem 1rem;
-  background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
-  background-size: cover;
-  backdrop-filter: blur(5px);
+  padding: 0; 
+  margin: 0;
+  width: 100%;
+  height: 100vh; 
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('@/assets/images/gallery4.jpg') no-repeat center center;
+  background-size: contain;  
+  background-attachment: scroll;  
+  min-height: 50vh;
+ 
   @media (max-width: 768px) {
-  .aba-section {
-    padding: 3rem 1rem; 
-    background-attachment: scroll;  
-    background-size: cover;  
-    height: 50vh;  
+    background-size: cover;
+    background-attachment: scroll;
   }
-}
-@media (max-width: 480px) {
-  .aba-section {
-    padding: 2rem 1rem;  
-    height: 40vh;  
+
+  @media (max-width: 480px) {
+    background-size: cover; 
+    background-attachment: scroll;
   }
-}
   .title {
     img {
       width: 20%;
