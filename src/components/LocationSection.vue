@@ -20,7 +20,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .location-section {
   padding: 40px 15px;
-  background: linear-gradient(to bottom, #f7f7f7, #ffffff);
+  background: linear-gradient(to bottom, #f7f7f7, #5b7639fff);
   text-align: center;
   overflow: hidden;
 
@@ -29,7 +29,7 @@ export default defineComponent({
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333;
+    color: #5b7639;
     animation: fadeInDown 1s ease-out;
 
     @media (max-width: 768px) {
@@ -75,7 +75,7 @@ export default defineComponent({
       width: 15px;
       height: 15px;
       background: #ff6363;
-      border: 3px solid #fff;
+      border: 3px solid #5b7639;
       border-radius: 50%;
       animation: bounce 1s infinite;
 
@@ -125,7 +125,7 @@ export default defineComponent({
   /* Description Animation */
   .location-description {
     font-size: 18px;
-    color: #555;
+    color: #5b7639;
     margin-top: 20px;
     animation: fadeInUp 1.5s ease-out 0.5s;
     opacity: 0;
@@ -146,6 +146,7 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(-30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -157,6 +158,7 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -168,6 +170,7 @@ export default defineComponent({
       opacity: 0;
       transform: scale(0.8);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -179,10 +182,12 @@ export default defineComponent({
       transform: scale(0.9);
       opacity: 1;
     }
+
     50% {
       transform: scale(1.2);
       opacity: 0.4;
     }
+
     100% {
       transform: scale(0.9);
       opacity: 1;
@@ -190,9 +195,12 @@ export default defineComponent({
   }
 
   @keyframes bounce {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translate(-50%, -50%) translateY(0);
     }
+
     50% {
       transform: translate(-50%, -50%) translateY(-10px);
     }

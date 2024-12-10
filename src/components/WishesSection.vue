@@ -95,12 +95,12 @@ export default defineComponent({
       </div>
     </div>
 
-    <div v-if="showPopup" class="popup">
+    <!--  <div v-if="showPopup" class="popup">
       <div class="popup-card">
         <p>សូមថ្លែងអំណរគុណចំពោះ {{ lastSender }}! 🎉</p>
         <p>យើងខ្ញុំព្រមទាំងគ្រួសារទទួលបានពរសារជ្រាលជ្រៅនេះហើយ 😊🙏🏻</p>
       </div>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -114,7 +114,7 @@ export default defineComponent({
   .wishes-title {
     font-size: 26px;
     font-weight: bold;
-    color: #333;
+    color: #5b7639;
     margin-bottom: 20px;
   }
 
@@ -132,7 +132,7 @@ export default defineComponent({
       width: 100%;
       max-width: 350px;
       padding: 12px;
-      border: 1px solid #fffbfb;
+      border: 1px solid #5b7639bfb;
       border-radius: 10px;
       font-size: 1rem;
 
@@ -163,7 +163,7 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     gap: 12px;
-    max-width:350px;
+    max-width: 350px;
     margin: 0 auto;
 
     /* Make it scrollable when more than 10 items */
@@ -178,14 +178,17 @@ export default defineComponent({
       &::-webkit-scrollbar {
         width: 8px;
       }
+
       &::-webkit-scrollbar-track {
         background: #f5f5f5;
         border-radius: 10px;
       }
+
       &::-webkit-scrollbar-thumb {
         background: #fac34c;
         border-radius: 10px;
       }
+
       &::-webkit-scrollbar-thumb:hover {
         background: darken(#fac34c, 10%);
       }
@@ -201,13 +204,13 @@ export default defineComponent({
       .wish-message {
         font-size: 1rem;
         margin-bottom: 6px;
-        color: #555;
+        color: #5b7639;
       }
 
       .wish-sender {
         font-size: 0.9rem;
         font-weight: bold;
-        color: #333;
+        color: #5b7639;
       }
     }
   }
@@ -230,7 +233,7 @@ export default defineComponent({
 
     .popup-card {
       font-size: 1.2rem;
-      color: #333;
+      color: #5b7639;
       font-weight: bold;
 
       p {
@@ -244,6 +247,7 @@ export default defineComponent({
       opacity: 0;
       transform: translate(-50%, -60%);
     }
+
     to {
       opacity: 1;
       transform: translate(-50%, -50%);

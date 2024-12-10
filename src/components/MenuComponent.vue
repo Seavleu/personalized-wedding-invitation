@@ -2,11 +2,7 @@
   <nav class="menu">
     <ul>
       <li v-for="item in menuItems" :key="item.id">
-        <a
-          href="#"
-          @click.prevent="scrollToSection(item.id)"
-          :class="{ active: currentSection === item.id }"
-        >
+        <a href="#" @click.prevent="scrollToSection(item.id)" :class="{ active: currentSection === item.id }">
           {{ item.label }}
         </a>
       </li>
@@ -92,10 +88,10 @@ export default defineComponent({
     li {
       a {
         text-decoration: none;
-        color: #333;
+        color: #5b7639;
         font-weight: bold;
         font-size: 1rem;
-        padding: 0.7rem 1.2rem;  
+        padding: 0.7rem 1.2rem;
         border-radius: 25px;
         transition: all 0.3s ease;
 
@@ -105,7 +101,7 @@ export default defineComponent({
         }
 
         &.active {
-          color: #fff;
+          color: #5b7639;
           background-color: #fac34c;
           box-shadow: 0 4px 8px rgba(250, 195, 76, 0.5);
         }
@@ -113,7 +109,7 @@ export default defineComponent({
     }
   }
 
- 
+
   @media (max-width: 768px) {
     ul {
       gap: 1rem;
@@ -131,7 +127,7 @@ export default defineComponent({
 
       li a {
         font-size: 0.8rem;
-        padding: 0.5rem 0.9rem;  
+        padding: 0.5rem 0.9rem;
       }
     }
   }

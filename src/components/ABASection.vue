@@ -149,7 +149,7 @@ export default defineComponent({
       }
 
       .location {
-        color: #555;
+        color: #5b7639;
         font-size: 20px;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInDown 1.5s ease-out;

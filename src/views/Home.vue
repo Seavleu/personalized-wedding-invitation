@@ -11,8 +11,8 @@
     <LocationSection id="location" />
     <GallerySection id="gallery" />
     <WishesSection id="wishes" />
-    <ABASection id="aba" />
-    <ApologySection id="apology" />
+    <ABASection id="aba" /> 
+    <ApoloSection id="apology" />
     <MenuComponent />
   </div>
 </template>
@@ -21,13 +21,13 @@
 import { defineComponent, computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import HeroSection from "@/components/HeroSection.vue";
-import InvitationSection from "@/components/InvitationSection.vue";
-import ApologySection from "@/components/ApologySection.vue";
+import InvitationSection from "@/components/InvitationSection.vue"; 
 import ScheduleSection from "@/components/ScheduleSection.vue";
 import LocationSection from "@/components/LocationSection.vue";
 import GallerySection from "@/components/GallerySection.vue";
 import WishesSection from "@/components/WishesSection.vue";
 import ABASection from "@/components/ABASection.vue";
+import ApoloSection from "@/components/ApoloSection.vue" 
 import MenuComponent from "@/components/MenuComponent.vue";
 
 export default defineComponent({
@@ -39,8 +39,8 @@ export default defineComponent({
     LocationSection,
     GallerySection,
     WishesSection,
-    MenuComponent,
-    ApologySection,
+    MenuComponent, 
+    ApoloSection,
     ABASection,
   },
   setup() {

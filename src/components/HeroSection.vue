@@ -41,6 +41,7 @@ export default defineComponent({
 
 <template>
   <section class="hero-section"> 
+    <!-- <img src="../assets/images//introTop.png" alt="intro_top"> -->
     <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
@@ -70,6 +71,12 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center; 
+
+  img {
+    width: 100%;
+    height: auto;
+    animation: fadeInUp 1.5s ease-out;
+  }
 
   .hero-content {
     position: relative;

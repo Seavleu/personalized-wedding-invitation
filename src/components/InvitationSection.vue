@@ -127,7 +127,7 @@ export default defineComponent({
 
   h4 {
     font-size: 16px;
-    color: #555;
+    color: #5b7639;
     margin-bottom: 10px;
     animation: fadeInUp 1.5s ease-out;
   }
@@ -144,7 +144,7 @@ export default defineComponent({
 
       p {
         font-size: 12px;
-        color: #555;
+        color: #5b7639;
         margin-bottom: 5px;
       }
 
@@ -167,7 +167,7 @@ export default defineComponent({
 
     p {
       font-size: 12px;
-      color: #555;
+      color: #5b7639;
 
       span {
         font-family: 'GeistMono', monospace;
@@ -185,13 +185,13 @@ export default defineComponent({
     dl {
       dt {
         font-size: 24px;
-        color: #555;
+        color: #5b7639;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInUp 1.5s ease-out;
       }
 
       p {
-        color: #555;
+        color: #5b7639;
         font-size: 28px;
         font-family: "ItaliannoReg", monospace;
         margin-bottom: 20px;
@@ -199,7 +199,7 @@ export default defineComponent({
       }
 
       .location {
-        color: #555;
+        color: #5b7639;
         font-size: 16px;
         font-family: "ItaliannoReg", monospace;
         animation: fadeInDown 1.5s ease-out;

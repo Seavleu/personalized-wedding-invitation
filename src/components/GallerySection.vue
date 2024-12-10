@@ -45,7 +45,7 @@ export default defineComponent({
 .gallery-section {
   text-align: center;
   padding: 80px 20px;  
-  background: #ffffff;
+  background: #5b7639;
   text-align: center;
   padding: 60px;
   background: none; 
