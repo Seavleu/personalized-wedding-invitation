@@ -51,6 +51,7 @@ export default defineComponent({
     const audioRef = ref<HTMLAudioElement | null>(null);
     const isScrollAllowed = ref(false);
 
+    // Computed guest name
     const guestName = computed(() => {
       if (route && route.params) {
         return Array.isArray(route.params.guestName)
@@ -62,27 +63,30 @@ export default defineComponent({
 
     const enableScroll = () => {
       isScrollAllowed.value = true;
-      document.body.style.overflow = "auto"; // Allow scrolling
+      document.body.style.overflow = "auto";
     };
 
+    // Handle visibility change
     const handleVisibilityChange = () => {
-      if (document.hidden && audioRef.value) {
-        audioRef.value.pause(); // Pause audio when user is inactive
-      } else if (audioRef.value) {
-        audioRef.value.play(); // Resume audio when user returns
+      if (audioRef.value) {
+        if (document.hidden) {
+          audioRef.value.pause(); // Pause audio when tab is hidden
+        } else {
+          audioRef.value.play(); // Play audio when tab is visible again
+        }
       }
     };
 
+    // Lock scroll for 5 seconds on initial load
     onMounted(() => {
       document.body.style.overflow = "hidden"; // Lock scrolling
-      setTimeout(enableScroll, 5000); // Automatically enable after 5 seconds
+      setTimeout(enableScroll, 5000);
 
-      // Add visibility change event listener
+      // Listen for visibility changes
       document.addEventListener("visibilitychange", handleVisibilityChange);
     });
 
     onUnmounted(() => {
-      // Clean up the event listener
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     });
 
@@ -95,6 +99,7 @@ export default defineComponent({
   },
 });
 </script>
+
 
 <style lang="scss">
 @import "@/assets/styles/main.scss";
