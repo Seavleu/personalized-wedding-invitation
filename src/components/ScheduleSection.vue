@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "ScheduleSection",
   setup() {
-    const icons = ["ico_1.png", "ico_2.png", "ico_3.png", "ico_4.png", "ico_5.png", "ico_6.png"];
+    const icons = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
 
     const getIconPath = (icon: string) => {
       return new URL(`../assets/images/${icon}`, import.meta.url).href;
@@ -36,8 +36,8 @@ export default defineComponent({
 .schedule-section {
   padding: 60px 15px;  
   text-align: center;
-  // background: url('@/assets/images/gallery3.jpg') no-repeat center center fixed;
-  // background-size: cover;
+  background: url('@/assets/images/gallery3.jpg') no-repeat center center fixed;
+  background-size: cover;
 
   .schedule-title {
     font-size: 32px;
