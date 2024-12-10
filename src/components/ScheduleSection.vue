@@ -16,8 +16,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="schedule-section">
-    <img class="div" src="../assets/images/ico_line.png" alt="">
+  <section class="schedule-section"> 
     <h3 class="schedule-title">កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍</h3>
     <div class="schedule-timeline">
       <div v-for="(icon, index) in icons" :key="index" class="schedule-item" :style="{ '--delay': index }"
@@ -38,6 +37,8 @@ export default defineComponent({
   text-align: center;
   background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
   background-size: cover;
+  background-attachment: fixed; 
+  min-height: 100vh;
 
   .schedule-title {
     font-size: 32px;

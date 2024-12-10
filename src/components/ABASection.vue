@@ -9,7 +9,7 @@ export default defineComponent({
     let observer: IntersectionObserver
 
     const observeSection = () => {
-      const section = document.querySelector('.invitation-section')
+      const section = document.querySelector('.aba-section')
       if (section) {
         observer = new IntersectionObserver(
           (entries) => {
@@ -45,7 +45,7 @@ export default defineComponent({
 
 <template>
   <section
-    class="invitation-section"
+    class="aba-section"
     :class="{ 'section-visible': sectionVisible }">
     <div class="title">
       <img src="../assets/images/divider2.png" alt="Elegant Divider" />
@@ -62,14 +62,14 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.invitation-section {
+.aba-section {
   text-align: center;
   padding: 5rem 1rem;
   background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
   background-size: cover;
   backdrop-filter: blur(5px);
   @media (max-width: 768px) {
-  .invitation-section {
+  .aba-section {
     padding: 3rem 1rem; 
     background-attachment: scroll;  
     background-size: cover;  
@@ -77,7 +77,7 @@ export default defineComponent({
   }
 }
 @media (max-width: 480px) {
-  .invitation-section {
+  .aba-section {
     padding: 2rem 1rem;  
     height: 40vh;  
   }
