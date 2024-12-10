@@ -112,7 +112,7 @@ export default defineComponent({
 
   @media (max-width: 768px) {
     ul {
-      gap: 1rem;
+      gap: 5px;
 
       li a {
         font-size: 14px;
