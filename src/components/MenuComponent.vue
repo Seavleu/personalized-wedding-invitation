@@ -80,7 +80,9 @@ export default defineComponent({
 
   ul {
     display: flex;
-    gap: 1.5rem;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -111,9 +113,7 @@ export default defineComponent({
 
 
   @media (max-width: 768px) {
-    ul {
-      gap: 5px;
-
+    ul { 
       li a {
         font-size: 14px;
         padding: 0.6rem 1rem;
