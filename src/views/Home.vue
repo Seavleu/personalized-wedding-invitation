@@ -8,6 +8,7 @@
     <HeroSection id="hero" :guest-name="guestName" />
     <InvitationSection id="invitation" />
     <ScheduleSection id="schedule" />
+    <VidSection id="video" />
     <LocationSection id="location" />
     <GallerySection id="gallery" />
     <WishesSection id="wishes" />
@@ -21,6 +22,7 @@
 import { defineComponent, computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import HeroSection from "@/components/HeroSection.vue";
+import VidSection from "@/components/VidSection.vue";
 import InvitationSection from "@/components/InvitationSection.vue"; 
 import ScheduleSection from "@/components/ScheduleSection.vue";
 import LocationSection from "@/components/LocationSection.vue";
@@ -37,6 +39,7 @@ export default defineComponent({
     InvitationSection,
     ScheduleSection,
     LocationSection,
+    VidSection,
     GallerySection,
     WishesSection,
     MenuComponent, 

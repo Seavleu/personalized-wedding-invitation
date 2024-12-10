@@ -68,7 +68,20 @@ export default defineComponent({
   background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
   background-size: cover;
   backdrop-filter: blur(5px);
-
+  @media (max-width: 768px) {
+  .invitation-section {
+    padding: 3rem 1rem; 
+    background-attachment: scroll;  
+    background-size: cover;  
+    height: 50vh;  
+  }
+}
+@media (max-width: 480px) {
+  .invitation-section {
+    padding: 2rem 1rem;  
+    height: 40vh;  
+  }
+}
   .title {
     img {
       width: 20%;
