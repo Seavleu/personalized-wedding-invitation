@@ -38,7 +38,7 @@ export default defineComponent({
   background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
   background-size: contain;
   background-attachment: fixed; 
-  
+
 
   // @media (max-width: 768px) {
   //   background-size: contain; // Make the image fit smaller screens
@@ -93,7 +93,7 @@ export default defineComponent({
     margin-bottom: 40px; 
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 50%;
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out forwards;
@@ -143,7 +143,7 @@ export default defineComponent({
         .schedule-icon {
           order: 1;
           margin: 0 -200px 15px 0;
-          width: 180px;
+          width: 150px;
           height: auto;
           animation: none;  
         }
@@ -160,7 +160,7 @@ export default defineComponent({
         .schedule-icon {
           order: 2;
           margin: 0 200px 15px 0;
-          width: 180px;
+          width: 150px;
           height: auto;
           animation: none;  
         }
