@@ -163,14 +163,14 @@ export default defineComponent({
       }
 
       .guest-name {
-        font-size: 18px;
+        font-size: 30px;
         margin-bottom: 20px;
         width: 350px;
         font-family: "GeistMono", monospace;
         animation: fadeInUp 1.5s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 16px;
+          font-size: 24px;
         }
 
         @media (max-width: 480px) {
