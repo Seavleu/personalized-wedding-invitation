@@ -36,13 +36,10 @@ export default defineComponent({
   padding: 60px 15px;  
   text-align: center;
   background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
-  background-size: contain;
-  background-attachment: fixed; 
+  background-size: cover; 
 
   @media (max-width: 768px) {
-    background-size: contain;
-    background-attachment: scroll;
-    height: 100vh;
+    background-size: contain;  
   }
   .schedule-title {
     font-size: 32px;
@@ -82,8 +79,7 @@ export default defineComponent({
   }
 
   .schedule-item {
-    position: relative;
-    max-width: 600px;
+    position: relative; 
     margin-bottom: 40px; 
     display: flex;
     align-items: center;
