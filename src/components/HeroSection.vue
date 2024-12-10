@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
@@ -10,52 +10,82 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const videoSrc = ref("/public/video.mp4");  
+    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isVideoPlaying = ref(false);
     const currentGuestName = ref(props.guestName);
-    const isScrollAllowed = ref(false);
 
-    const enableScroll = () => {
-      isScrollAllowed.value = true;
-      document.body.style.overflow = "auto";
-    };
+    watch(
+      () => props.guestName,
+      (newGuestName) => {
+        currentGuestName.value = newGuestName;
+      }
+    );
 
-    const redirectToInvitation = () => {
-      enableScroll();
-      const invitationSection = document.getElementById("invitation");
-      if (invitationSection) {
-        invitationSection.scrollIntoView({ behavior: "smooth" });
+    const playVideo = () => {
+      isVideoPlaying.value = true;
+
+ 
+      const video = videoRef.value;
+      if (video) {
+        video.muted = false;  
+        video.play();  
       }
     };
 
-    onMounted(() => {
-      document.body.style.overflow = "hidden";  
-      setTimeout(enableScroll, 5000);  
-    });
+    const stopVideo = () => {
+      const video = videoRef.value;
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+      isVideoPlaying.value = false;
+    };
+
+    const onBackgroundClick = () => {
+      if (isVideoPlaying.value) {
+        stopVideo();
+      }
+    };
 
     return {
+      videoSrc,
+      videoRef,
+      isVideoPlaying,
+      playVideo,
+      stopVideo,
+      onBackgroundClick,
       currentGuestName,
-      redirectToInvitation,
     };
   },
 });
 </script>
 
 <template>
-  <section class="hero-section"> 
-    <!-- <img src="../assets/images/intro.gif" alt="Map Location" class="map-image" /> -->
-    <div class="hero-content">
+  <section class="hero-section" @click="onBackgroundClick">
+    <div v-if="!isVideoPlaying" class="hero-content" @click.stop>
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
         <img class="logo" src="../assets/images/logo.jpg" alt="Logo" />
-        <h2 class="hero-invite">សូមគោរពអញ្ជើញ</h2>
+        <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
         <p class="guest-name">{{ currentGuestName }}</p>
       </div>
       <img
         class="wlc"
         src="../assets/images/ico_wlc.png"
         alt="Watch Invitation"
-        @click="redirectToInvitation"
+        @click="playVideo"
       />
     </div>
+    <video
+      v-else
+      ref="videoRef"
+      class="video"
+      :src="videoSrc"
+      @ended="stopVideo"
+      autoplay
+      controls
+    ></video>
   </section>
 </template>
 
