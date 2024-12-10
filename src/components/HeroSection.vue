@@ -41,7 +41,7 @@ export default defineComponent({
 
 <template>
   <section class="hero-section"> 
-    <!-- <img src="../assets/images//introTop.png" alt="intro_top"> -->
+    <!-- <img src="../assets/images/intro.gif" alt="Map Location" class="map-image" /> -->
     <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
@@ -63,18 +63,23 @@ export default defineComponent({
 .hero-section {
   position: relative;
   text-align: center;
-  padding: 40px 15px;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
   display: flex;
-  // background: url('@/assets/images/intro.gif') no-repeat center center fixed;
-  background-size: contain;
-  background-attachment: fixed; 
-  min-height: 100vh;
-  flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
+  overflow: hidden;
+
+  // Background as a full-screen responsive image
+  background: url('@/assets/images/intro.gif') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  // Mobile adjustments
+  @media (max-width: 768px) {
+    background-size: contain; // Make it fit within smaller screen sizes
+    background-attachment: scroll; // Prevent fixed issues on mobile
+  }
 
   img {
     width: 100%;
