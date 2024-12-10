@@ -102,7 +102,7 @@ export default defineComponent({
 .invitation-section {
   text-align: center;
   padding: 80px 20px;
-  background: url('@/assets/images/bg_invit.png') no-repeat center center;
+  // background: url('@/assets/images/bg_invit.png') no-repeat center center;
   background-size: cover;
 
   &.section-visible {
