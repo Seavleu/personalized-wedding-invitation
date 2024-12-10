@@ -27,13 +27,11 @@ export default defineComponent({
       "gallery3.jpg",
       "gallery4.jpg",
       "gallery5.jpg",
-      "gallery6.jpg",
-      "gallery7.jpg", 
-      "gallery9.jpg",
+      "gallery6.jpg", 
     ];
 
     const getImagePath = (image: string) => {
-      return new URL(`../assets/images/${image}`, import.meta.url).href;
+      return new URL(`../assets/images/jay/${image}`, import.meta.url).href;
     };
 
     return { images, getImagePath };
@@ -98,7 +96,7 @@ export default defineComponent({
     }
 
     &.gallery-item-0 {
-      grid-column: span 2;
+      grid-column: span 4;
       grid-row: span 2;
     }
 
