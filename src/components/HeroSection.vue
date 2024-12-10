@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref, watch, onMounted, onBeforeUnmount } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
@@ -10,96 +10,50 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const youtubeUrl = ref("https://www.youtube.com/embed/kxpZEELOI-A?autoplay=1&rel=0");
-    const isVideoPlaying = ref(false);
     const currentGuestName = ref(props.guestName);
-    const iframeRef = ref<HTMLIFrameElement | null>(null);
+    const isScrollAllowed = ref(false);
 
-    watch(
-      () => props.guestName,
-      (newGuestName) => {
-        currentGuestName.value = newGuestName;
-      }
-    );
-
-    // Play video and request fullscreen
-    const playVideo = () => {
-      isVideoPlaying.value = true;
-
-      setTimeout(() => {
-        if (iframeRef.value) {
-          iframeRef.value.requestFullscreen?.();
-        }
-      }, 300);
+    const enableScroll = () => {
+      isScrollAllowed.value = true;
+      document.body.style.overflow = "auto";
     };
 
-    // Stop video and close iframe
-    const stopVideo = () => {
-      isVideoPlaying.value = false;
-
-      // Exit fullscreen if active
-      if (document.fullscreenElement) {
-        document.exitFullscreen?.();
-      }
-    };
-
-    // Listen for fullscreen exit
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        stopVideo(); // Exit video if fullscreen is exited
+    const redirectToInvitation = () => {
+      enableScroll();
+      const invitationSection = document.getElementById("invitation");
+      if (invitationSection) {
+        invitationSection.scrollIntoView({ behavior: "smooth" });
       }
     };
 
     onMounted(() => {
-      document.addEventListener("fullscreenchange", handleFullscreenChange);
-    });
-
-    onBeforeUnmount(() => {
-      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.body.style.overflow = "hidden";  
+      setTimeout(enableScroll, 5000);  
     });
 
     return {
-      youtubeUrl,
-      isVideoPlaying,
-      playVideo,
-      stopVideo,
       currentGuestName,
-      iframeRef,
+      redirectToInvitation,
     };
   },
 });
 </script>
 
-
 <template>
-  <section class="hero-section">
-    <!-- Main Content -->
-    <div v-if="!isVideoPlaying" class="hero-content" @click.stop>
+  <section class="hero-section"> 
+    <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
         <img class="logo" src="../assets/images/logo.jpg" alt="Logo" />
-        <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
+        <h2 class="hero-invite">សូមគោរពអញ្ជើញ</h2>
         <p class="guest-name">{{ currentGuestName }}</p>
       </div>
       <img
         class="wlc"
         src="../assets/images/ico_wlc.png"
         alt="Watch Invitation"
-        @click="playVideo"
+        @click="redirectToInvitation"
       />
-    </div>
-
-    <!-- YouTube Video -->
-    <div v-if="isVideoPlaying" class="video-container">
-      <iframe
-        ref="iframeRef"
-        class="youtube-video"
-        :src="youtubeUrl"
-        title="YouTube video player"
-        frameborder="0"
-        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-        allowfullscreen
-      ></iframe>
     </div>
   </section>
 </template>
@@ -108,17 +62,14 @@ export default defineComponent({
 .hero-section {
   position: relative;
   text-align: center;
-  padding: 80px 20px;
+  padding: 40px 15px;
   width: 100%;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  background: url('@/assets/images/intro1.jpg') no-repeat center center;
-  background-size: cover;
-  backdrop-filter: blur(5px);
+  align-items: center; 
 
   .hero-content {
     position: relative;
@@ -126,16 +77,17 @@ export default defineComponent({
 
     .hero-title {
       font-size: 36px;
+      font-size: 36px;
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
       animation: fadeInDown 2s ease-out;
 
       @media (max-width: 768px) {
-        font-size: 36px;
+        font-size: 28px;
       }
 
       @media (max-width: 480px) {
-        font-size: 1.5rem;
+        font-size: 24px;
       }
     }
 
@@ -148,59 +100,61 @@ export default defineComponent({
 
       .logo {
         margin-bottom: 10px;
-        width: 220px;
-        height: 220px;
+        width: 280px;
+        height: 280px;
         animation: scaleIn 1.5s ease-out;
 
         @media (max-width: 768px) {
           width: 220px;
           height: 220px;
+          width: 220px;
+          height: 220px;
         }
 
         @media (max-width: 480px) {
-          width: 100px;
-          height: 100px;
+          width: 200px;
+          height: 200px;
         }
       }
-      
+
       .hero-invite {
-        font-size: 36px;
+        font-size: 30px;
         animation: fadeIn 2s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 34px;
+          font-size: 24PX;
         }
 
         @media (max-width: 480px) {
-          font-size: 0.9rem;
+          font-size: 20px;
         }
       }
 
       .guest-name {
-        font-size: 36px;
-        margin-bottom: 1.5rem;
+        font-size: 18px;
+        margin-bottom: 20px;
         width: 350px;
-        font-family: "KantumruyReg", monospace;
+        font-family: "GeistMono", monospace;
         animation: fadeInUp 1.5s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 28px;
+          font-size: 16px;
         }
 
         @media (max-width: 480px) {
-          font-size: 28px;
+          font-size: 14px;
         }
       }
     }
 
     .wlc {
       cursor: pointer;
-      width: 200px;
-      max-width: 200px;
+      width: 250px;
+      max-width: 250px;
       height: auto;
       transition: transform 0.3s ease;
       margin-top: 20px;
-      animation: fadeIn 1.5s ease-out, pulse 2s infinite;  
+      animation: fadeIn 1.5s ease-out, pulse 2s infinite;
 
       &:hover {
         transform: scale(1.1);
@@ -214,48 +168,13 @@ export default defineComponent({
         width: 80%;
       }
     }
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.05); 
-      }
-
-      100% {
-        transform: scale(1); 
-      }
-    }
-
   }
 
-  .video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 999;
-    animation: fadeIn 1.5s ease-out;
-  }
-
-  /* Keyframes for Animations */
-  @keyframes fadeIn {
+  /* Keyframe Animations */
+  @keyframes fadeInDown {
     from {
       opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(-20px);
     }
 
     to {
@@ -264,10 +183,10 @@ export default defineComponent({
     }
   }
 
-  @keyframes fadeInDown {
+  @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateY(20px);
     }
 
     to {
@@ -287,5 +206,20 @@ export default defineComponent({
       transform: scale(1);
     }
   }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
 }
+
 </style>
