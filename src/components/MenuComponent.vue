@@ -76,7 +76,7 @@ export default defineComponent({
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   justify-content: center;
-  padding: 80px 20px;
+  padding: 20px 20px;
 
   ul {
     display: flex;

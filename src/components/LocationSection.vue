@@ -20,7 +20,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .location-section {
   padding: 40px 15px;
-  background: linear-gradient(to bottom, #f7f7f7, #5b7639fff);
   text-align: center;
   overflow: hidden;
 

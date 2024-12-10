@@ -4,7 +4,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "ScheduleSection",
   setup() {
-    const icons = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png"];
+    const icons = ["ico_1.png", "ico_2.png", "ico_3.png", "ico_4.png", "ico_5.png", "ico_6.png"];
 
     const getIconPath = (icon: string) => {
       return new URL(`../assets/images/${icon}`, import.meta.url).href;
@@ -17,7 +17,7 @@ export default defineComponent({
 
 <template>
   <section class="schedule-section">
-    <!-- <img class="div" src="../assets/images/divider.png" alt=""> -->
+    <img class="div" src="../assets/images/ico_line.png" alt="">
     <h3 class="schedule-title">កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍</h3>
     <div class="schedule-timeline">
       <div v-for="(icon, index) in icons" :key="index" class="schedule-item" :style="{ '--delay': index }"
@@ -36,7 +36,7 @@ export default defineComponent({
 .schedule-section {
   padding: 60px 15px;  
   text-align: center;
-  background: url('@/assets/images/gallery3.jpg') no-repeat center center fixed;
+  background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
   background-size: cover;
 
   .schedule-title {
