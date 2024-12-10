@@ -86,6 +86,40 @@ export default defineComponent({
     animation: fadeInUp 1s ease-out forwards;
     animation-delay: calc(var(--delay, 1) * 0.5s);
 
+    &.schedule-left {
+        justify-content: center;
+
+        .schedule-icon {
+          order: 1;
+          margin: 0 35% 15px 0;
+          width: 250px;
+          height: 250px;
+          animation: none;  
+        }
+
+        .schedule-marker {
+          position: relative;
+          margin: 0 auto 0 0;
+        }
+      }
+
+      &.schedule-right {
+        justify-content: center;
+
+        .schedule-icon {
+          order: 2;
+          margin: 0 60% 15px 0;
+          width: 250px;
+          height: 250px;
+          animation: none;  
+        }
+
+        .schedule-marker {
+          position: relative;
+          margin: 0 auto 0 0;
+        }
+      }
+
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: center;
@@ -96,6 +130,8 @@ export default defineComponent({
         .schedule-icon {
           order: 1;
           margin: 0 -200px 15px 0;
+          width: 180px;
+          height: auto;
           animation: none;  
         }
 
@@ -111,6 +147,8 @@ export default defineComponent({
         .schedule-icon {
           order: 2;
           margin: 0 200px 15px 0;
+          width: 180px;
+          height: auto;
           animation: none;  
         }
 

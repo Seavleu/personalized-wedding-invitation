@@ -79,7 +79,8 @@ export default defineComponent({
 @import "@/assets/styles/main.scss";
 
 .home {
-  margin: 0;
-  padding: 0;
+  overflow-x: hidden;  
+  max-width: 100%;  
 }
+
 </style>
