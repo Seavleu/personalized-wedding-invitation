@@ -60,60 +60,7 @@ export default defineComponent({
       @media (max-width: 768px) {
         border-radius: 10px;
       }
-    } 
-    .location-marker {
-      position: absolute;
-      top: 27%;
-      left: 65%;
-      transform: translate(-50%, -50%);
-      width: 15px;
-      height: 15px;
-      background: #ff6363;
-      border: 3px solid #5b7639;
-      border-radius: 50%;
-      animation: bounce 1s infinite;
-
-      &:before {
-        content: "";
-        position: absolute;
-        top: -12px;
-        left: -12px;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 99, 99, 0.2);
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-      }
-
-      &:after {
-        content: "";
-        position: absolute;
-        top: -8px;
-        left: -8px;
-        width: 30px;
-        height: 30px;
-        background: rgba(255, 99, 99, 0.4);
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-      }
-
-      @media (max-width: 768px) {
-        top: 28%;
-        left: 62%;
-        width: 12px;
-        height: 12px;
-
-        &:before {
-          width: 30px;
-          height: 30px;
-        }
-
-        &:after {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
+    }  
   }
 
   /* Description Animation */
