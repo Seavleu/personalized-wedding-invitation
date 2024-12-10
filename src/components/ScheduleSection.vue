@@ -36,21 +36,14 @@ export default defineComponent({
   padding: 60px 15px;  
   text-align: center;
   background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed; 
 
   @media (max-width: 768px) {
-    background-size: contain; // Make the image fit smaller screens
-    background-attachment: scroll; // Avoid fixed background on mobile for smoother scrolling
+    background-size: contain;
+    background-attachment: scroll;
+    height: 100vh;
   }
-
-  @media (max-width: 480px) {
-    background-size: contain; // Fit smaller screens perfectly
-    background-position: center;
-    background-attachment: scroll; // Avoid fixed for mobile performance
-  }
-  
-// TODO: responsive
   .schedule-title {
     font-size: 32px;
     font-weight: bold;
@@ -84,11 +77,13 @@ export default defineComponent({
       background: #d6af2d;
       box-shadow: 0 4px 10px rgba(255, 209, 3, 0.2);
       transform: translateX(-50%);
+      z-index: 0;
     }
   }
 
   .schedule-item {
     position: relative;
+    max-width: 600px;
     margin-bottom: 40px; 
     display: flex;
     align-items: center;
@@ -231,5 +226,4 @@ export default defineComponent({
     }
   }
 }
-
 </style>

@@ -41,6 +41,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .gallery-section {
+  margin-top: 60px;
   text-align: center;
   padding: 80px 20px;  
   background: #5b7639;
