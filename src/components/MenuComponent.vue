@@ -115,7 +115,7 @@ export default defineComponent({
       gap: 1rem;
 
       li a {
-        font-size: 0.9rem;
+        font-size: 14px;
         padding: 0.6rem 1rem;
       }
     }
