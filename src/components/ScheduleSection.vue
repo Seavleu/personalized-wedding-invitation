@@ -36,20 +36,19 @@ export default defineComponent({
   padding: 60px 15px;  
   text-align: center;
   background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
-  background-size: contain;
+  background-size: cover;
   background-attachment: fixed; 
 
+  @media (max-width: 768px) {
+    background-size: contain; // Make the image fit smaller screens
+    background-attachment: scroll; // Avoid fixed background on mobile for smoother scrolling
+  }
 
-  // @media (max-width: 768px) {
-  //   background-size: contain; // Make the image fit smaller screens
-  //   background-attachment: scroll; // Avoid fixed background on mobile for smoother scrolling
-  // }
-
-  // @media (max-width: 480px) {
-  //   background-size: contain; // Fit smaller screens perfectly
-  //   background-position: center;
-  //   background-attachment: scroll; // Avoid fixed for mobile performance
-  // }
+  @media (max-width: 480px) {
+    background-size: contain; // Fit smaller screens perfectly
+    background-position: center;
+    background-attachment: scroll; // Avoid fixed for mobile performance
+  }
   
 // TODO: responsive
   .schedule-title {
