@@ -69,7 +69,7 @@ export default defineComponent({
   overflow: hidden;
   display: flex;
   background: url('@/assets/images/intro.gif') no-repeat center center fixed;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed; 
   min-height: 100vh;
   flex-direction: column;

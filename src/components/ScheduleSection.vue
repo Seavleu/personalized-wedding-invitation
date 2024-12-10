@@ -36,7 +36,7 @@ export default defineComponent({
   padding: 60px 15px;  
   text-align: center;
   background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
-  background-size: cover;
+  background-size: contain;
   background-attachment: fixed; 
   min-height: 100vh;
 
