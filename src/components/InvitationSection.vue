@@ -115,7 +115,7 @@ export default defineComponent({
   background-attachment: fixed;
 
   @media (max-width: 768px) {
-    background-size: contain; 
+    background-size: cover; 
     background-attachment: scroll; 
   }
 

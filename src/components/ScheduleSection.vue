@@ -17,28 +17,53 @@ export default defineComponent({
 
 <template>
   <section class="schedule-section">
+    <!-- Background video -->
+    <video class="background-video" autoplay loop muted playsinline>
+      <source src="/invitation.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Content -->
     <h3 class="schedule-title">កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍</h3>
     <div class="schedule-timeline">
-      <div v-for="(icon, index) in icons" :key="index" class="schedule-item" :style="{ '--delay': index }"
-        :class="{ 'schedule-right': index % 2 === 0, 'schedule-left': index % 2 !== 0 }">
+      <div
+        v-for="(icon, index) in icons"
+        :key="index"
+        class="schedule-item"
+        :style="{ '--delay': index }"
+        :class="{ 'schedule-right': index % 2 === 0, 'schedule-left': index % 2 !== 0 }"
+      >
         <img :src="getIconPath(icon)" :alt="'Icon ' + (index + 1)" class="schedule-icon" />
         <div class="schedule-marker">
           <div class="circle"></div>
         </div>
       </div>
-
     </div>
   </section>
 </template>
 
+
 <style lang="scss" scoped>
-.schedule-section {
-  padding: 60px 15px;
-  text-align: center;
-  background: url('@/assets/images/schedule.gif') no-repeat center center;
-  background-size: cover;
-  height: 100vh;
+.schedule-section { 
+  // background: url('@/assets/images/schedule.gif') no-repeat center center;
+  // background-size: cover; 
   min-height: 100vh;
+
+  position: relative; 
+  text-align: center;
+  padding: 60px 15px;
+  height: 100vh;
+  overflow: hidden;
+
+  .background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    z-index: -1;  
+  }
 
   @media (max-width: 768px) {
     background-attachment: scroll;
