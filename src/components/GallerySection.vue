@@ -41,7 +41,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .gallery-section {
-  margin-top: 60px;
   text-align: center;
   padding: 80px 20px;  
   background: #5b7639;
@@ -50,6 +49,7 @@ export default defineComponent({
   background: none; 
 
   .gallery-title {
+    margin-top: 60px;
     font-weight: bold; 
     font-size: 28px;
     margin-bottom: 2rem;

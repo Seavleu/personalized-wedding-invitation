@@ -85,16 +85,13 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   overflow: hidden;
-
-  // Background as a full-screen responsive image
   background: url('@/assets/images/intro.gif') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
-
-  // Mobile adjustments
+ 
   @media (max-width: 768px) {
-    background-size: contain; // Make it fit within smaller screen sizes
-    background-attachment: scroll; // Prevent fixed issues on mobile
+    background-size: contain; 
+    background-attachment: scroll; 
   }
 
   img {

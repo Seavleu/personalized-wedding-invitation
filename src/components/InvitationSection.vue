@@ -109,10 +109,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .invitation-section {
-  text-align: center;
-  padding: 80px 20px;  
+  text-align: center;  
   background: url('@/assets/images/invit.gif') no-repeat center center;
-  background-size: cover;
+  background-size: cover;  
+  background-attachment: fixed;
+
+  @media (max-width: 768px) {
+    background-size: contain; 
+    background-attachment: scroll; 
+  }
 
   &.section-visible {
     opacity: 1;
