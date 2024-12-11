@@ -20,8 +20,7 @@ export default defineComponent({
     <!-- Background video -->
     <video class="background-video" autoplay loop muted playsinline>
       <source src="/invitation2.mp4" type="video/mp4" /> 
-    </video>
-
+    </video> 
     <!-- Content -->
     <h3 class="schedule-title">កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍</h3>
     <div class="schedule-timeline">
