@@ -49,7 +49,7 @@ export default defineComponent({
   height: 100vh;
 
   .gallery-title {
-    margin-top: 60px;
+    margin-top: 80px;
     font-weight: bold; 
     font-size: 28px;
     margin-bottom: 2rem;
