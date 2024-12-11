@@ -1,29 +1,38 @@
 <template>
   <div :class="{ 'no-scroll': !isScrollAllowed }">
-    <audio ref="audioRef" autoplay loop>
-      <source src="/audio.mp3" type="audio/mp3" />
-      Your browser does not support the audio element.
-    </audio>
+    <!-- If user is not authorized -->
+    <div v-if="isRestricted" class="restricted-message">
+      <h1>សូមអភ័យទោស!</h1>
+      <p>អ្នកមិនមានការអញ្ជើញទេ។</p>
+    </div>
 
-    <HeroSection
-      id="hero"
-      :guest-name="guestName"
-      @enable-scroll="enableScroll"
-      @direct-to-invitation="directToInvitation"
-    />
-    <VidSection
-      id="video"
-      @pause-background-audio="pauseBackgroundAudio"
-      @resume-background-audio="resumeBackgroundAudio"
-    />
-    <InvitationSection id="invitation" />
-    <ScheduleSection id="schedule" />
-    <LocationSection id="location" />
-    <GallerySection id="gallery" />
-    <WishesSection id="wishes" />
-    <ABASection id="aba" />
-    <ApoloSection id="apology" />
-    <MenuComponent />
+    <!-- If authorized, show sections -->
+    <template v-else>
+      <audio ref="audioRef" autoplay loop>
+        <source src="/audio.mp3" type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
+
+      <HeroSection
+        id="hero"
+        :guest-name="guestName"
+        @enable-scroll="enableScroll"
+        @direct-to-invitation="directToInvitation"
+      />
+      <VidSection
+        id="video"
+        @pause-background-audio="pauseBackgroundAudio"
+        @resume-background-audio="resumeBackgroundAudio"
+      />
+      <InvitationSection id="invitation" />
+      <ScheduleSection id="schedule" />
+      <LocationSection id="location" />
+      <GallerySection id="gallery" />
+      <WishesSection id="wishes" />
+      <ABASection id="aba" />
+      <ApoloSection id="apology" />
+      <MenuComponent />
+    </template>
   </div>
 </template>
 
@@ -58,7 +67,8 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const audioRef = ref<HTMLAudioElement | null>(null);
-    const isScrollAllowed = ref(false);
+    const isScrollAllowed = ref(false);  
+    const isRestricted = ref(false);
 
     const guestName = computed(() => {
       if (route && route.params) {
@@ -104,9 +114,15 @@ export default defineComponent({
       }
     };
 
-    onMounted(() => {
-      document.body.style.overflow = "hidden";
-      setTimeout(enableScroll, 5000);
+    onMounted(() => { 
+      const baseUrl = "https://selaandseavhuoy-warm-invitations.netlify.app/";
+      if (window.location.href === baseUrl) {
+        isRestricted.value = true;
+        document.body.style.overflow = "hidden";  
+      } else {
+        document.body.style.overflow = "hidden";
+        setTimeout(enableScroll, 5000);
+      }
 
       document.addEventListener("visibilitychange", handleVisibilityChange);
     });
@@ -122,7 +138,8 @@ export default defineComponent({
       enableScroll,
       pauseBackgroundAudio,
       resumeBackgroundAudio,
-      directToInvitation
+      directToInvitation,
+      isRestricted,
     };
   },
 });
@@ -139,5 +156,27 @@ export default defineComponent({
 .home {
   overflow-x: hidden;
   max-width: 100%;
+}
+
+.restricted-message {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f8f9fa;
+  color: #5b7639;
+  text-align: center;
+  font-family: "Geist", sans-serif;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: #777;
+  }
 }
 </style>
