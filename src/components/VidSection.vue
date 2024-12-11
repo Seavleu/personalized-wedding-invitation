@@ -1,60 +1,7 @@
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-
-export default defineComponent({
-  name: "VidSection",
-  emits: ["pause-background-audio", "resume-background-audio"],
-  setup(_, { emit }) {
-    const videoRef = ref<HTMLVideoElement | null>(null);
-    const isFullScreen = ref(false);
-
-    // Handle video play: pause background audio and unmute video
-    const handleVideoPlay = () => {
-      emit("pause-background-audio"); // Notify parent to pause background audio
-      if (videoRef.value) {
-        videoRef.value.muted = false;
-      }
-    };
-
-    // Handle video pause: resume background audio
-    const handleVideoPause = () => {
-      emit("resume-background-audio"); // Notify parent to resume background audio
-    };
-
-    // Toggle fullscreen video
-    const toggleFullScreen = (event: Event) => {
-      event.stopPropagation();
-      if (videoRef.value) {
-        isFullScreen.value = !isFullScreen.value;
-      }
-    };
-
-    // Exit fullscreen when clicking anywhere outside the video
-    const handleDocumentClick = () => {
-      if (isFullScreen.value) {
-        isFullScreen.value = false;
-        if (videoRef.value) videoRef.value.pause();
-        emit("resume-background-audio"); // Resume background audio
-      }
-    };
-
-    document.addEventListener("click", handleDocumentClick);
-
-    return {
-      videoRef,
-      isFullScreen,
-      handleVideoPlay,
-      handleVideoPause,
-      toggleFullScreen,
-    };
-  },
-});
-</script>
-
 <template>
   <section class="vid-section">
     <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
-    <div class="con" @click="toggleFullScreen" :class="{ fullscreen: isFullScreen }">
+    <div class="con" :class="{ fullscreen: isFullScreen }">
       <video
         ref="videoRef"
         class="vid"
@@ -62,6 +9,7 @@ export default defineComponent({
         loop
         muted
         playsinline
+        @click="toggleFullScreen"
         @play="handleVideoPlay"
         @pause="handleVideoPause"
       >
@@ -70,6 +18,49 @@ export default defineComponent({
     </div>
   </section>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  name: "VidSection",
+  emits: ["pause-background-audio", "resume-background-audio"],
+  setup(_, { emit }) {
+    const isFullScreen = ref(false);
+    const videoRef = ref<HTMLVideoElement | null>(null);
+
+    const toggleFullScreen = () => {
+      isFullScreen.value = !isFullScreen.value;
+
+      if (isFullScreen.value) {
+        emit("pause-background-audio");
+        videoRef.value?.play();
+        videoRef.value!.muted = false;
+      } else {
+        emit("resume-background-audio");
+        videoRef.value?.pause();
+        videoRef.value!.muted = true;
+      }
+    };
+
+    const handleVideoPlay = () => {
+      emit("pause-background-audio");
+    };
+
+    const handleVideoPause = () => {
+      emit("resume-background-audio");
+    };
+
+    return {
+      isFullScreen,
+      videoRef,
+      toggleFullScreen,
+      handleVideoPlay,
+      handleVideoPause,
+    };
+  },
+});
+</script>
 
 <style lang="scss" scoped>
 .vid-section {
@@ -92,7 +83,7 @@ export default defineComponent({
       font-size: 20px;
     }
   }
-
+  
   .con {
     position: relative;
     width: 100%;
@@ -108,6 +99,18 @@ export default defineComponent({
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
+
+      &.fullscreen {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        background: black;
+      }
 
       &:hover {
         transform: scale(1.05) rotate(1deg);

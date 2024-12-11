@@ -1,14 +1,24 @@
 <template>
   <div :class="{ 'no-scroll': !isScrollAllowed }">
+    <!-- Background Audio -->
     <audio ref="audioRef" autoplay loop>
       <source src="/audio.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>
 
+    <!-- Hero Section -->
     <HeroSection id="hero" :guest-name="guestName" @enable-scroll="enableScroll" />
+
+    <!-- Vid Section -->
+    <VidSection
+      id="video"
+      @pause-background-audio="pauseBackgroundAudio"
+      @resume-background-audio="resumeBackgroundAudio"
+    />
+
+    <!-- Other Sections -->
     <InvitationSection id="invitation" />
     <ScheduleSection id="schedule" />
-    <VidSection id="video" />
     <LocationSection id="location" />
     <GallerySection id="gallery" />
     <WishesSection id="wishes" />
@@ -61,18 +71,32 @@ export default defineComponent({
       return "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
     });
 
+    // Scroll control
     const enableScroll = () => {
       isScrollAllowed.value = true;
       document.body.style.overflow = "auto";
+    };
+
+    // Background audio control
+    const pauseBackgroundAudio = () => {
+      if (audioRef.value) {
+        audioRef.value.pause();
+      }
+    };
+
+    const resumeBackgroundAudio = () => {
+      if (audioRef.value) {
+        audioRef.value.play();
+      }
     };
 
     // Handle visibility change
     const handleVisibilityChange = () => {
       if (audioRef.value) {
         if (document.hidden) {
-          audioRef.value.pause(); // Pause audio when tab is hidden
+          audioRef.value.pause();
         } else {
-          audioRef.value.play(); // Play audio when tab is visible again
+          audioRef.value.play();
         }
       }
     };
@@ -82,7 +106,6 @@ export default defineComponent({
       document.body.style.overflow = "hidden"; // Lock scrolling
       setTimeout(enableScroll, 5000);
 
-      // Listen for visibility changes
       document.addEventListener("visibilitychange", handleVisibilityChange);
     });
 
@@ -95,11 +118,12 @@ export default defineComponent({
       audioRef,
       isScrollAllowed,
       enableScroll,
+      pauseBackgroundAudio,
+      resumeBackgroundAudio,
     };
   },
 });
 </script>
-
 
 <style lang="scss">
 @import "@/assets/styles/main.scss";
