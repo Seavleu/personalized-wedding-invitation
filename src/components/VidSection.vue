@@ -56,7 +56,7 @@ export default defineComponent({
         @play="handleVideoPlay"
         @pause="handleVideoPause"
       >
-        <source src="/video.mp4" type="video/mp4" />
+        <source src="/videoCompressed.mp4" type="video/mp4" />
       </video>
     </div>
   </section>
