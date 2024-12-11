@@ -16,7 +16,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="schedule-section"> 
+  <section class="schedule-section">
     <h3 class="schedule-title">កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍</h3>
     <div class="schedule-timeline">
       <div v-for="(icon, index) in icons" :key="index" class="schedule-item" :style="{ '--delay': index }"
@@ -33,14 +33,27 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .schedule-section {
-  padding: 60px 15px;  
+  padding: 60px 15px;
   text-align: center;
-  background: url('@/assets/images/schedule.gif') no-repeat center center fixed;
-  background-size: cover; 
+  background: url('@/assets/images/schedule.gif') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  min-height: 100vh;
 
   @media (max-width: 768px) {
-    background-size: contain;  
+    background-attachment: scroll;
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
   }
+
+  @media (max-width: 480px) {
+    background-size: cover;
+    height: auto;
+    min-height: 100vh;
+    background-position: center;
+  }
+
   .schedule-title {
     font-size: 32px;
     font-weight: bold;
@@ -72,7 +85,7 @@ export default defineComponent({
       left: 50%;
       width: 3px;   
       background: #d6af2d;
-      box-shadow: 0 4px 10px rgba(255, 209, 3, 0.2);
+      box-shadow: 0 4px 10px rgba(255, 209, 3, 0.5);
       transform: translateX(-50%);
       z-index: 0;
     }
@@ -197,28 +210,6 @@ export default defineComponent({
         width: 80px;
         height: 80px;
       }
-    }
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
     }
   }
 }
