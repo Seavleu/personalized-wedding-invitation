@@ -19,8 +19,7 @@ export default defineComponent({
   <section class="schedule-section">
     <!-- Background video -->
     <video class="background-video" autoplay loop muted playsinline>
-      <source src="/invitation.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
+      <source src="/invitation2.mp4" type="video/mp4" /> 
     </video>
 
     <!-- Content -->
@@ -45,10 +44,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .schedule-section { 
-  // background: url('@/assets/images/schedule.gif') no-repeat center center;
-  // background-size: cover; 
-  min-height: 100vh;
-
   position: relative; 
   text-align: center;
   padding: 60px 15px;
@@ -67,10 +62,9 @@ export default defineComponent({
 
   @media (max-width: 768px) {
     background-attachment: scroll;
-    background-size: cover;
-    height: auto;
-    min-height: 100vh;
+    background-size: cover; 
     width: 100%;
+    height: 1200px;
   }
 
   @media (max-width: 480px) {
@@ -133,7 +127,7 @@ export default defineComponent({
 
         .schedule-icon {
           order: 1;
-          margin: 0 35% 15px 0;
+          margin: 0 0 15px 0;
           width: 250px;
           height: 250px;
           animation: none;  
@@ -171,7 +165,7 @@ export default defineComponent({
 
         .schedule-icon {
           order: 1;
-          margin: 0 -200px 15px 0;
+          margin: 0 -200px 0 0;
           width: 150px;
           height: auto;
           animation: none;  
@@ -188,7 +182,7 @@ export default defineComponent({
 
         .schedule-icon {
           order: 2;
-          margin: 0 200px 15px 0;
+          margin: 0 200px 0 0;
           width: 150px;
           height: auto;
           animation: none;  

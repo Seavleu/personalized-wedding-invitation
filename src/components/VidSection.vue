@@ -1,21 +1,75 @@
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  name: "VidSection",
+  emits: ["pause-background-audio", "resume-background-audio"],
+  setup(_, { emit }) {
+    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isFullScreen = ref(false);
+
+    // Handle video play: pause background audio and unmute video
+    const handleVideoPlay = () => {
+      emit("pause-background-audio"); // Notify parent to pause background audio
+      if (videoRef.value) {
+        videoRef.value.muted = false;
+      }
+    };
+
+    // Handle video pause: resume background audio
+    const handleVideoPause = () => {
+      emit("resume-background-audio"); // Notify parent to resume background audio
+    };
+
+    // Toggle fullscreen video
+    const toggleFullScreen = (event: Event) => {
+      event.stopPropagation();
+      if (videoRef.value) {
+        isFullScreen.value = !isFullScreen.value;
+      }
+    };
+
+    // Exit fullscreen when clicking anywhere outside the video
+    const handleDocumentClick = () => {
+      if (isFullScreen.value) {
+        isFullScreen.value = false;
+        if (videoRef.value) videoRef.value.pause();
+        emit("resume-background-audio"); // Resume background audio
+      }
+    };
+
+    document.addEventListener("click", handleDocumentClick);
+
+    return {
+      videoRef,
+      isFullScreen,
+      handleVideoPlay,
+      handleVideoPause,
+      toggleFullScreen,
+    };
+  },
+});
+</script>
+
 <template>
   <section class="vid-section">
     <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
-    <div class="con">
-      <video class="vid" autoplay loop muted playsinline>
+    <div class="con" @click="toggleFullScreen" :class="{ fullscreen: isFullScreen }">
+      <video
+        ref="videoRef"
+        class="vid"
+        autoplay
+        loop
+        muted
+        playsinline
+        @play="handleVideoPlay"
+        @pause="handleVideoPause"
+      >
         <source src="/video.mp4" type="video/mp4" />
       </video>
     </div>
   </section>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "VidSection",
-});
-</script>
 
 <style lang="scss" scoped>
 .vid-section {
@@ -48,10 +102,12 @@ export default defineComponent({
 
     .vid {
       width: 350px;
-      height: 600px;
+      height: auto;
+      max-height: 600px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
+      cursor: pointer;
 
       &:hover {
         transform: scale(1.05) rotate(1deg);
@@ -60,26 +116,44 @@ export default defineComponent({
 
       @media (max-width: 768px) {
         border-radius: 10px;
+        max-height: 400px;
+      }
+
+      @media (max-width: 480px) {
+        border-radius: 10px;
+        max-height: 300px;
+      }
+    }
+
+    &.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .vid {
+        width: 90vw;
+        height: auto;
+        max-height: 90vh;
+        transform: none;
+        box-shadow: none;
+        border-radius: 0;
+        animation: zoomIn 0.5s ease-in-out;
       }
     }
   }
+
   /* Keyframes for Animations */
   @keyframes fadeInDown {
     from {
       opacity: 0;
       transform: translateY(-30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
     }
 
     to {
@@ -105,27 +179,13 @@ export default defineComponent({
       transform: scale(0.9);
       opacity: 1;
     }
-
     50% {
-      transform: scale(1.2);
-      opacity: 0.4;
+      transform: scale(1.05);
+      opacity: 0.8;
     }
-
     100% {
       transform: scale(0.9);
       opacity: 1;
-    }
-  }
-
-  @keyframes bounce {
-
-    0%,
-    100% {
-      transform: translate(-50%, -50%) translateY(0);
-    }
-
-    50% {
-      transform: translate(-50%, -50%) translateY(-10px);
     }
   }
 }
