@@ -1,24 +1,3 @@
-<template>
-  <section class="vid-section">
-    <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
-    <div class="con" :class="{ fullscreen: isFullScreen }">
-      <video
-        ref="videoRef"
-        class="vid"
-        autoplay
-        loop
-        muted
-        playsinline
-        @click="toggleFullScreen"
-        @play="handleVideoPlay"
-        @pause="handleVideoPause"
-      >
-        <source src="/video.mp4" type="video/mp4" />
-      </video>
-    </div>
-  </section>
-</template>
-
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 
@@ -62,11 +41,33 @@ export default defineComponent({
 });
 </script>
 
+<template>
+  <section class="vid-section">
+    <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
+    <div class="con" :class="{ fullscreen: isFullScreen }">
+      <video
+        ref="videoRef"
+        class="vid"
+        autoplay
+        loop
+        muted
+        playsinline
+        @click="toggleFullScreen"
+        @play="handleVideoPlay"
+        @pause="handleVideoPause"
+      >
+        <source src="/video.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 .vid-section {
   padding: 40px 15px;
   text-align: center;
   overflow: hidden;
+
   .title {
     font-size: 32px;
     font-weight: bold;
@@ -82,7 +83,7 @@ export default defineComponent({
       font-size: 20px;
     }
   }
-  
+
   .con {
     position: relative;
     width: 100%;
@@ -91,34 +92,31 @@ export default defineComponent({
     animation: zoomIn 1.2s ease-in-out;
 
     .vid {
-      width: 350px;
+      width: 100%;
       height: auto;
-      max-height: 600px;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
 
       &:hover {
-        transform: scale(1.05) rotate(1deg);
+        transform: scale(1.05);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
       }
 
       @media (max-width: 768px) {
         border-radius: 10px;
-        max-height: 400px;
       }
 
       @media (max-width: 480px) {
         border-radius: 10px;
-        max-height: 300px;
       }
     }
 
     &.fullscreen {
       position: fixed;
-      top: 50%;
-      left: 50%;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.9);
@@ -128,7 +126,8 @@ export default defineComponent({
       align-items: center;
 
       .vid {
-        width: 90vw;
+        width: 100%;
+        max-width: 90vw;
         height: auto;
         max-height: 90vh;
         transform: none;
@@ -139,13 +138,12 @@ export default defineComponent({
     }
   }
 
-  /* Keyframes for Animations */
+  /* Animations */
   @keyframes fadeInDown {
     from {
       opacity: 0;
       transform: translateY(-30px);
     }
-
     to {
       opacity: 1;
       transform: translateY(0);
@@ -157,26 +155,11 @@ export default defineComponent({
       opacity: 0;
       transform: scale(0.8);
     }
-
     to {
       opacity: 1;
       transform: scale(1);
     }
   }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(0.9);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.05);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(0.9);
-      opacity: 1;
-    }
-  }
 }
 </style>
+
