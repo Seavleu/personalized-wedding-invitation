@@ -108,7 +108,7 @@ export default defineComponent({
 .wishes-section {
   padding: 40px 15px;
   text-align: center;
-  background: #fdfdfd;
+  // background: #fdfdfd;
 
   /* Title */
   .wishes-title {

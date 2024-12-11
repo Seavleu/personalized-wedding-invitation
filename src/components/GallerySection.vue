@@ -26,8 +26,8 @@ export default defineComponent({
       "gallery2.jpg",
       "gallery3.jpg",
       "gallery4.jpg",
+      // "gallery6.jpg", 
       "gallery5.jpg",
-      "gallery6.jpg", 
     ];
 
     const getImagePath = (image: string) => {
@@ -44,8 +44,7 @@ export default defineComponent({
   text-align: center;
   padding: 80px 20px;  
   background: #5b7639;
-  text-align: center;
-  padding: 60px;
+  text-align: center; 
   background: none; 
 
   .gallery-title {
@@ -97,18 +96,48 @@ export default defineComponent({
     }
 
     &.gallery-item-0 {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    &.gallery-item-1 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    &.gallery-item-2 {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    &.gallery-item-3 {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    &.gallery-item-4 {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    &.gallery-item-5 {
+      grid-column: span 3;
+      grid-row: span 1;
+    }
+    @media (max-width: 768px) {
+      &.gallery-item-0 {
       grid-column: span 4;
       grid-row: span 2;
     }
 
     &.gallery-item-1 {
       grid-column: span 1;
-      grid-row: span 2;
+      grid-row: span 1;
     }
 
     &.gallery-item-2 {
-      grid-column: span 1;
-      grid-row: span 2;
+      grid-column: span 3;
+      grid-row: span 1;
     }
 
     &.gallery-item-3 {
@@ -117,13 +146,14 @@ export default defineComponent({
     }
 
     &.gallery-item-4 {
-      grid-column: span 1;
-      grid-row: span 2;
+      grid-column: span 3;
+      grid-row: span 1;
     }
 
     &.gallery-item-5 {
       grid-column: span 1;
       grid-row: span 1;
+    }
     }
   }
 

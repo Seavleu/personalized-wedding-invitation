@@ -74,13 +74,13 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('@/assets/images/gallery4.jpg') no-repeat center center;
-  background-size: contain;  
-  background-attachment: scroll;  
+  background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
+  background-size: cover;  
+  background-attachment: fixed;  
   min-height: 50vh;
  
   @media (max-width: 768px) {
-    background-size: cover;
+    background-size: contain;
     background-attachment: scroll;
   }
 
