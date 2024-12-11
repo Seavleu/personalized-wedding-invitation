@@ -67,7 +67,6 @@ export default defineComponent({
   padding: 40px 15px;
   text-align: center;
   overflow: hidden;
-
   .title {
     font-size: 32px;
     font-weight: bold;
@@ -100,18 +99,6 @@ export default defineComponent({
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
 
-      &.fullscreen {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        width: 100%;
-        max-width: 100%;
-        height: 100vh;
-        transform: translate(-50%, -50%);
-        z-index: 9999;
-        background: black;
-      }
-
       &:hover {
         transform: scale(1.05) rotate(1deg);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
@@ -130,8 +117,8 @@ export default defineComponent({
 
     &.fullscreen {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
       width: 100vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.9);

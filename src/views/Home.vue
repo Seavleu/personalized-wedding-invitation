@@ -1,22 +1,21 @@
 <template>
   <div :class="{ 'no-scroll': !isScrollAllowed }">
-    <!-- Background Audio -->
     <audio ref="audioRef" autoplay loop>
       <source src="/audio.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>
 
-    <!-- Hero Section -->
-    <HeroSection id="hero" :guest-name="guestName" @enable-scroll="enableScroll" />
-
-    <!-- Vid Section -->
+    <HeroSection
+      id="hero"
+      :guest-name="guestName"
+      @enable-scroll="enableScroll"
+      @direct-to-invitation="directToInvitation"
+    />
     <VidSection
       id="video"
       @pause-background-audio="pauseBackgroundAudio"
       @resume-background-audio="resumeBackgroundAudio"
     />
-
-    <!-- Other Sections -->
     <InvitationSection id="invitation" />
     <ScheduleSection id="schedule" />
     <LocationSection id="location" />
@@ -61,7 +60,6 @@ export default defineComponent({
     const audioRef = ref<HTMLAudioElement | null>(null);
     const isScrollAllowed = ref(false);
 
-    // Computed guest name
     const guestName = computed(() => {
       if (route && route.params) {
         return Array.isArray(route.params.guestName)
@@ -71,13 +69,19 @@ export default defineComponent({
       return "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
     });
 
-    // Scroll control
     const enableScroll = () => {
       isScrollAllowed.value = true;
       document.body.style.overflow = "auto";
     };
 
-    // Background audio control
+    const directToInvitation = () => {
+      enableScroll();
+      const invitationSection = document.getElementById("invitation");
+      if (invitationSection) {
+        invitationSection.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+
     const pauseBackgroundAudio = () => {
       if (audioRef.value) {
         audioRef.value.pause();
@@ -90,7 +94,6 @@ export default defineComponent({
       }
     };
 
-    // Handle visibility change
     const handleVisibilityChange = () => {
       if (audioRef.value) {
         if (document.hidden) {
@@ -101,9 +104,8 @@ export default defineComponent({
       }
     };
 
-    // Lock scroll for 5 seconds on initial load
     onMounted(() => {
-      document.body.style.overflow = "hidden"; // Lock scrolling
+      document.body.style.overflow = "hidden";
       setTimeout(enableScroll, 5000);
 
       document.addEventListener("visibilitychange", handleVisibilityChange);
@@ -120,6 +122,7 @@ export default defineComponent({
       enableScroll,
       pauseBackgroundAudio,
       resumeBackgroundAudio,
+      directToInvitation
     };
   },
 });

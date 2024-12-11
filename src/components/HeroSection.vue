@@ -13,14 +13,12 @@ export default defineComponent({
     const currentGuestName = ref(props.guestName);
     const isScrollAllowed = ref(false);
 
-    // Check if user is visiting for the first time
     const isFirstVisit = ref(!localStorage.getItem("visitedHeroPage"));
 
-    // Enable scrolling
     const enableScroll = () => {
       isScrollAllowed.value = true;
       document.body.style.overflow = "auto";
-      localStorage.setItem("visitedHeroPage", "true"); // Save visit flag
+      localStorage.setItem("visitedHeroPage", "true");
     };
 
     const redirectToInvitation = () => {
@@ -32,12 +30,11 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      // Disable scroll only for first visit
       if (isFirstVisit.value) {
         document.body.style.overflow = "hidden";
-        setTimeout(enableScroll, 5000); // Allow scroll after 5s
+        setTimeout(enableScroll, 5000);
       } else {
-        enableScroll(); // Allow scroll immediately if already visited
+        enableScroll(); 
       }
     });
 
