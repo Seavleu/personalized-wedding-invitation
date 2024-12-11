@@ -46,8 +46,7 @@ export default defineComponent({
 .schedule-section { 
   position: relative; 
   text-align: center;
-  padding: 60px 15px;
-  height: 100vh;
+  padding: 60px 15px; 
   overflow: hidden;
 
   .background-video {
@@ -63,8 +62,7 @@ export default defineComponent({
   @media (max-width: 768px) {
     background-attachment: scroll;
     background-size: cover; 
-    width: 100%;
-    height: 1200px;
+    width: 100%; 
   }
 
   @media (max-width: 480px) {

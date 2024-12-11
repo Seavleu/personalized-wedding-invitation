@@ -46,6 +46,7 @@ export default defineComponent({
   background: #5b7639;
   text-align: center; 
   background: none; 
+  height: 100vh;
 
   .gallery-title {
     margin-top: 60px;
