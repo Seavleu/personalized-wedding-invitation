@@ -70,6 +70,7 @@ export default defineComponent({
     background-size: cover;
     height: auto;
     min-height: 100vh;
+    width: 100%;
   }
 
   @media (max-width: 480px) {
