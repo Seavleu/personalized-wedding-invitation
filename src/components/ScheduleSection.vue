@@ -18,9 +18,9 @@ export default defineComponent({
 <template>
   <section class="schedule-section">
     <!-- Background video -->
-    <!-- <video class="background-video" autoplay loop muted playsinline>
+    <video class="background-video" autoplay loop muted playsinline>
       <source src="/invitation2.mp4" type="video/mp4" /> 
-    </video>  -->
+    </video> 
     <!-- <img src="../assets/images/intro1-min.jpg" alt=""> -->
     <!-- Content -->
     <h3 class="schedule-title">កម្មវិធីមង្គលអាពាហ៍ពិពាហ៍</h3>

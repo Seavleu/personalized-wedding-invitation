@@ -53,18 +53,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
   background: url('@/assets/images/intro.gif') no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed; 
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-
+  min-height: 100vh;    
   margin: 0;
   overflow: hidden; 
 }
