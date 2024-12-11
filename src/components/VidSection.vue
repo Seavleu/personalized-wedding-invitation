@@ -1,11 +1,11 @@
 <template>
-  <section class="location-section">
-    <h2 class="location-title">ទស្សនាដោយមេត្រីភាព</h2>
-    <div class="map-container">
-      <img src="../assets/images/intro.gif" alt="Map Location" class="map-image" />
-      <div class="location-marker"></div>
+  <section class="vid-section">
+    <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
+    <div class="con">
+      <video class="vid" autoplay loop muted playsinline>
+        <source src="/video.mp4" type="video/mp4" />
+      </video>
     </div>
-    <!-- <p class="location-description"> </p> -->
   </section>
 </template>
 
@@ -18,11 +18,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.location-section {
+.vid-section {
   padding: 40px 15px;
   text-align: center;
-  overflow: hidden; 
-  .location-title {
+  overflow: hidden;
+
+  .title {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
@@ -38,14 +39,14 @@ export default defineComponent({
     }
   }
 
-  .map-container {
+  .con {
     position: relative;
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
     animation: zoomIn 1.2s ease-in-out;
 
-    .map-image {
+    .vid {
       width: 350px;
       height: 600px;
       border-radius: 15px;
@@ -60,27 +61,8 @@ export default defineComponent({
       @media (max-width: 768px) {
         border-radius: 10px;
       }
-    }  
-  }
-
-  /* Description Animation */
-  .location-description {
-    font-size: 18px;
-    color: #5b7639;
-    margin-top: 20px;
-    animation: fadeInUp 1.5s ease-out 0.5s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-
-    @media (max-width: 768px) {
-      font-size: 16px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 14px;
     }
   }
-
   /* Keyframes for Animations */
   @keyframes fadeInDown {
     from {
