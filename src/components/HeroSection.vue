@@ -154,13 +154,14 @@ export default defineComponent({
           height: 30%;
         }
         .guest-name {
-        margin: 1rem;
-        font-size: 28px; 
-        width: 350px; 
-        animation: scaleIn 1.5s ease-out;  
+          margin: 1rem;
+          font-size: 28px; 
+          width: 550px; 
+          animation: scaleIn 1.5s ease-out;  
 
         @media (max-width: 768px) {
           font-size: 24px;
+          width: 350px; 
         }
 
         @media (max-width: 480px) {
