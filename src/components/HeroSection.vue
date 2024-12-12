@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch } from "vue";
+import { computed, defineComponent, onMounted, ref, watch } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
@@ -13,7 +13,6 @@ export default defineComponent({
   setup(props) {
     const currentGuestName = ref(props.guestName);
     const isScrollAllowed = ref(false);
-
     const isFirstVisit = ref(!localStorage.getItem("visitedHeroPage"));
 
     const enableScroll = () => {
@@ -21,12 +20,24 @@ export default defineComponent({
       document.body.style.overflow = "auto";
       localStorage.setItem("visitedHeroPage", "true");
     };
+
+    const isKhmerName = computed(() => {
+      // Khmer characters range from \u1780 to \u17FF
+      const khmerPattern = /[\u1780-\u17FF]+/;
+      return khmerPattern.test(currentGuestName.value);
+    });
+
+
+    const fontClass = computed(() => {
+      return isKhmerName.value ? 'khmer-font' : 'english-font';
+    });
+
     onMounted(() => {
       if (isFirstVisit.value) {
         document.body.style.overflow = "hidden";
         setTimeout(enableScroll, 5000);
       } else {
-        enableScroll(); 
+        enableScroll();
       }
     });
 
@@ -38,7 +49,8 @@ export default defineComponent({
     );
 
     return {
-      currentGuestName, 
+      currentGuestName,
+      fontClass
     };
   },
 });
@@ -53,17 +65,12 @@ export default defineComponent({
         <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
         <div class="holder">
           <img src="../assets/images/ico_hold1.png" alt="">
-          <p class="guest-name">{{ currentGuestName }}</p>
+          <p class="guest-name" :class="fontClass">{{ currentGuestName }}</p>
           <img src="../assets/images/ico_hold2.png" alt="">
         </div>
       </div>
-      <img
-        class="wlc"
-        src="../assets/images/ico_wlc.png"
-        alt="Watch Invitation"
-        @click="$emit('direct-to-invitation')"
-      />
-      <!-- @click="" -->
+      <img class="wlc" src="../assets/images/ico_wlc.png" alt="Watch Invitation"
+        @click="$emit('direct-to-invitation')" />
     </div>
   </section>
 </template>
@@ -74,14 +81,14 @@ export default defineComponent({
   text-align: center;
   padding: 80px 12px;
   width: 100vw;
-  height: 100vh;  
+  height: 100vh;
   background: url('@/assets/images/intro.gif') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
- 
+
   @media (max-width: 768px) {
-    background-size: contain; 
-    background-attachment: scroll; 
+    background-size: contain;
+    background-attachment: scroll;
   }
 
   img {
@@ -95,8 +102,8 @@ export default defineComponent({
     z-index: 1;
 
     .hero-title {
-      font-size: 30px; 
-      font-weight: bold; 
+      font-size: 30px;
+      font-weight: bold;
       animation: fadeInDown 2s ease-out;
 
       @media (max-width: 768px) {
@@ -121,7 +128,7 @@ export default defineComponent({
 
         @media (max-width: 768px) {
           width: 220px;
-          height: 220px; 
+          height: 220px;
         }
 
         @media (max-width: 480px) {
@@ -147,27 +154,39 @@ export default defineComponent({
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;  
+        flex-direction: column;
         margin-top: 1%;
+
         img {
           width: 30%;
           height: 30%;
         }
+
         .guest-name {
           margin: 1rem;
-          font-size: 28px; 
-          width: 550px; 
-          animation: scaleIn 1.5s ease-out;  
+          font-size: 28px;
+          width: 550px;
+          animation: scaleIn 1.5s ease-out;
 
-        @media (max-width: 768px) {
+          @media (max-width: 768px) {
+            font-size: 24px;
+            width: 350px;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 14px;
+          }
+        }
+
+        .khmer-font {
+          font-family: 'KantumruyReg', sans-serif;
           font-size: 24px;
-          width: 350px; 
         }
 
-        @media (max-width: 480px) {
-          font-size: 14px;
+        .english-font {
+          font-family: 'ItaliannoReg', cursive;
+          font-size: 30px;
         }
-      }
       }
     }
 
@@ -177,7 +196,7 @@ export default defineComponent({
       max-width: 300px;
       height: auto;
 
-      transition: transform 0.3s ease; 
+      transition: transform 0.3s ease;
       animation: fadeIn 1.5s ease-out, pulse 2s infinite;
 
       &:hover {
