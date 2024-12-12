@@ -185,7 +185,7 @@ export default defineComponent({
 
         .english-font {
           font-family: 'ItaliannoReg', cursive;
-          font-size: 30px;
+          font-size: 50px!important;
         }
       }
     }
