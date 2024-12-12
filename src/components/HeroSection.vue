@@ -174,7 +174,7 @@ export default defineComponent({
         font-size: 30px;
         margin-bottom: 20px;
         width: 450px;
-        font-family: "GeistMono", monospace;
+        margin-top: 2rem ; 
         animation: scaleIn 1.5s ease-out;  
 
         @media (max-width: 768px) {
