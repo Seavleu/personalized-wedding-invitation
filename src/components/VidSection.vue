@@ -61,12 +61,12 @@ export default defineComponent({
     <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
     <div class="con" :class="{ fullscreen: isFullScreen }">
       <video ref="videoRef" class="vid" muted playsinline @click="togglePlay">
-        <source
-          src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
-          type="video/mp4" />
         <div class="play-overlay" v-if="!isVideoPlaying">
           <img src="../assets/images/ico_play.png" alt="">
         </div>
+        <source
+          src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
+          type="video/mp4" />
       </video>
     </div>
   </section>
@@ -159,11 +159,11 @@ export default defineComponent({
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-
+        z-index: 999;
+  
         img {
           width: 12px;
-          height: 12px;
-          z-index: 1;
+          height: 12px; 
         }
       }
     }

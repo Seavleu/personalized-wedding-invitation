@@ -162,6 +162,7 @@ export default defineComponent({
           height: 30%;
         }
         .guest-name {
+        margin: 1rem;
         font-size: 28px; 
         width: 350px; 
         animation: scaleIn 1.5s ease-out;  
