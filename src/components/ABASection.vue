@@ -53,7 +53,7 @@ export default defineComponent({
       <p>Share Loves and Joys in celebrating with us</p>
       <button class="show-qr-btn" @click="toggleQR">ចំណងមាសចំណងប្រាក់</button>
       <div v-if="showQR" class="qr-container">
-        <img src="@/assets/images/aba.png" alt="Bank Account QR Code" />
+        <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_cpwXfFGTphLe1GHLU/aba_4f8b6be6-1b4b-79ca-9c32-f6d8a85abf3a.png" alt="Bank Account QR Code" />
       </div>
     </div>
   </section>
@@ -103,7 +103,8 @@ export default defineComponent({
   }
 
   .detail {
-    margin-top: 30px;
+    margin-top: 30px; 
+    animation: fadeIn 2s;
 
     h4 {
       font-size: 32px;
@@ -131,6 +132,7 @@ export default defineComponent({
         0 4px 6px rgba(0, 0, 0, 0.1),
         0 1px 3px rgba(0, 0, 0, 0.06);
       transition: all 0.3s ease;
+      animation: pulse 2s infinite;
 
       &:hover {
         background: linear-gradient(135deg, #f39c12, #e67e22);
@@ -212,7 +214,7 @@ export default defineComponent({
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        animation: fadeIn 0.5s ease-in-out;
+        animation: fadeIn 0.5s ease-in-out; 
 
         @media (max-width: 768px) {
           width: 350px;
