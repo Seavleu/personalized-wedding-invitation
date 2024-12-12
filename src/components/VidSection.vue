@@ -56,7 +56,7 @@ export default defineComponent({
         @play="handleVideoPlay"
         @pause="handleVideoPause"
       >
-        <source src="/videoCompressed.mp4" type="video/mp4" />
+        <source src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4" type="video/mp4" />
       </video>
     </div>
   </section>

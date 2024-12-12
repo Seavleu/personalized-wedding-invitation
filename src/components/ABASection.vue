@@ -44,9 +44,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <section
-    class="aba-section"
-    :class="{ 'section-visible': sectionVisible }">
+  <section class="aba-section" :class="{ 'section-visible': sectionVisible }">
     <div class="title">
       <img src="../assets/images/divider2.png" alt="Elegant Divider" />
     </div>
@@ -65,29 +63,30 @@ export default defineComponent({
 .aba-section {
   position: relative;
   text-align: center;
-  padding: 0; 
+  padding: 0;
   margin: 0;
   width: 100%;
-  height: 100vh; 
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
-  background-size: cover;  
-  background-attachment: fixed;  
+  background-size: cover;
+  background-attachment: fixed;
   min-height: 50vh;
- 
+
   @media (max-width: 768px) {
     background-size: contain;
     background-attachment: scroll;
   }
 
   @media (max-width: 480px) {
-    background-size: cover; 
+    background-size: cover;
     background-attachment: scroll;
   }
+
   .title {
     img {
       width: 20%;
@@ -96,19 +95,22 @@ export default defineComponent({
         fadeIn 1.5s ease-out,
         pulse 2s infinite;
 
-        @media (max-width: 768px) {
+      @media (max-width: 768px) {
         width: 50%;
       }
 
     }
   }
+
   .detail {
     margin-top: 30px;
+
     h4 {
       font-size: 32px;
     }
+
     p {
-      font-size:32px;
+      font-size: 32px;
       font-family: 'ItaliannoReg', sans-serif;
       color: #5b7639;
     }
@@ -122,13 +124,14 @@ export default defineComponent({
       font-size: 1rem;
       font-weight: bold;
       text-transform: uppercase;
-      border-radius: 50px; 
+      border-radius: 50px;
       cursor: pointer;
       margin-top: 20px;
       box-shadow:
         0 4px 6px rgba(0, 0, 0, 0.1),
         0 1px 3px rgba(0, 0, 0, 0.06);
       transition: all 0.3s ease;
+
       &:hover {
         background: linear-gradient(135deg, #f39c12, #e67e22);
         transform: translateY(-2px);
@@ -136,10 +139,12 @@ export default defineComponent({
           0 10px 15px rgba(0, 0, 0, 0.2),
           0 4px 6px rgba(0, 0, 0, 0.1);
       }
+
       &:active {
         transform: translateY(1px);
         box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
       }
+
       &::before {
         content: '';
         position: absolute;
@@ -160,15 +165,18 @@ export default defineComponent({
           transform: translate(-50%, -50%) scale(1);
           opacity: 0.6;
         }
+
         50% {
           transform: translate(-50%, -50%) scale(1.1);
           opacity: 0;
         }
+
         100% {
           transform: translate(-50%, -50%) scale(1);
           opacity: 0;
         }
       }
+
       &::after {
         content: '';
         position: absolute;
@@ -188,21 +196,27 @@ export default defineComponent({
           transform: scale(0);
           opacity: 0.8;
         }
+
         100% {
           transform: scale(10);
           opacity: 0;
         }
       }
     }
+
     .qr-container {
       margin-top: 20px;
 
       img {
-        width: 200px;
+        width: 400px;
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         animation: fadeIn 0.5s ease-in-out;
+
+        @media (max-width: 768px) {
+          width: 350px;
+        }
       }
     }
   }
@@ -212,6 +226,7 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
