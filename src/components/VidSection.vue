@@ -92,6 +92,10 @@ export default defineComponent({
   overflow: hidden; 
   height: 60vh;
 
+  @media (max-width: 768px) {
+      height: 100vh;
+    }
+
   .title {
     font-size: 32px;
     font-weight: bold;
