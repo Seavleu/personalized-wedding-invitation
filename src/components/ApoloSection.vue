@@ -42,6 +42,11 @@ export default defineComponent({
   <section
     class="invitation-section"
     :class="{ 'section-visible': sectionVisible }">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source
+        src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_PeHmLv9Tkbo1mqDcu/wedding_invitation_1_71faa20b-927a-625c-5fee-b8fa84c57ac8.mp4"
+        type="video/mp4" />
+    </video>
     <div class="title">
       <img src="../assets//images/logo.jpg" alt="" />
     </div>
@@ -100,10 +105,20 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .invitation-section {
+  position: relative;
   text-align: center;
-  padding: 80px 20px;
-  background: url('@/assets/images/bg_invit.png') no-repeat center center;
-  background-size: cover;
+  color: #ffffff;
+  overflow: hidden;
+
+  .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire container */
+    z-index: -1;
+  }
 
   &.section-visible {
     opacity: 1;
@@ -187,14 +202,14 @@ export default defineComponent({
       }
 
       img {
-        width: 250px;
+        width: 300px;
         height: auto;
         animation: fadeIn 1.5s ease-out;
       }
     }
 
     img {
-      width: 150px;
+      width: 300px;
       height: auto;
       animation: fadeInUp 1.5s ease-out;
     }
@@ -219,7 +234,7 @@ export default defineComponent({
 
       p {
         font-size: 10px;
-      }
+      } 
     }
   }
 

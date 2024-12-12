@@ -42,6 +42,11 @@ export default defineComponent({
   <section class="invitation-section"
   :class="{ 'section-visible': sectionVisible }"
   >
+  <video class="video-bg" autoplay muted loop playsinline>
+      <source
+        src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_QdbYJzuYIp23p1P2A/wedding_invitation_b6cad23a-4581-aa90-b493-1dd06c22a641.mp4"
+        type="video/mp4" />
+    </video>
     <div class="title">
       <div class="left-item">
         <p>
@@ -109,10 +114,20 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .invitation-section {
-  text-align: center;  
-  background: url('@/assets/images/invit.gif') no-repeat center center;
-  background-size: cover;  
-  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  overflow: hidden;
+
+  .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire container */
+    z-index: -1;
+  }
 
   @media (max-width: 768px) {
     background-size: cover; 
