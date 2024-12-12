@@ -112,7 +112,6 @@ export default defineComponent({
 
     &::before {
       content: "";
-      
       position: absolute;
       top: -100px;
       left: -80px;
@@ -128,7 +127,7 @@ export default defineComponent({
 
     .vid {
       position: relative;
-      z-index: 1;
+      z-index: 999;
       width: 100%;
       height: auto;
       border-radius: 15px;
