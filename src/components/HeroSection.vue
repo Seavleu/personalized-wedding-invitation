@@ -1,9 +1,8 @@
 <script lang="ts">
-import { computed, defineComponent, onMounted, ref, watch } from "vue";
+import { computed, defineComponent } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
-  emits: ["enable-scroll", "direct-to-invitation"],
   props: {
     guestName: {
       type: String,
@@ -11,50 +10,19 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const currentGuestName = ref(props.guestName);
-    const isScrollAllowed = ref(false);
-    const isFirstVisit = ref(!localStorage.getItem("visitedHeroPage"));
-
-    const enableScroll = () => {
-      isScrollAllowed.value = true;
-      document.body.style.overflow = "auto";
-      localStorage.setItem("visitedHeroPage", "true");
-    };
-
-    const isKhmerName = computed(() => { 
+    const isKhmerName = computed(() => {
       const khmerPattern = /[\u1780-\u17FF]+/;
-      return khmerPattern.test(currentGuestName.value);
+      return khmerPattern.test(props.guestName);
     });
 
-
-    const fontClass = computed(() => {
-      return isKhmerName.value ? 'khmer-font' : 'english-font';
-    });
-
-    onMounted(() => {
-      if (isFirstVisit.value) {
-        document.body.style.overflow = "hidden";
-        setTimeout(enableScroll, 10000);
-      } else {
-        enableScroll();
-      }
-    });
-
-    watch(
-      () => props.guestName,
-      (newGuestName) => {
-        currentGuestName.value = newGuestName;
-      }
-    );
+    const fontClass = computed(() => (isKhmerName.value ? "khmer-font" : "english-font"));
 
     return {
-      currentGuestName,
-      fontClass
+      fontClass,
     };
   },
 });
 </script>
-
 <template>
   <section class="hero-section">
     <video class="video-bg" autoplay muted loop playsinline>
@@ -69,12 +37,16 @@ export default defineComponent({
         <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
         <div class="holder">
           <img src="../assets/images/ico_hold1.png" alt="">
-          <p class="guest-name" :class="fontClass">{{ currentGuestName }}</p>
+          <p class="guest-name" :class="fontClass">{{ guestName }}</p>
           <img src="../assets/images/ico_hold2.png" alt="">
         </div>
       </div>
-      <img class="wlc" src="../assets/images/ico_wlc.png" alt="Watch Invitation"
-        @click="$emit('direct-to-invitation')" />
+      <img
+        class="wlc"
+        src="../assets/images/ico_wlc.png"
+        alt="Watch Invitation"
+        @click="$emit('direct-to-invitation')"
+      />
     </div>
   </section>
 </template>
