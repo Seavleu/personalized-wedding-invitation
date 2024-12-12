@@ -60,29 +60,30 @@ export default defineComponent({
   <section class="vid-section">
     <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
     <div class="con" :class="{ fullscreen: isFullScreen }">
-      <video ref="videoRef" class="vid" muted playsinline @click="togglePlay">
-        <div class="play-overlay" v-if="!isVideoPlaying">
-          <img src="../assets/images/ico_play.png" alt="">
-        </div>
+      <video ref="videoRef" class="vid" playsinline @click="togglePlay">
         <source
           src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
           type="video/mp4" />
-      </video>
+      </video> 
+      <div class="play-overlay" v-if="!isVideoPlaying">
+        <img src="../assets/images/ico_play.png" alt="Play Video" @click="togglePlay" />
+      </div>
     </div>
   </section>
 </template>
+
 
 <style lang="scss" scoped>
 .vid-section {
   padding: 80px 15px;
   text-align: center;
-  overflow: hidden; 
-  height: 60vh;
+  overflow: hidden;
+  height: 100vh;
 
   @media (max-width: 768px) {
-      height: 100vh;
-      padding: 40px 40px;
-    }
+    height: 100vh;
+    padding: 40px 40px;
+  }
 
   .title {
     font-size: 32px;
@@ -153,20 +154,25 @@ export default defineComponent({
         border-radius: 0;
         animation: zoomIn 0.5s ease-in-out;
       }
-
-      .play-overlay {
+    }
+    .play-overlay {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 999;
-  
+        z-index: 10;  
+
         img {
-          width: 12px;
-          height: 12px; 
+          width: 64px;
+          height: 64px;
+          opacity: 0.8;
+          transition: opacity 0.3s ease;
+
+          &:hover {
+            opacity: 1; 
+          }
         }
       }
-    }
   }
 
   /* Animations */
