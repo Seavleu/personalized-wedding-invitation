@@ -60,7 +60,11 @@ export default defineComponent({
       <div class="hero-details">
         <img class="logo" src="../assets/images/logo.jpg" alt="Logo" />
         <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
-        <p class="guest-name">{{ currentGuestName }}</p>
+        <div class="holder">
+          <img src="../assets/images/ico_hold1.png" alt="">
+          <p class="guest-name">{{ currentGuestName }}</p>
+          <img src="../assets/images/ico_hold2.png" alt="">
+        </div>
       </div>
       <img
         class="wlc"
@@ -102,8 +106,8 @@ export default defineComponent({
     z-index: 1;
 
     .hero-title {
-      font-size: 36px;
-      font-size: 36px;
+      font-size: 48px;
+      font-size: 48px;
       font-weight: bold;
       margin-bottom: 20px;
       animation: fadeInDown 2s ease-out;
@@ -126,8 +130,8 @@ export default defineComponent({
 
       .logo {
         margin-bottom: 10px;
-        width: 280px;
-        height: 280px;
+        width: 350px;
+        height: 350px;
         animation: scaleIn 1.5s ease-out;
 
         @media (max-width: 768px) {
@@ -156,12 +160,22 @@ export default defineComponent({
         }
       }
 
-      .guest-name {
+      .holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 20%;
+        img {
+          width: 50%;
+          height: 30%;
+        }
+        .guest-name {
         font-size: 30px;
         margin-bottom: 20px;
-        width: 350px;
+        width: 450px;
         font-family: "GeistMono", monospace;
-        animation: fadeInUp 1.5s ease-out;
+        animation: scaleIn 1.5s ease-out;  
 
         @media (max-width: 768px) {
           font-size: 24px;
@@ -171,12 +185,13 @@ export default defineComponent({
           font-size: 14px;
         }
       }
+      }
     }
 
     .wlc {
       cursor: pointer;
-      width: 250px;
-      max-width: 250px;
+      width: 450px;
+      max-width: 450px;
       height: auto;
       transition: transform 0.3s ease;
       margin-top: 20px;
