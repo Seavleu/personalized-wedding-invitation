@@ -8,10 +8,10 @@
 
     <!-- If authorized, show sections -->
     <template v-else>
-      <audio ref="audioRef" autoplay loop>
+      <!-- <audio ref="audioRef" muted autoplay loop>
         <source src="/audio.mp3" type="audio/mp3" />
         Your browser does not support the audio element.
-      </audio>
+      </audio> -->
 
       <HeroSection
         id="hero"
