@@ -107,12 +107,32 @@ export default defineComponent({
     max-width: 500px;
     margin: 0 auto;
     animation: zoomIn 1.2s ease-in-out;
+    border-radius: 15px;
+    overflow: hidden; 
+
+    &::before {
+      content: "";
+      
+      position: absolute;
+      top: -100px;
+      left: -80px;
+      right: -80px;
+      bottom: -80px;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #d6af2d, #ffcc00, #ffea00, #d6af2d);
+      background-size:800% 800%;
+      z-index: 0; 
+      animation: borderRun 5s linear infinite;
+      filter: blur(3px);
+    }
 
     .vid {
+      position: relative;
+      z-index: 1;
       width: 100%;
       height: auto;
       border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 8px 20px rgba(233, 199, 8, 0.815);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
 
@@ -153,6 +173,7 @@ export default defineComponent({
         max-height: 90vh;
         border-radius: 0;
         animation: zoomIn 0.5s ease-in-out;
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
       }
     }
     .play-overlay {
@@ -197,6 +218,18 @@ export default defineComponent({
     to {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @keyframes borderRun {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
 }
