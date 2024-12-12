@@ -65,22 +65,9 @@ export default defineComponent({
           src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
           type="video/mp4" />
         <div class="play-overlay" v-if="!isVideoPlaying">
-          <font-awesome-icon icon="fa-play" style="color: #fff; font-size: 24px;" />
+          <img src="../assets/images/ico_play.png" alt="">
         </div>
       </video>
-      <!-- <video
-        ref="videoRef"
-        class="vid"
-        autoplay
-        loop
-        muted
-        playsinline
-        @click="toggleFullScreen"
-        @play="handleVideoPlay"
-        @pause="handleVideoPause"
-      >
-        <source src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4" type="video/mp4" />
-      </video> -->
     </div>
   </section>
 </template>
@@ -94,6 +81,7 @@ export default defineComponent({
 
   @media (max-width: 768px) {
       height: 100vh;
+      padding: 40px 40px;
     }
 
   .title {
@@ -164,6 +152,19 @@ export default defineComponent({
         max-height: 90vh;
         border-radius: 0;
         animation: zoomIn 0.5s ease-in-out;
+      }
+
+      .play-overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        img {
+          width: 12px;
+          height: 12px;
+          z-index: 1;
+        }
       }
     }
   }

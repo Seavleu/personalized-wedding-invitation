@@ -80,9 +80,9 @@ export default defineComponent({
 .hero-section {
   position: relative;
   text-align: center;
-  width: 100%;
-  height: 100vh; 
-  overflow: hidden;
+  padding: 80px 12px;
+  width: 100vw;
+  height: 100vh;  
   background: url('@/assets/images/intro.gif') no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
@@ -103,10 +103,8 @@ export default defineComponent({
     z-index: 1;
 
     .hero-title {
-      font-size: 48px;
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      font-size: 30px; 
+      font-weight: bold; 
       animation: fadeInDown 2s ease-out;
 
       @media (max-width: 768px) {
@@ -122,11 +120,9 @@ export default defineComponent({
       display: flex;
       flex-direction: column;
       align-items: center;
-
       animation: fadeInUp 1.5s ease-out;
 
       .logo {
-        margin-bottom: 10px;
         width: 350px;
         height: 350px;
         animation: scaleIn 1.5s ease-out;
@@ -159,14 +155,14 @@ export default defineComponent({
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column; 
-        margin-top: 5%;
+        flex-direction: column;  
+        margin-top: 1%;
         img {
-          width: 50%;
+          width: 30%;
           height: 30%;
         }
         .guest-name {
-        font-size: 30px; 
+        font-size: 28px; 
         width: 350px; 
         animation: scaleIn 1.5s ease-out;  
 
@@ -183,9 +179,10 @@ export default defineComponent({
 
     .wlc {
       cursor: pointer;
-      width: 450px;
-      max-width: 450px;
+      width: 300px;
+      max-width: 300px;
       height: auto;
+
       transition: transform 0.3s ease; 
       animation: fadeIn 1.5s ease-out, pulse 2s infinite;
 
