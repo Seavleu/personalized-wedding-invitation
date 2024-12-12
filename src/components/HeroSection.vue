@@ -86,8 +86,7 @@ export default defineComponent({
   // height: 100vh;
 
   position: relative;
-  text-align: center;
-  color: #ffffff;
+  text-align: center; 
   overflow: hidden;
 
   .video-bg {
