@@ -1,35 +1,39 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue"
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "VidSection",
   emits: ["pause-background-audio", "resume-background-audio"],
   setup(_, { emit }) {
-    const isFullScreen = ref(false)
-    const videoRef = ref<HTMLVideoElement | null>(null)
-    const isVideoPlaying = ref(false)
+    const isFullScreen = ref(false);
+    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isVideoPlaying = ref(false);
 
     const toggleFullScreen = () => {
-      isFullScreen.value = !isFullScreen.value
+      isFullScreen.value = !isFullScreen.value;
 
       if (isFullScreen.value) {
-        emit("pause-background-audio")
-        videoRef.value?.play()
-        videoRef.value!.muted = false
+        emit("pause-background-audio");
+        videoRef.value?.play();
+        videoRef.value!.muted = false;
+        isVideoPlaying.value = true;
       } else {
-        emit("resume-background-audio")
-        videoRef.value?.pause()
-        videoRef.value!.muted = true
+        emit("resume-background-audio");
+        videoRef.value?.pause();
+        videoRef.value!.muted = true;
+        isVideoPlaying.value = false;
       }
-    }
+    };
 
     const handleVideoPlay = () => {
-      emit("pause-background-audio")
-    }
+      emit("pause-background-audio");
+      isVideoPlaying.value = true;
+    };
 
     const handleVideoPause = () => {
-      emit("resume-background-audio")
-    }
+      emit("resume-background-audio");
+      isVideoPlaying.value = false;
+    };
 
     const togglePlay = () => {
       if (isVideoPlaying.value) {
@@ -37,8 +41,7 @@ export default defineComponent({
       } else {
         videoRef.value?.play();
       }
-      isVideoPlaying.value = !isVideoPlaying.value;
-    }
+    };
 
     return {
       isFullScreen,
@@ -48,23 +51,28 @@ export default defineComponent({
       handleVideoPause,
       togglePlay,
       isVideoPlaying,
-    }
+    };
   },
-})
+});
 </script>
 
 <template>
   <section class="vid-section">
     <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
     <div class="con" :class="{ fullscreen: isFullScreen }">
-      <video ref="videoRef" class="vid" playsinline @click="togglePlay">
+      <video
+        ref="videoRef"
+        class="vid"
+        playsinline
+        @play="handleVideoPlay"
+        @pause="handleVideoPause"
+        @click="toggleFullScreen"
+      >
         <source
           src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
-          type="video/mp4" />
-      </video> 
-      <!-- <div class="play-overlay" v-if="!isVideoPlaying"> 
-        <img src="../assets/images/ico_play.png" alt="Play Video" @click="togglePlay" />
-      </div>-->
+          type="video/mp4"
+        />
+      </video>
     </div>
   </section>
 </template>
@@ -100,35 +108,18 @@ export default defineComponent({
 
   .con {
     position: relative;
-    width: 100%;
-    max-width: 500px;
+    width: 100%; 
     margin: 0 auto;
     animation: zoomIn 1.2s ease-in-out;
     border-radius: 15px;
     overflow: hidden; 
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: -100px;
-      left: -80px;
-      right: -80px;
-      bottom: -80px;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #d6af2d, #ffcc00, #ffea00, #d6af2d);
-      background-size:800% 800%;
-      z-index: 0; 
-      animation: borderRun 5s linear infinite;
-      filter: blur(3px);
-    }
 
     .vid {
       position: relative;
       z-index: 999;
       width: 100%;
       height: auto;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(233, 199, 8, 0.815);
+      border-radius: 15px; 
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
 

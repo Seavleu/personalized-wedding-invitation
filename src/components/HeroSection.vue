@@ -35,7 +35,7 @@ export default defineComponent({
     onMounted(() => {
       if (isFirstVisit.value) {
         document.body.style.overflow = "hidden";
-        setTimeout(enableScroll, 5000);
+        setTimeout(enableScroll, 10000);
       } else {
         enableScroll();
       }
