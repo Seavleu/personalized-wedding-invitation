@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted, onUnmounted } from "vue";
 
 export default defineComponent({
   name: "VidSection",
@@ -8,6 +8,7 @@ export default defineComponent({
     const isFullScreen = ref(false);
     const videoRef = ref<HTMLVideoElement | null>(null);
     const isVideoPlaying = ref(false);
+    const isSectionVisible = ref(false);
 
     const toggleFullScreen = () => {
       isFullScreen.value = !isFullScreen.value;
@@ -28,13 +29,13 @@ export default defineComponent({
     const handleVideoPlay = () => {
       emit("pause-background-audio");
       isVideoPlaying.value = true;
-      videoRef.value!.muted = false; // Ensure video is unmuted
+      videoRef.value!.muted = false;
     };
 
     const handleVideoPause = () => {
       emit("resume-background-audio");
       isVideoPlaying.value = false;
-      videoRef.value!.muted = true; // Mute the video when paused
+      videoRef.value!.muted = true;
     };
 
     const togglePlay = () => {
@@ -46,14 +47,40 @@ export default defineComponent({
         video.play();
         emit("pause-background-audio");
         isVideoPlaying.value = true;
-        video.muted = false; // Ensure video audio plays
+        video.muted = false;
       } else {
         video.pause();
         emit("resume-background-audio");
         isVideoPlaying.value = false;
-        video.muted = true; // Mute video when paused
+        video.muted = true;
       }
     };
+
+    // Intersection Observer for triggering animation
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isSectionVisible.value = entry.isIntersecting;
+        if (isSectionVisible.value && videoRef.value) {
+          videoRef.value.play(); // Auto play video when section is visible
+          emit("pause-background-audio");
+        } else if (videoRef.value) {
+          videoRef.value.pause();
+          emit("resume-background-audio");
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the section is visible
+    );
+
+    onMounted(() => {
+      const section = document.querySelector(".vid-section");
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    onUnmounted(() => {
+      observer.disconnect();
+    });
 
     return {
       isFullScreen,
@@ -62,6 +89,7 @@ export default defineComponent({
       handleVideoPlay,
       handleVideoPause,
       togglePlay,
+      isSectionVisible,
       isVideoPlaying,
     };
   },

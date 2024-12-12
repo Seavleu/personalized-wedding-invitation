@@ -82,12 +82,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 .hero-section { 
   padding: 80px 12px;
-  // width: 100vw;
+  width: 100vw;
   // height: 100vh;
 
   position: relative;
   text-align: center; 
-  overflow: hidden;
+  // overflow: hidden;
 
   .video-bg {
     position: absolute;
