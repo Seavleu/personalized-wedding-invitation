@@ -126,7 +126,6 @@ export default defineComponent({
   height: 100vh; 
 
   @media (max-width: 768px) {
-    height: 100vh;
     padding: 40px 40px;
   }
 
@@ -167,10 +166,12 @@ export default defineComponent({
 
       @media (max-width: 768px) {
         border-radius: 10px;
+        width: 80%;
       }
 
       @media (max-width: 480px) {
         border-radius: 10px;
+        width: 700%;
       }
     }
 
