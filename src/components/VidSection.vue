@@ -1,8 +1,5 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue"
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: "VidSection",
@@ -65,9 +62,9 @@ export default defineComponent({
           src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
           type="video/mp4" />
       </video> 
-      <div class="play-overlay" v-if="!isVideoPlaying">
+      <!-- <div class="play-overlay" v-if="!isVideoPlaying"> 
         <img src="../assets/images/ico_play.png" alt="Play Video" @click="togglePlay" />
-      </div>
+      </div>-->
     </div>
   </section>
 </template>
