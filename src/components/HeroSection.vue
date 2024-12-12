@@ -81,10 +81,7 @@ export default defineComponent({
   position: relative;
   text-align: center;
   width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh; 
   overflow: hidden;
   background: url('@/assets/images/intro.gif') no-repeat center center;
   background-size: cover;
@@ -125,7 +122,7 @@ export default defineComponent({
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+
       animation: fadeInUp 1.5s ease-out;
 
       .logo {
@@ -136,9 +133,7 @@ export default defineComponent({
 
         @media (max-width: 768px) {
           width: 220px;
-          height: 220px;
-          width: 220px;
-          height: 220px;
+          height: 220px; 
         }
 
         @media (max-width: 480px) {
@@ -164,17 +159,15 @@ export default defineComponent({
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        margin-top: 20%;
+        flex-direction: column; 
+        margin-top: 5%;
         img {
           width: 50%;
           height: 30%;
         }
         .guest-name {
-        font-size: 30px;
-        margin-bottom: 20px;
-        width: 350px;
-        margin-top: 2rem ; 
+        font-size: 30px; 
+        width: 350px; 
         animation: scaleIn 1.5s ease-out;  
 
         @media (max-width: 768px) {
@@ -193,8 +186,7 @@ export default defineComponent({
       width: 450px;
       max-width: 450px;
       height: auto;
-      transition: transform 0.3s ease;
-      margin-top: 20px;
+      transition: transform 0.3s ease; 
       animation: fadeIn 1.5s ease-out, pulse 2s infinite;
 
       &:hover {
