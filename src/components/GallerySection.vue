@@ -9,7 +9,7 @@
         :class="`gallery-item-${index % 6}`"
         :style="{ '--delay': index }"
       >
-        <img :src="getImagePath(image)" :alt="'Gallery Image ' + (index + 1)" />
+       <img :src="getImagePath(image)" :alt="'Gallery Image ' + (index + 1)" /> 
       </div>
     </div>
   </section>
@@ -22,17 +22,21 @@ export default defineComponent({
   name: "GallerySection",
   setup() {
     const images = [
-      "gallery1.jpg",
-      "gallery2.jpg",
-      "gallery3.jpg",
-      "gallery4.jpg",
-      // "gallery6.jpg", 
-      "gallery5.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_O5ZFhK1rdrpV5xcjU/gallery1_2ab9b84e-737c-a8dc-3db2-35911c9a1ab3.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_RAXJH20XQmbphfg4d/gallery2_310df469-4bf8-b13e-0f54-570beea343cb.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_hTuWIyiRVFhUjPlx2/gallery3_d7738337-0305-8758-80ff-6c0080aac10c.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_GlPa3mnpf5IVlq59R/gallery4_4bdab501-e130-134c-7289-1a3afe093c18.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_Vv5fmAwcHWTw3MXox/gallery5_70632d3d-e4c9-0305-0f36-9496c51f73dd.jpg"
     ];
 
     const getImagePath = (image: string) => {
-      return new URL(`../assets/images/jay/${image}`, import.meta.url).href;
-    };
+    // Check if the path is absolute
+    if (image.startsWith("http")) {
+      return image; // Return the absolute URL as is
+    } else {
+      return new URL(`../assets/images/jay/${image}`, import.meta.url).href; // Construct relative path for local images
+    }
+  };
 
     return { images, getImagePath };
   },
@@ -126,12 +130,12 @@ export default defineComponent({
     }
     @media (max-width: 768px) {
       &.gallery-item-0 {
-      grid-column: span 4;
-      grid-row: span 2;
+      grid-column: span 5;
+      grid-row: span 1;
     }
 
     &.gallery-item-1 {
-      grid-column: span 1;
+      grid-column: span 2;
       grid-row: span 1;
     }
 
@@ -141,7 +145,7 @@ export default defineComponent({
     }
 
     &.gallery-item-3 {
-      grid-column: span 1;
+      grid-column: span 2;
       grid-row: span 1;
     }
 
