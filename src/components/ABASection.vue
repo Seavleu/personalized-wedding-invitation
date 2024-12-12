@@ -72,7 +72,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('@/assets/images/gallery4.jpg') no-repeat center center fixed;
+  background: url('https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_XB7NYDn4UnJ8gTPhn/gallery4_7cc27931-87a8-f3f9-04cc-4adac8878c8d.jpg') no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
   min-height: 50vh;
