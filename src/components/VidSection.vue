@@ -95,8 +95,7 @@ export default defineComponent({
 .vid-section {
   padding: 80px 15px;
   text-align: center;
-  overflow: hidden;
-  height: 100vh;
+  height: 100vh; 
 
   @media (max-width: 768px) {
     height: 100vh;
@@ -124,11 +123,10 @@ export default defineComponent({
     width: 100%; 
     margin: 0 auto;
     animation: zoomIn 1.2s ease-in-out;
-    overflow: hidden; 
     .vid {
       position: relative;
       z-index: 999;
-      width: 100%;
+      width: 20%;
       height: auto;
       border-radius: 15px; 
       transition: transform 0.5s ease, box-shadow 0.5s ease;

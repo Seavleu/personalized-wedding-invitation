@@ -101,8 +101,8 @@ export default defineComponent({
     }
 
     &.gallery-item-0 {
-      grid-column: span 4;
-      grid-row: span 2;
+      grid-column: span 3;
+      grid-row: span 3;
     }
 
     &.gallery-item-1 {
@@ -111,8 +111,8 @@ export default defineComponent({
     }
 
     &.gallery-item-2 {
-      grid-column: span 2;
-      grid-row: span 1;
+      grid-column: span 4;
+      grid-row: span 3;
     }
 
     &.gallery-item-3 {
@@ -127,7 +127,7 @@ export default defineComponent({
 
     &.gallery-item-5 {
       grid-column: span 2;
-      grid-row: span 1;
+      grid-row: span 2;
     }
     @media (max-width: 768px) {
       grid-template-columns: repeat(4, 1fr);

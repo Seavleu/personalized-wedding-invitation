@@ -46,8 +46,6 @@ export default defineComponent({
 .schedule-section { 
   position: relative; 
   text-align: center;
-  padding: 60px 15px; 
-  overflow: hidden;
 
   .background-video {
     position: absolute;

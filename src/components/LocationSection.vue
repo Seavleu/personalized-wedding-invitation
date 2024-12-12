@@ -49,7 +49,7 @@ export default defineComponent({
     animation: zoomIn 1.2s ease-in-out;
 
     .map-image {
-      width: 350px;
+      width: 400px;
       height: auto;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
