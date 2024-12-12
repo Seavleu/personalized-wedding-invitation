@@ -57,6 +57,11 @@ export default defineComponent({
 
 <template>
   <section class="hero-section">
+    <video class="video-bg" autoplay muted loop playsinline>
+      <source
+        src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_e0pCZSVRr1KIzYIkB/wedding_invitation_2_aafdeea9-6f8f-3479-75b7-51b9cade3dcb.mp4"
+        type="video/mp4" />
+    </video>
     <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
@@ -75,16 +80,26 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.hero-section {
+.hero-section { 
+  padding: 80px 12px;
+  // width: 100vw;
+  // height: 100vh;
+
   position: relative;
   text-align: center;
-  padding: 80px 12px;
-  width: 100vw;
-  height: 100vh;
-  background: url('@/assets/images/intro.gif') no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
+  color: #ffffff;
+  overflow: hidden;
 
+  .video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+    z-index: -1;
+  }
+ 
   @media (max-width: 768px) {
     background-size: contain;
     background-attachment: scroll;

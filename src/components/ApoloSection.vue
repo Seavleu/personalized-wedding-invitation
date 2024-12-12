@@ -106,17 +106,16 @@ export default defineComponent({
 <style lang="scss" scoped>
 .invitation-section {
   position: relative;
-  text-align: center;
-  color: #ffffff;
-  overflow: hidden;
+  text-align: center; 
+  padding: 80px 12px; 
 
   .video-bg {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 190%;
     height: 100%;
-    object-fit: cover; /* Ensures the video covers the entire container */
+    object-fit: cover;  
     z-index: -1;
   }
 
