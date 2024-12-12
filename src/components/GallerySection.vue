@@ -27,15 +27,14 @@ export default defineComponent({
       "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_GlPa3mnpf5IVlq59R/gallery4_4bdab501-e130-134c-7289-1a3afe093c18.jpg",
       "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_hTuWIyiRVFhUjPlx2/gallery3_d7738337-0305-8758-80ff-6c0080aac10c.jpg",
       "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_Vv5fmAwcHWTw3MXox/gallery5_70632d3d-e4c9-0305-0f36-9496c51f73dd.jpg",
-      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_YZV0iwNEQIKrtflbQ/gallery6_12ac226b-917c-a2af-6d5b-8b907dd24b19.jpg"
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_GMUa83hZ1doBYlZ5s/gallery6_6937e724-9b51-1a1f-b3a9-1c5e1d1297b7.jpg"
     ];
 
-    const getImagePath = (image: string) => {
-    // Check if the path is absolute
+    const getImagePath = (image: string) => { 
     if (image.startsWith("http")) {
-      return image; // Return the absolute URL as is
+      return image;  
     } else {
-      return new URL(`../assets/images/jay/${image}`, import.meta.url).href; // Construct relative path for local images
+      return new URL(`../assets/images/jay/${image}`, import.meta.url).href;  
     }
   };
 
