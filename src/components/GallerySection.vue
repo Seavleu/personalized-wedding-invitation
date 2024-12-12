@@ -24,9 +24,10 @@ export default defineComponent({
     const images = [
       "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_O5ZFhK1rdrpV5xcjU/gallery1_2ab9b84e-737c-a8dc-3db2-35911c9a1ab3.jpg",
       "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_RAXJH20XQmbphfg4d/gallery2_310df469-4bf8-b13e-0f54-570beea343cb.jpg",
-      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_hTuWIyiRVFhUjPlx2/gallery3_d7738337-0305-8758-80ff-6c0080aac10c.jpg",
       "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_GlPa3mnpf5IVlq59R/gallery4_4bdab501-e130-134c-7289-1a3afe093c18.jpg",
-      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_Vv5fmAwcHWTw3MXox/gallery5_70632d3d-e4c9-0305-0f36-9496c51f73dd.jpg"
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_hTuWIyiRVFhUjPlx2/gallery3_d7738337-0305-8758-80ff-6c0080aac10c.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_Vv5fmAwcHWTw3MXox/gallery5_70632d3d-e4c9-0305-0f36-9496c51f73dd.jpg",
+      "https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_YZV0iwNEQIKrtflbQ/gallery6_12ac226b-917c-a2af-6d5b-8b907dd24b19.jpg"
     ];
 
     const getImagePath = (image: string) => {
@@ -75,7 +76,7 @@ export default defineComponent({
     }
   }
 
-  .gallery-item {
+  .gallery-item { 
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -100,7 +101,7 @@ export default defineComponent({
     }
 
     &.gallery-item-0 {
-      grid-column: span 3;
+      grid-column: span 4;
       grid-row: span 2;
     }
 
@@ -110,53 +111,54 @@ export default defineComponent({
     }
 
     &.gallery-item-2 {
-      grid-column: span 4;
+      grid-column: span 2;
       grid-row: span 1;
     }
 
     &.gallery-item-3 {
-      grid-column: span 4;
+      grid-column: span 2;
       grid-row: span 1;
     }
 
     &.gallery-item-4 {
       grid-column: span 2;
-      grid-row: span 1;
+      grid-row: span 2;
     }
 
     &.gallery-item-5 {
-      grid-column: span 3;
+      grid-column: span 2;
       grid-row: span 1;
     }
     @media (max-width: 768px) {
+      grid-template-columns: repeat(4, 1fr);
       &.gallery-item-0 {
-      grid-column: span 5;
+      grid-column: span 4;
       grid-row: span 1;
     }
 
     &.gallery-item-1 {
-      grid-column: span 2;
-      grid-row: span 1;
+      grid-column: span 3;
+      grid-row: span 2;
     }
 
     &.gallery-item-2 {
-      grid-column: span 3;
+      grid-column: span 2;
       grid-row: span 1;
     }
 
     &.gallery-item-3 {
-      grid-column: span 2;
+      grid-column: span 3;
       grid-row: span 1;
     }
 
     &.gallery-item-4 {
       grid-column: span 3;
-      grid-row: span 1;
+      grid-row: span 2;
     }
 
     &.gallery-item-5 {
-      grid-column: span 1;
-      grid-row: span 1;
+      grid-column: span 3;
+      grid-row: span 2;
     }
     }
   }
