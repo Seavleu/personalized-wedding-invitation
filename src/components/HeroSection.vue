@@ -3,6 +3,7 @@ import { defineComponent, onMounted, ref, watch } from "vue";
 
 export default defineComponent({
   name: "HeroSection",
+  emits: ["enable-scroll", "direct-to-invitation"],
   props: {
     guestName: {
       type: String,
@@ -20,15 +21,6 @@ export default defineComponent({
       document.body.style.overflow = "auto";
       localStorage.setItem("visitedHeroPage", "true");
     };
-
-    const redirectToInvitation = () => {
-      enableScroll();
-      const invitationSection = document.getElementById("invitation");
-      if (invitationSection) {
-        invitationSection.scrollIntoView({ behavior: "smooth" });
-      }
-    };
-
     onMounted(() => {
       if (isFirstVisit.value) {
         document.body.style.overflow = "hidden";
@@ -46,8 +38,7 @@ export default defineComponent({
     );
 
     return {
-      currentGuestName,
-      redirectToInvitation,
+      currentGuestName, 
     };
   },
 });
@@ -70,8 +61,9 @@ export default defineComponent({
         class="wlc"
         src="../assets/images/ico_wlc.png"
         alt="Watch Invitation"
-        @click="redirectToInvitation"
+        @click="$emit('direct-to-invitation')"
       />
+      <!-- @click="" -->
     </div>
   </section>
 </template>

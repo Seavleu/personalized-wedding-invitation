@@ -86,7 +86,7 @@ export default defineComponent({
 
     const directToInvitation = () => {
       enableScroll();
-      const invitationSection = document.getElementById("invitation");
+      const invitationSection = document.getElementById('video')
       if (invitationSection) {
         invitationSection.scrollIntoView({ behavior: "smooth" });
       }
