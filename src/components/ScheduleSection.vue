@@ -19,7 +19,7 @@ export default defineComponent({
   <section class="schedule-section">
     <!-- Background video -->
     <video class="background-video" autoplay loop muted playsinline>
-      <source src="/invitation2.mp4" type="video/mp4" /> 
+      <source src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_gOF7ijJOCDO77VrPc/schedule_0d289a43-cda0-dafd-28b4-4b281119b380.mp4" type="video/mp4" /> 
     </video> 
     <!-- <img src="../assets/images/intro1-min.jpg" alt=""> -->
     <!-- Content -->
@@ -61,8 +61,9 @@ export default defineComponent({
 
   @media (max-width: 768px) {
     background-attachment: scroll;
-    background-size: cover; 
+    background-size: contain; 
     width: 100%; 
+
   }
 
   @media (max-width: 480px) {
