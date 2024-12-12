@@ -1,34 +1,47 @@
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref } from "vue"
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default defineComponent({
   name: "VidSection",
   emits: ["pause-background-audio", "resume-background-audio"],
   setup(_, { emit }) {
-    const isFullScreen = ref(false);
-    const videoRef = ref<HTMLVideoElement | null>(null);
+    const isFullScreen = ref(false)
+    const videoRef = ref<HTMLVideoElement | null>(null)
+    const isVideoPlaying = ref(false)
 
     const toggleFullScreen = () => {
-      isFullScreen.value = !isFullScreen.value;
+      isFullScreen.value = !isFullScreen.value
 
       if (isFullScreen.value) {
-        emit("pause-background-audio");
-        videoRef.value?.play();
-        videoRef.value!.muted = false;
+        emit("pause-background-audio")
+        videoRef.value?.play()
+        videoRef.value!.muted = false
       } else {
-        emit("resume-background-audio");
-        videoRef.value?.pause();
-        videoRef.value!.muted = true;
+        emit("resume-background-audio")
+        videoRef.value?.pause()
+        videoRef.value!.muted = true
       }
-    };
+    }
 
     const handleVideoPlay = () => {
-      emit("pause-background-audio");
-    };
+      emit("pause-background-audio")
+    }
 
     const handleVideoPause = () => {
-      emit("resume-background-audio");
-    };
+      emit("resume-background-audio")
+    }
+
+    const togglePlay = () => {
+      if (isVideoPlaying.value) {
+        videoRef.value?.pause();
+      } else {
+        videoRef.value?.play();
+      }
+      isVideoPlaying.value = !isVideoPlaying.value;
+    }
 
     return {
       isFullScreen,
@@ -36,16 +49,26 @@ export default defineComponent({
       toggleFullScreen,
       handleVideoPlay,
       handleVideoPause,
-    };
+      togglePlay,
+      isVideoPlaying,
+    }
   },
-});
+})
 </script>
 
 <template>
   <section class="vid-section">
     <h2 class="title">ទស្សនាដោយមេត្រីភាព</h2>
     <div class="con" :class="{ fullscreen: isFullScreen }">
-      <video
+      <video ref="videoRef" class="vid" muted playsinline @click="togglePlay">
+        <source
+          src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
+          type="video/mp4" />
+        <div class="play-overlay" v-if="!isVideoPlaying">
+          <font-awesome-icon icon="fa-play" style="color: #fff; font-size: 24px;" />
+        </div>
+      </video>
+      <!-- <video
         ref="videoRef"
         class="vid"
         autoplay
@@ -57,16 +80,17 @@ export default defineComponent({
         @pause="handleVideoPause"
       >
         <source src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4" type="video/mp4" />
-      </video>
+      </video> -->
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .vid-section {
-  padding: 40px 15px;
+  padding: 80px 15px;
   text-align: center;
-  overflow: hidden;
+  overflow: hidden; 
+  height: 60vh;
 
   .title {
     font-size: 32px;
@@ -130,10 +154,10 @@ export default defineComponent({
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 100%; 
+        width: 100%;
         height: auto;
-        max-width: 90vw; 
-        max-height: 90vh; 
+        max-width: 90vw;
+        max-height: 90vh;
         border-radius: 0;
         animation: zoomIn 0.5s ease-in-out;
       }
@@ -146,6 +170,7 @@ export default defineComponent({
       opacity: 0;
       transform: translateY(-30px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -157,6 +182,7 @@ export default defineComponent({
       opacity: 0;
       transform: scale(0.8);
     }
+
     to {
       opacity: 1;
       transform: scale(1);
@@ -164,4 +190,3 @@ export default defineComponent({
   }
 }
 </style>
-
