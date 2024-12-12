@@ -126,12 +126,14 @@ export default defineComponent({
       align-items: center;
 
       .vid {
-        width: 100%;
-        max-width: 90vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%; 
         height: auto;
-        max-height: 90vh;
-        transform: none;
-        box-shadow: none;
+        max-width: 90vw; 
+        max-height: 90vh; 
         border-radius: 0;
         animation: zoomIn 0.5s ease-in-out;
       }
