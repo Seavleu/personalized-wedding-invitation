@@ -18,9 +18,9 @@ export default defineComponent({
         videoRef.value!.muted = false;
         isVideoPlaying.value = true;
       } else {
-        emit("resume-background-audio");
         videoRef.value?.pause();
         videoRef.value!.muted = true;
+        emit("resume-background-audio");
         isVideoPlaying.value = false;
       }
     };
@@ -28,18 +28,30 @@ export default defineComponent({
     const handleVideoPlay = () => {
       emit("pause-background-audio");
       isVideoPlaying.value = true;
+      videoRef.value!.muted = false; // Ensure video is unmuted
     };
 
     const handleVideoPause = () => {
       emit("resume-background-audio");
       isVideoPlaying.value = false;
+      videoRef.value!.muted = true; // Mute the video when paused
     };
 
     const togglePlay = () => {
-      if (isVideoPlaying.value) {
-        videoRef.value?.pause();
+      const video = videoRef.value;
+
+      if (!video) return;
+
+      if (video.paused) {
+        video.play();
+        emit("pause-background-audio");
+        isVideoPlaying.value = true;
+        video.muted = false; // Ensure video audio plays
       } else {
-        videoRef.value?.play();
+        video.pause();
+        emit("resume-background-audio");
+        isVideoPlaying.value = false;
+        video.muted = true; // Mute video when paused
       }
     };
 
@@ -64,9 +76,10 @@ export default defineComponent({
         ref="videoRef"
         class="vid"
         playsinline
+        muted
         @play="handleVideoPlay"
         @pause="handleVideoPause"
-        @click="toggleFullScreen"
+        @click="togglePlay"
       >
         <source
           src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_WLymMWKTm9LIJ5M8p/videocompressed02_5d14cd9b-db19-edc8-5411-8008413aa6df.mp4"
@@ -111,9 +124,7 @@ export default defineComponent({
     width: 100%; 
     margin: 0 auto;
     animation: zoomIn 1.2s ease-in-out;
-    border-radius: 15px;
     overflow: hidden; 
-
     .vid {
       position: relative;
       z-index: 999;
@@ -144,10 +155,7 @@ export default defineComponent({
       width: 100vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.9);
-      z-index: 999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      z-index: 999; 
 
       .vid {
         position: absolute;
@@ -157,30 +165,12 @@ export default defineComponent({
         width: 100%;
         height: auto;
         max-width: 90vw;
-        max-height: 90vh;
-        border-radius: 0;
+        border-radius: 15px; 
+        max-height: 90vh; 
         animation: zoomIn 0.5s ease-in-out;
         transition: transform 0.5s ease, box-shadow 0.5s ease;
       }
     }
-    .play-overlay {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 10;  
-
-        img {
-          width: 64px;
-          height: 64px;
-          opacity: 0.8;
-          transition: opacity 0.3s ease;
-
-          &:hover {
-            opacity: 1; 
-          }
-        }
-      }
   }
 
   /* Animations */
