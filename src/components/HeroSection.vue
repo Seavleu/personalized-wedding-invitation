@@ -21,8 +21,7 @@ export default defineComponent({
       localStorage.setItem("visitedHeroPage", "true");
     };
 
-    const isKhmerName = computed(() => {
-      // Khmer characters range from \u1780 to \u17FF
+    const isKhmerName = computed(() => { 
       const khmerPattern = /[\u1780-\u17FF]+/;
       return khmerPattern.test(currentGuestName.value);
     });
