@@ -166,12 +166,12 @@ export default defineComponent({
 
       @media (max-width: 768px) {
         border-radius: 10px;
-        width: 60%;
+        width: 300px !important;
       }
 
       @media (max-width: 480px) {
         border-radius: 10px;
-        width: 40%;
+        width:  200px;
       }
     }
 
