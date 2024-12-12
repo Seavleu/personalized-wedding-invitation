@@ -177,11 +177,6 @@ export default defineComponent({
           }
         }
 
-        .khmer-font {
-          font-family: 'KantumruyReg', sans-serif;
-          font-size: 24px;
-        }
-
         .english-font {
           font-family: 'ItaliannoReg', cursive;
           font-size: 50px!important;
