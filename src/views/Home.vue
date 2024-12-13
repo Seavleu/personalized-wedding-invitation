@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, onMounted, onUnmounted, ref } from "vue";
 import HeroSection from "@/components/HeroSection.vue";
 import VidSection from "@/components/VidSection.vue";
 import InvitationSection from "@/components/InvitationSection.vue";
@@ -14,11 +14,11 @@ import { useRoute } from "vue-router";
 import guests from "@/assets/json/data.json";
 
 export default defineComponent({
-  name: "Home",
+  name: "Home", 
   props: {
-    guestName: {
+    guestId: {
       type: String,
-      required: true,
+      required: false, 
     },
   },
   components: {
@@ -34,15 +34,38 @@ export default defineComponent({
     ABASection,
   },
   setup(props) {
-    const route = useRoute();
-    const audioRef = ref<HTMLAudioElement | null>(null);
-    const isScrollAllowed = ref(false);
-    const isRestricted = ref(false);
-    
-    const currentGuestName = computed(() => {
-      return props.guestName || "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
+    const route = useRoute()
+    const audioRef = ref<HTMLAudioElement | null>(null)
+    const isScrollAllowed = ref(false)
+    const isRestricted = ref(false)
+
+    // const guestName = computed (() => {
+    //   const id = Number(route.params.guestName)
+    //   const guest = guests.Guest.find((g) => g.id === id)
+    //   return guest ? guest.name : 'ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា'
+    // })
+    const guestName = computed(() => {
+      const id = Number(route.params.guestId);
+      const guest = guests.Guest.find((g) => g.id === id);
+      return guest
+        ? guest.name
+        : "ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា";
     });
 
+    const baseUrls = ["http://localhost:5173/", "http://localhost:4000/", "https://sela-ouktey.netlify.app/"]
+    
+    const checkIfRestricted = () =>{
+      const currentUrl = window.location.href
+      if (baseUrls.includes(currentUrl)) {
+        isRestricted.value = true
+        document.body.style.overflow = 'hidden'
+      } else {
+        isRestricted.value = false
+        document.body.style.overflow = 'hidden'
+        setTimeout(enableScroll, 10000)
+      }
+    }
+    
     const enableScroll = () => {
       isScrollAllowed.value = true;
       document.body.style.overflow = "auto";
@@ -64,39 +87,53 @@ export default defineComponent({
       audioRef.value?.play();
     };
 
+    const handleVisibilityChange = () => {
+      if(audioRef.value) {
+        document.hidden ? audioRef.value.pause() : audioRef.value.play()
+      }
+    }
+
+    onMounted(() => {
+      checkIfRestricted()
+      document.addEventListener('visibilitychange', handleVisibilityChange)
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        isScrollAllowed.value = true;
+        document.body.style.overflow = "auto";
+      }, 5000);
+    })
+
+    onUnmounted(() => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      document.body.style.overflow = "auto";
+    })
+
     return {
-      currentGuestName,
       audioRef,
+      checkIfRestricted,
       isScrollAllowed,
       enableScroll,
       pauseBackgroundAudio,
       resumeBackgroundAudio,
       directToInvitation,
       isRestricted,
-      guestName: props.guestName,
+      guestName
     };
   },
 });
 </script>
 
 <template>
-  <div :class="{ 'no-scroll': !isScrollAllowed }">
-    <!-- Restriction Message -->
+  <div :class="{ 'no-scroll': !isScrollAllowed }"> 
     <div v-if="isRestricted" class="restricted-message">
       <h1>សូមអភ័យទោស!</h1>
       <p>អ្នកមិនមានការអញ្ជើញទេ។</p>
     </div>
 
-    <!-- Authorized Content -->
     <template v-else>
-      <!-- <audio ref="audioRef" autoplay loop>
-        <source src="/audio.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio> -->
-
       <HeroSection
         id="hero"
-        :guest-name="currentGuestName" 
+        :guest-name="guestName" 
         @enable-scroll="enableScroll"
         @direct-to-invitation="directToInvitation"
       />
