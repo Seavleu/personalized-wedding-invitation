@@ -5,10 +5,10 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/:guestId?", // guestId as a dynamic parameter
+      path: "/:guestId?", 
       name: "home",
       component: HomeView,
-      props: (route) => ({ guestId: route.params.guestId }), // Pass guestId as prop
+      props: (route) => ({ guestId: route.params.guestId }),  
     },
   ],
 });

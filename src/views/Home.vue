@@ -155,6 +155,7 @@ export default defineComponent({
 .no-scroll {
   overflow: hidden;
   height: 100vh;
+  width: 100vw;
 }
 
 .restricted-message {

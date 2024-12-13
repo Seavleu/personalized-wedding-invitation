@@ -55,11 +55,11 @@ export default defineComponent({
 .hero-section { 
   padding: 80px 12px;
   width: 100vw;
-  // height: 100vh;
+  height: 100vh;
 
   position: relative;
   text-align: center; 
-  // overflow: hidden;
+  overflow: hidden;
 
   .video-bg {
     position: absolute;
