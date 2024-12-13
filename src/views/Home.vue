@@ -39,11 +39,6 @@ export default defineComponent({
     const isScrollAllowed = ref(false)
     const isRestricted = ref(false)
 
-    // const guestName = computed (() => {
-    //   const id = Number(route.params.guestName)
-    //   const guest = guests.Guest.find((g) => g.id === id)
-    //   return guest ? guest.name : 'ឯកឧត្តម លោកឧកញ៉ា លោកជំទាវ លោក លោកស្រី អ្នកនាងកញ្ញា'
-    // })
     const guestName = computed(() => {
       const id = Number(route.params.guestId);
       const guest = guests.Guest.find((g) => g.id === id);
