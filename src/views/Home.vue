@@ -157,11 +157,6 @@ export default defineComponent({
   height: 100vh;
 }
 
-.home {
-  overflow-x: hidden;
-  max-width: 100%;
-}
-
 .restricted-message {
   height: 100vh;
   display: flex;

@@ -25,11 +25,11 @@ export default defineComponent({
 </script>
 <template>
   <section class="hero-section">
-    <!-- <video class="video-bg" autoplay muted loop playsinline>
+    <video class="video-bg" autoplay muted loop playsinline>
       <source
         src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_e0pCZSVRr1KIzYIkB/wedding_invitation_2_aafdeea9-6f8f-3479-75b7-51b9cade3dcb.mp4"
         type="video/mp4" />
-    </video> -->
+    </video>
     <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
