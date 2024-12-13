@@ -153,13 +153,13 @@ export default defineComponent({
 @import '@/assets/styles/main.scss';
 
 .no-scroll {
-  overflow: hidden;
-  height: 100vh;
+  overflow: hidden; 
   width: 100vw;
 }
 
 .restricted-message {
   height: 100vh;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
