@@ -24,7 +24,7 @@ export default defineComponent({
 });
 </script>
 <template>
-  <section class="hero-section">
+  <section class="hero-section no-scroll"> 
     <video class="video-bg" autoplay muted loop playsinline>
       <source
         src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_e0pCZSVRr1KIzYIkB/wedding_invitation_2_aafdeea9-6f8f-3479-75b7-51b9cade3dcb.mp4"
@@ -56,10 +56,9 @@ export default defineComponent({
   padding: 80px 12px;
   width: 100vw;
   height: 100vh;
-
   position: relative;
   text-align: center; 
-  overflow: hidden;
+  overflow: hidden; 
 
   .video-bg {
     position: absolute;

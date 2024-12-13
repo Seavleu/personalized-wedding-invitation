@@ -106,8 +106,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .invitation-section {
   position: relative;
-  text-align: center; 
-  padding: 80px 12px; 
+  text-align: center;  
+  overflow-x: hidden;  
+  width: 100%; 
+  max-width: 100%;
 
   .video-bg {
     position: absolute;

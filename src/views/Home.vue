@@ -153,10 +153,10 @@ export default defineComponent({
 @import '@/assets/styles/main.scss';
 
 .no-scroll {
-  overflow: hidden; 
-  width: 100vw;
+ overflow-x: hidden;  
+  width: 100%;  
+  max-width: 100%;
 }
-
 .restricted-message {
   height: 100vh;
   overflow-x: hidden;
@@ -168,12 +168,10 @@ export default defineComponent({
   color: #5b7639;
   text-align: center;
   font-family: 'Geist', sans-serif;
-
   h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
   }
-
   p {
     font-size: 1.2rem;
     color: #777;
