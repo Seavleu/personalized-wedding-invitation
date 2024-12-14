@@ -33,17 +33,17 @@ export default defineComponent({
     <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
       <div class="hero-details">
-        <img class="logo" src="../assets/images/logo.jpg" alt="Logo" />
+        <img class="logo" src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_wzJI1p6jjrCa5e48q/logo_62926590-643b-ad68-aaab-9c87b29d0284.jpg" alt="Logo" />
         <h5 class="hero-invite">សូមគោរពអញ្ជើញ</h5>
         <div class="holder">
-          <img src="../assets/images/ico_hold1.png" alt="">
+          <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_HoWxW4AmdXxunbhMh/ico_hold1_8b61ab25-9cb4-89ee-1996-cd9bba3c96aa.png" alt="">
           <p class="guest-name" :class="fontClass">{{ guestName }}</p>
-          <img src="../assets/images/ico_hold2.png" alt="">
+          <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_1WqzjsgrHWQqeqtnZ/ico_hold2_65aff8a6-b100-b722-11eb-5e8d0f66ff0f.png" alt="">
         </div>
       </div>
       <img
         class="wlc"
-        src="../assets/images/ico_wlc.png"
+        src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_SWn74epVjiWzbdYQz/ico_wlc_44d01bc6-fb39-c173-9a0c-5eacd4022580.png"
         alt="Watch Invitation"
         @click="$emit('direct-to-invitation')"
       />

@@ -5,7 +5,7 @@
       <img src="../assets/images/map.png" alt="Map Location" class="map-image" />
       <div class="location-marker"></div>
     </div>
-    <p class="location-description"> បុរីអាពាហ៍ពិពាហ៍ (អគារ A)</p>
+    <p class="location-description"> បុរីអាពាហ៍ពិពាហ៍ (អគារ A) <br><span><a href="https://maps.app.goo.gl/P81kqKyaMpKC5Koa9">វិថី លោកតាណឺយ, ភូមិ វត្តបូព៌, សង្កាត់ សាលាកំរើក, ក្រុង សៀមរាប</a></span></p>
   </section>
 </template>
 
@@ -49,7 +49,7 @@ export default defineComponent({
     animation: zoomIn 1.2s ease-in-out;
 
     .map-image {
-      width: 400px;
+      width: 350px;
       height: auto;
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -130,8 +130,18 @@ export default defineComponent({
     opacity: 0;
     animation-fill-mode: forwards;
 
+    span {
+      font-size: 14px;
+    }
+
     @media (max-width: 768px) {
       font-size: 16px;
+      
+      span > a {
+        font-size: 12px;
+        animation: pulse 2s infinite;
+
+      }
     }
 
     @media (max-width: 480px) {

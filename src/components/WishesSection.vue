@@ -132,7 +132,7 @@ export default defineComponent({
       width: 100%;
       max-width: 350px;
       padding: 12px;
-      border: 1px solid #5b7639bfb;
+      border: 1px solid #5b7639;
       border-radius: 10px;
       font-size: 1rem;
 

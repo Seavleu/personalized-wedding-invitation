@@ -28,6 +28,7 @@ export default defineComponent({
 
     const toggleQR = () => {
       showQR.value = !showQR.value
+      window.location.href = "https://link.payway.com.kh/aba?id=75A3BEE91E63&code=089930&acc=008699842&dynamic=true"
     }
 
     onMounted(() => {
@@ -46,7 +47,7 @@ export default defineComponent({
 <template>
   <section class="aba-section" :class="{ 'section-visible': sectionVisible }">
     <div class="title">
-      <img src="../assets/images/divider2.png" alt="Elegant Divider" />
+      <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_UdGY1RoZQsOJO1ImT/divider2_71a5a863-054a-7718-f712-524ddc89896b.png" alt="Elegant Divider" />
     </div>
     <div class="detail">
       <h4>ផ្ញើរសេចក្តីអបអរ</h4>
@@ -58,14 +59,15 @@ export default defineComponent({
       </button>
 
       <!-- Transition for QR Code -->
-      <transition name="qr-fade">
+      <!-- <transition name="qr-fade">
         <div v-if="showQR" class="qr-container">
+          <a href="https://pay.ababank.com/VHAkzu3C1ZzJ47Vy6"><strong>Click Me</strong></a> 
           <img
             src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_cpwXfFGTphLe1GHLU/aba_4f8b6be6-1b4b-79ca-9c32-f6d8a85abf3a.png"
             alt="Bank Account QR Code"
           />
         </div>
-      </transition>
+      </transition> -->
     </div>
   </section>
 </template>
@@ -85,12 +87,17 @@ export default defineComponent({
   background-size: cover;
   min-height: 50vh;
 
+  @media (max-width: 768px) {
+    background-size: contain;
+  }
+
   .title img {
     width: 20%;
     animation: fadeIn 1.5s ease-out, pulse 2s infinite;
 
     @media (max-width: 768px) {
       width: 50%;
+      animation: fadeIn 1.5s ease-out, pulse 2s infinite;
     }
   }
 
@@ -101,7 +108,7 @@ export default defineComponent({
       font-size: 32px;
     }
 
-    p {
+    p,a {
       font-size: 32px;
       font-family: 'ItaliannoReg', sans-serif;
       color: #5b7639;
@@ -131,16 +138,28 @@ export default defineComponent({
     /* QR Code Animation */
     .qr-container {
       margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       img {
-        width: 350px;
+        width: 300px;
         height: auto;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 0;
+        backdrop-filter: blur(2px);
 
         @media (max-width: 768px) {
-          width: 300px;
+          width: 180px;
         }
+      }
+
+      a {
+        animation: fadeIn 1.5s ease-out, pulse 2s infinite;
+        cursor: pointer;
+        color:#fac34c;
       }
     }
   }

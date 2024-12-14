@@ -79,11 +79,7 @@ body {
 button {
   border: 0;
 }
-
-a {
-  text-decoration: none;
-  color: #5b7639;
-}
+ 
 
 audio,
 canvas,
@@ -93,6 +89,7 @@ video {
   *zoom: 1;
 }
 
+a,
 p,
 dl,
 dt,
@@ -108,6 +105,7 @@ li {
   margin: 0;
   color: #5b7639;
   font: 18px;
+  text-decoration: none;
 }
 
 h1,

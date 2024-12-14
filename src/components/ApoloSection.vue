@@ -48,7 +48,7 @@ export default defineComponent({
         type="video/mp4" />
     </video>
     <div class="title">
-      <img src="../assets//images/logo.jpg" alt="" />
+      <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_wzJI1p6jjrCa5e48q/logo_62926590-643b-ad68-aaab-9c87b29d0284.jpg" alt="" />
     </div>
     <div class="letter-box">
       <div class="detail">

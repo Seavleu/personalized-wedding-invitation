@@ -62,16 +62,16 @@ export default defineComponent({
           </p>
         </div>
       </div>
-      <img src="../assets//images/logo.jpg" alt="" />
+      <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_wzJI1p6jjrCa5e48q/logo_62926590-643b-ad68-aaab-9c87b29d0284.jpg" alt="" />
       <div class="right-item">
         <p>
           លោក <span><strong>ហ៊ាង វ៉ាន់ឌី</strong></span>
           <br />
-          លោកស្រី <span>ហ៊ាន គឹមហួរ</span>
+          លោកស្រី <span><strong>ហ៊ាន គឹមហួរ</strong></span>
         </p>
 
         <div class="daught">
-          <p>កូនស្រីនាម <br /><span>ហ៊ាង ស៊ីវហួយ</span></p>
+          <p>កូនស្រីនាម <br /><span><strong>ហ៊ាង ស៊ីវហួយ</strong></span></p>
         </div>
       </div>
     </div>
