@@ -1,5 +1,5 @@
 <script lang="ts">
-import { databases, Models } from "@/lib/appwrite";
+import { databases } from "@/lib/appwrite";
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
