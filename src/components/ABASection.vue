@@ -88,7 +88,9 @@ export default defineComponent({
   min-height: 50vh;
 
   @media (max-width: 768px) {
-    background-size: contain;
+    .aba-section {
+      background-size: contain;
+    }
   }
 
   .title img {
