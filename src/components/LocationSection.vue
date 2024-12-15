@@ -5,7 +5,7 @@
       <img src="../assets/images/map.png" alt="Map Location" class="map-image" />
       <div class="location-marker"></div>
     </div>
-    <p class="location-description"> បុរីអាពាហ៍ពិពាហ៍ (អគារ A) <br><span><a href="https://maps.app.goo.gl/P81kqKyaMpKC5Koa9">វិថី លោកតាណឺយ, ភូមិ វត្តបូព៌, សង្កាត់ សាលាកំរើក, ក្រុង សៀមរាប</a></span></p>
+    <p class="location-description"> បុរីអាពាហ៍ពិពាហ៍ (អគារ A) <br><span><a href="https://maps.app.goo.gl/P81kqKyaMpKC5Koa9">វិថី លោកតាណឺយ, ភូមិ វត្តបូព៌, សង្កាត់ សាលាកំរើក, ក្រុង សៀមរាប (សូមចុចទីនេះ)</a></span></p>
   </section>
 </template>
 
