@@ -163,7 +163,8 @@ export default defineComponent({
         }
 
         .english-font {
-          font-family: 'ItaliannoReg', cursive;
+          // font-family: 'ItaliannoReg', cursive;
+          font-family: 'Clarendon MT Std', sans-serif;      
           font-size: 50px!important;
         }
       }
