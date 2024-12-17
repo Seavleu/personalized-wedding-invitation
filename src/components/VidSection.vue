@@ -120,12 +120,11 @@ export default defineComponent({
 
 
 <style lang="scss" scoped>
-.vid-section {
-  padding: 5vw;
+.vid-section { 
   text-align: center;
   height: 100vh; 
   position: relative;
-  overflow: hidden;
+  padding: 30px;
 
   @media (max-width: 768px) {
     padding: 40px 40px;

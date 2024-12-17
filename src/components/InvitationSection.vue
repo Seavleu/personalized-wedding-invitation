@@ -116,7 +116,7 @@ export default defineComponent({
 .invitation-section {
   position: relative;
   text-align: center; 
-
+  padding: 30px; 
   .video-bg {
     position: absolute;
     top: 0;

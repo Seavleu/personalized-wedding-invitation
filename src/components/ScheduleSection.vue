@@ -45,8 +45,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .schedule-section { 
   position: relative; 
-  text-align: center;
-  padding-top: 30px;
+  text-align: center; 
+  padding:30px 12px;
+
 
   .background-video {
     position: absolute;

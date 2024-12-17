@@ -53,7 +53,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .hero-section { 
-  padding: 80px 12px;
+  padding: 20px 0;
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -70,6 +70,7 @@ export default defineComponent({
   }
  
   @media (max-width: 768px) {
+    padding: 80px 12px;
     background-size: contain;
     background-attachment: scroll;
   }
@@ -105,8 +106,8 @@ export default defineComponent({
       animation: fadeInUp 1.5s ease-out;
 
       .logo {
-        width: 350px;
-        height: 350px;
+        width: 300px;
+        height: 300px;
         animation: scaleIn 1.5s ease-out;
 
         @media (max-width: 768px) {
@@ -138,11 +139,9 @@ export default defineComponent({
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        margin-top: 1%;
-
         img {
-          width: 30%;
-          height: 30%;
+          width: 25%;
+          height: 25%;
         }
 
         .guest-name {
@@ -171,9 +170,8 @@ export default defineComponent({
 
     .wlc {
       cursor: pointer;
-      width: 300px;
-      max-width: 300px;
-      height: auto;
+      width: 300px;  
+      margin-top: -20px;
 
       transition: transform 0.3s ease;
       animation: fadeIn 1.5s ease-out, pulse 2s infinite;
