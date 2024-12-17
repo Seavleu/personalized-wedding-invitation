@@ -57,8 +57,7 @@ export default defineComponent({
   width: 100vw;
   height: 100vh;
   position: relative;
-  text-align: center; 
-  overflow: hidden; 
+  text-align: center;  
 
   .video-bg {
     position: absolute;

@@ -121,9 +121,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .vid-section {
-  padding: 80px 15px;
+  padding: 5vw;
   text-align: center;
   height: 100vh; 
+  position: relative;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 40px 40px;
@@ -152,7 +154,7 @@ export default defineComponent({
     animation: zoomIn 1.2s ease-in-out;
     .vid {
       position: relative;
-      z-index: 999;
+      z-index: 1;
       width: 20%;
       height: auto;
       border-radius: 15px; 

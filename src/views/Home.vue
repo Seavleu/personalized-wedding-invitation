@@ -10,6 +10,7 @@ import WishesSection from "@/components/WishesSection.vue";
 import ABASection from "@/components/ABASection.vue";
 import ApoloSection from "@/components/ApoloSection.vue";
 import MenuComponent from "@/components/MenuComponent.vue";
+import SaveTheDate from "@/components/SaveTheDate.vue";
 import { useRoute } from "vue-router";
 import guests from "@/assets/json/data.json";
 
@@ -32,6 +33,7 @@ export default defineComponent({
     MenuComponent,
     ApoloSection,
     ABASection,
+    SaveTheDate
   },
   setup(props) {
     const route = useRoute()
@@ -127,8 +129,8 @@ export default defineComponent({
 
     <template v-else>
       <HeroSection
-        id="hero"
-        :guest-name="guestName" 
+      id="hero"
+      :guest-name="guestName" 
         @enable-scroll="enableScroll"
         @direct-to-invitation="directToInvitation"
       />
@@ -136,8 +138,9 @@ export default defineComponent({
         id="video"
         @pause-background-audio="pauseBackgroundAudio"
         @resume-background-audio="resumeBackgroundAudio"
-      />
-      <InvitationSection id="invitation" />
+        />
+        <!-- <SaveTheDate /> -->
+        <InvitationSection id="invitation" />
       <ScheduleSection id="schedule" />
       <LocationSection id="location" />
       <GallerySection id="gallery" />
