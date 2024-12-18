@@ -47,10 +47,12 @@ export default defineComponent({
 <template>
   <section class="aba-section" :class="{ 'section-visible': sectionVisible }">
     <div class="title">
-      <img src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_UdGY1RoZQsOJO1ImT/divider2_71a5a863-054a-7718-f712-524ddc89896b.png" alt="Elegant Divider" />
+      <img
+        src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_UdGY1RoZQsOJO1ImT/divider2_71a5a863-054a-7718-f712-524ddc89896b.png"
+        alt="Elegant Divider" />
     </div>
     <div class="detail">
-      <h4>ផ្ញើរសេចក្តីអបអរ</h4>
+      <h4><strong>ផ្ញើរសេចក្តីអបអរ</strong></h4>
       <p>Share Loves and Joys in celebrating with us</p>
 
       <!-- Toggle QR Code -->
@@ -108,12 +110,24 @@ export default defineComponent({
 
     h4 {
       font-size: 32px;
+      // background: linear-gradient(to bottom, #fac34c, #ffdd89);
+      background: linear-gradient(to bottom, #ffffff, #fef3e9);
+      -webkit-background-clip: text; 
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      animation: softGlow 1.5s ease-in-out forwards;
+      color: #fff;
     }
 
-    p,a {
-      font-size: 32px;
-      font-family: 'ItaliannoReg', sans-serif;
-      color: #5b7639;
+    p,
+    a {
+      font-size: 40px;
+      font-family: 'ItaliannoReg', sans-serif; 
+      // background: linear-gradient(to bottom, #fac34c, #ffdd89);
+      background: linear-gradient(to bottom, #ffffff, #fef3e9);
+      color: #fff;
+      -webkit-background-clip: text; 
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      animation: softGlow 1.5s ease-in-out forwards;
     }
 
     .show-qr-btn {
@@ -161,7 +175,7 @@ export default defineComponent({
       a {
         animation: fadeIn 1.5s ease-out, pulse 2s infinite;
         cursor: pointer;
-        color:#fac34c;
+        color: #fac34c;
       }
     }
   }
@@ -178,12 +192,24 @@ export default defineComponent({
     transform: scale(0.8);
   }
 
+  @keyframes softGlow {
+  0% {
+    text-shadow: 0 0 0 rgba(250, 195, 76, 0.0); /* No shadow initially */
+  }
+  50% {
+    text-shadow: 0 0 8px rgba(250, 195, 76, 0.5); /* Mid glow */
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(250, 195, 76, 0.8); /* Final soft glow */
+  }
+}
   /* Keyframes */
   @keyframes fadeIn {
     from {
       opacity: 0;
       transform: translateY(10px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -194,13 +220,14 @@ export default defineComponent({
     0% {
       transform: scale(1);
     }
+
     50% {
       transform: scale(1.05);
     }
+
     100% {
       transform: scale(1);
     }
   }
 }
 </style>
-
