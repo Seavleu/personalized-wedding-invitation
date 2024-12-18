@@ -28,7 +28,7 @@ export default defineComponent({
 
     const toggleQR = () => {
       showQR.value = !showQR.value
-      window.location.href = "https://link.payway.com.kh/aba?id=75A3BEE91E63&code=089930&acc=008699842&dynamic=true"
+      window.location.href = "https://pay.ababank.com/pZZRxnK6yAspH8616"
     }
 
     onMounted(() => {

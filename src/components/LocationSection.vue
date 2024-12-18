@@ -5,7 +5,7 @@
       <img src="../assets/images/map.png" alt="Map Location" class="map-image" />
       <div class="location-marker"></div>
     </div>
-    <p class="location-description"> បុរីអាពាហ៍ពិពាហ៍ (អគារ A) <br><span><a href="https://maps.app.goo.gl/P81kqKyaMpKC5Koa9">(សូមចុចទីនេះ)</a></span></p>
+    <p class="location-description"> បុរីអាពាហ៍ពិពាហ៍ (អគារ A) <br><span><a href="https://maps.app.goo.gl/P81kqKyaMpKC5Koa9">(សូមចុចទីនេះដើម្បីចូលទៅកាន់ទីតាំង)</a></span></p>
   </section>
 </template>
 
