@@ -151,7 +151,7 @@ export default defineComponent({
           animation: scaleIn 1.5s ease-out;
 
           @media (max-width: 768px) {
-            font-size: 24px;
+            font-size: 30px;
             width: 350px;
           }
 
