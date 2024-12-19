@@ -8,17 +8,7 @@ import HomeView from './views/Home.vue';
   </div>
 </template>
 
-<style> 
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow-x: hidden; 
-  font-family: 'Geist', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+<style>  
 #app {
   display: flex;
   flex-direction: column;
