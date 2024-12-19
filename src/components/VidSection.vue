@@ -159,6 +159,11 @@ export default defineComponent({
       border-radius: 15px; 
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       cursor: pointer;
+      pointer-events: none;
+      
+      video::-webkit-media-controls {
+          display: none !important;  
+      }
 
       &:hover {
         transform: scale(1.05);
@@ -167,12 +172,12 @@ export default defineComponent({
 
       @media (max-width: 768px) {
         border-radius: 10px;
-        width: 300px !important;
+        width: 330px !important;
       }
 
       @media (max-width: 480px) {
         border-radius: 10px;
-        width:  200px;
+        width:  250px;
       }
     }
 

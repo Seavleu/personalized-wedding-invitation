@@ -1,14 +1,82 @@
 <!doctype html>
-<html lang="">
-  <head>
+<html lang="km">
+  <head> 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>លិខិតអញ្ជើញ</title>
 
-    <link href="https://fonts.cdnfonts.com/css/clarendon-mt-std" rel="stylesheet">
+    <!-- Title and Metadata -->
+    <title>លិខិតអញ្ជើញ | Hin Sela និង Heang Seavhuoy's Joyous Day</title>
+    <meta
+      name="description"
+      content="សូមអញ្ជើញរួមចំណែកក្នុងថ្ងៃមង្គលជ៌យរបស់ ហ៊ិន សិលា និង ហ៊ាង ស៊ីវហួយ។ លិខិតអញ្ជើញពិសេសសម្រាប់ពិធីមង្គលអាពាហ៍ពិពាហ៍ដ៏អស្ចារ្យនេះ។"
+    />
+    <meta
+      name="keywords"
+      content="លិខិតអញ្ជើញ, ហ៊ិន សិលា, ហ៊ាង ស៊ីវហួយ, Hin Sela, Heang Seavhuoy, ការរៀបអាពាហ៍ពិពាហ៍, ពិធីអាពាហ៍ពិពាហ៍, Joyous Day"
+    />
+    <meta name="author" content="Hin Sela and Heang Seavhuoy" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (Social Media Preview) -->
+    <meta
+      property="og:title"
+      content="លិខិតគោរពអញ្ជើញ | Hin Sela និង Heang Seavhuoy's Joyous Day"
+    />
+    <meta
+      property="og:description"
+      content="សូមអញ្ជើញរួមចំណែកក្នុងថ្ងៃមង្គលជ៌យរបស់ ហ៊ិន សិលា និង ហ៊ាង ស៊ីវហួយ។ លិខិតអញ្ជើញពិសេសសម្រាប់ពិធីមង្គលអាពាហ៍ពិពាហ៍ដ៏អស្ចារ្យនេះ។"
+    />
+    <meta
+      property="og:image"
+      content="https://example.com/assets/images/invitation-cover.jpg"
+    />
+    <meta property="og:url" content="https://example.com/invitation/123" />
+    <meta property="og:type" content="website" />
+
+    <!-- Favicon and Manifest -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/images/favicon_io/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/images/favicon_io/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicon_io/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/assets/images/favicon_io/site.webmanifest" />
+
+    <!-- Fonts Optimization -->
+    <link
+      rel="preload"
+      href="https://fonts.cdnfonts.com/s/75774/ClarendonStd-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.cdnfonts.com/css/clarendon-mt-std"
+    />
+    <style>
+      body {
+        font-family: "Clarendon MT Std", serif;
+        color: #5b7639;
+      }
+    </style>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- Main Vue App -->
+    <div id="app" role="main" aria-labelledby="invitation-title"></div>
+
+    <!-- Main JS -->
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

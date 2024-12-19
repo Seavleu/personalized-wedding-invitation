@@ -25,10 +25,19 @@ export default defineComponent({
 </script>
 <template>
   <section class="hero-section no-scroll"> 
-    <video class="video-bg" autoplay muted loop playsinline>
+    <video
+      class="video-bg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_example_poster.jpg"
+    >
       <source
         src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_e0pCZSVRr1KIzYIkB/wedding_invitation_2_aafdeea9-6f8f-3479-75b7-51b9cade3dcb.mp4"
-        type="video/mp4" />
+        type="video/mp4"
+      />
     </video>
     <div class="hero-content">
       <h1 class="hero-title">សិរីមង្គលអាពាហ៍ពិពាហ៍</h1>
@@ -67,7 +76,12 @@ export default defineComponent({
     height: 100%;
     object-fit: cover;  
     z-index: -1;
+    pointer-events: none; 
   }
+
+  video::-webkit-media-controls {
+  display: none !important;  
+}
  
   @media (max-width: 768px) {
     padding: 80px 12px;
@@ -126,7 +140,7 @@ export default defineComponent({
         animation: fadeIn 2s ease-out;
 
         @media (max-width: 768px) {
-          font-size: 24PX;
+          font-size: 26px;
         }
 
         @media (max-width: 480px) {
@@ -153,6 +167,10 @@ export default defineComponent({
           @media (max-width: 768px) {
             font-size: 30px;
             width: 350px;
+             img {
+              width: 30%;
+              height: 30%;
+            }
           }
 
           @media (max-width: 480px) {

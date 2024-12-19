@@ -42,7 +42,9 @@ export default defineComponent({
   <section
     class="invitation-section"
     :class="{ 'section-visible': sectionVisible }">
-    <video class="video-bg" autoplay muted loop playsinline>
+    <video class="video-bg" autoplay muted loop playsinline preload="auto"
+      poster="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_example_poster.jpg"
+    >
       <source
         src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_PeHmLv9Tkbo1mqDcu/wedding_invitation_1_71faa20b-927a-625c-5fee-b8fa84c57ac8.mp4"
         type="video/mp4" />
@@ -119,6 +121,10 @@ export default defineComponent({
     height: 100%;
     object-fit: cover;  
     z-index: -1;
+    pointer-events: none;
+  }
+  video::-webkit-media-controls {
+      display: none !important;  
   }
 
   &.section-visible {

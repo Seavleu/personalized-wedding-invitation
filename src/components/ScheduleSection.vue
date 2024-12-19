@@ -18,7 +18,9 @@ export default defineComponent({
 <template>
   <section class="schedule-section">
     <!-- Background video -->
-    <video class="background-video" autoplay loop muted playsinline>
+    <video class="background-video" autoplay loop muted playsinline preload="auto"
+      poster="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_example_poster.jpg"
+    >
       <source src="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_gOF7ijJOCDO77VrPc/schedule_0d289a43-cda0-dafd-28b4-4b281119b380.mp4" type="video/mp4" /> 
     </video> 
     <!-- <img src="../assets/images/intro1-min.jpg" alt=""> -->
@@ -48,7 +50,6 @@ export default defineComponent({
   text-align: center; 
   padding:30px 12px;
 
-
   .background-video {
     position: absolute;
     top: 0;
@@ -56,7 +57,10 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     object-fit: cover;  
-    z-index: -1;  
+    pointer-events: none;
+  }
+  video::-webkit-media-controls {
+      display: none !important;  
   }
 
   @media (max-width: 768px) {
