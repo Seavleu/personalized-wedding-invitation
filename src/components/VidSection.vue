@@ -59,25 +59,29 @@ export default defineComponent({
     // Intersection Observer for triggering animation
     const observer = new IntersectionObserver(
       ([entry]) => {
+        console.log("Is section visible?", entry.isIntersecting);
         isSectionVisible.value = entry.isIntersecting;
+
         if (isSectionVisible.value && videoRef.value) {
-          videoRef.value.play(); // Auto play video when section is visible
+          videoRef.value.play();
           emit("pause-background-audio");
         } else if (videoRef.value) {
           videoRef.value.pause();
           emit("resume-background-audio");
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is visible
+      { threshold: 0.5 }
     );
 
     onMounted(() => {
-      const section = document.querySelector(".vid-section");
-      if (section) {
-        observer.observe(section);
-      }
-    });
+    const section = document.querySelector(".vid-section");
+    console.log("Section found:", section);
 
+    if (section) {
+      observer.observe(section);
+    }
+  });
+  
     onUnmounted(() => {
       observer.disconnect();
     });
@@ -105,6 +109,7 @@ export default defineComponent({
         class="vid"
         playsinline
         muted
+        poster="https://cdn.docsie.io/workspace_1Uj8SKn53qXCQCE3L/doc_dfiX2csAgpT6BMmbd/file_kGM3drvF677tdAMzx/selaheanginvitation_123d2fc6-23d6-3476-0405-e10146e9d054.jpg"
         @play="handleVideoPlay"
         @pause="handleVideoPause"
         @click="togglePlay"
@@ -117,7 +122,6 @@ export default defineComponent({
     </div>
   </section>
 </template>
-
 
 <style lang="scss" scoped>
 .vid-section { 
