@@ -1,18 +1,12 @@
-# Digital Wedding Invitation
+**Welcome to Our Digital Wedding Invitation**
 
-This template should help get you started developing with Vue 3 in Vite.
+A unique and personalized invitation. To view user invitation, simply add user unique guest ID as a suffix to the website URL. For example, if your guest ID is **168**, enter the following into your browser: 
 
-## Recommended IDE Setup
+```
+https://sela-ouktey.netlify.app/168
+```
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+If you visit our site without a guest ID or with an invalid one, you'll see our custom 404 page. All guest names and details are stored in a JSON data file to ensure your invitation is personalized just for you.
 
 ## Project Setup
 
@@ -94,3 +88,5 @@ tTo add more user please refer to `/src/assets/json/data.json`
    - `main.ts`: Main entry point to bootstrap the Vue app.
 
 Let me know if you need further explanations or modifications! 🚀
+
+Made with ❤️ by Seavleu Heang
